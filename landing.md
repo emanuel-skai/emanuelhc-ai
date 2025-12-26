@@ -22,10 +22,11 @@ Professional, confident, precise. Zero fluff. Focus on outcomes, speed, reliabil
 ## 1) Visual Direction (Aesthetic)
 
 ### Look & feel
-- Minimal, premium, “technical Apple-like” with a dark foundation and neon accents.
+- High-end, minimal, confident with a true black foundation and sparse emerald accents.
 - Strong typography hierarchy, generous whitespace, clean grid.
-- Subtle motion (micro-animations, gradient shimmer, hover elevation), never “gamey”.
-- Visual motifs: “systems”, “graphs”, “layers”, “pipelines”, “signal”, “micropayments/ledger” (abstract, not crypto-hype).
+- Subtle motion only (micro-animations, hover elevation), never "gamey".
+- Visual motifs: "systems", "graphs", "layers", "pipelines", "signal" (abstract, minimal).
+- Avoid gradients unless extremely subtle (emerald glow at very low opacity).
 
 ### Layout system
 - 12-col grid on desktop, max content width 1120–1200px.
@@ -33,46 +34,73 @@ Professional, confident, precise. Zero fluff. Focus on outcomes, speed, reliabil
 - Buttons: pill/rounded-2xl, strong contrast, clear states.
 
 ### Color palette (use CSS variables)
-Base (Skillful-inspired dark):
-- --bg: `#020617` (deep navy/black)
-- --panel: `#071026` (slightly lighter for cards)
-- --text: `#E6EEF8` (primary text)
-- --muted: `#9FB3C8` (secondary text)
-- --border: `rgba(255,255,255,0.08)`
+**Base (True Black)**
+- --bg: `#000000` (true black background)
+- --bg2: `#050505` (near-black for subtle depth)
+- --panel: `#0B0B0B` (cards)
+- --panel2: `#111111` (hover/secondary)
+- --text: `#F5F5F5` (primary text)
+- --muted: `#A3A3A3` (secondary text)
+- --border: `rgba(255,255,255,0.08)` (hairline borders)
 
-Accents (choose one as primary, one as secondary):
-- Primary neon: `#22D3EE` (cyan)
-- Secondary neon: `#A78BFA` (violet)
-Optional highlight:
-- `#34D399` (emerald) used sparingly for “availability / success” signals
+**Emerald Accent**
+- --emerald: `#10B981` (emerald 500 - primary accent)
+- --emerald2: `#34D399` (emerald 400 - hover state)
+- --emeraldDark: `#064E3B` (deep emerald for subtle fills)
 
-Gradients (subtle):
-- Hero glow gradient: cyan → violet at 15–25% opacity, blurred, behind hero content.
-- Button gradient (optional): cyan/violet at low intensity, keep text readable.
+**Semantic**
+- --danger: `#EF4444` (rarely used)
+- --warning: `#F59E0B` (rarely used)
+
+### Accent usage rules
+- Emerald should be **< 10%** of visible UI
+- Primary uses:
+  - Primary CTA button
+  - Focus ring
+  - Small highlights (underline, tiny chips, icons)
+  - 1px top border line in hero or footer (optional)
+- Avoid emerald backgrounds for large sections
+- No rainbow gradients, no neon cyan/violet
+- Everything else: black, near-black, white, gray
 
 ### Typography
 - Headings: `Sora` or `Space Grotesk`
 - Body: `Inter`
-- Monospace accents (for small “system” labels): `JetBrains Mono` or `IBM Plex Mono`
+- Monospace accents (for small "system" labels): `JetBrains Mono` or `IBM Plex Mono`
 
-Type scale suggestion:
-- H1: 52–64px desktop, 36–44px mobile
-- H2: 34–42px desktop, 28–32px mobile
+Type scale:
+- H1: 56–64px desktop, 38–44px mobile
+- H2: 34–40px desktop, 28–32px mobile
 - H3: 22–26px
 - Body: 16–18px
 - Small: 13–14px
 
-### Imagery style
-Avoid stock “robots”. Prefer:
-- Abstract generative shapes (glows, grids, particles)
-- Clean product screenshots / diagrams (real or placeholders)
-- Optional professional portrait of Emanuel (if available) in monochrome + subtle gradient edge light
+### UI components style
+- Borders: 1px hairline with low opacity (`rgba(255,255,255,0.08)`)
+- Corners: 18–24px (rounded-2xl vibe)
+- Shadows: extremely soft and minimal (or none)
+- Dividers: 1px line, `rgba(255,255,255,0.06)`
 
-Provide image slots (assets can be placeholders initially):
-- /images/hero-abstract.png (or SVG gradient mesh)
-- /images/case-lina.png (screenshot collage placeholder)
-- /images/architecture-mini.svg (simple layered diagram)
+### Motion
+Micro transitions only:
+- Hover: translateY(-2px), border brightens slightly
+- Button hover: emerald shifts to --emerald2
+- Section reveals: subtle fade + translate 8px (optional)
+
+### Imagery style
+Avoid stock AI imagery. Prefer:
+- Abstract monochrome textures (grain, soft noise)
+- Thin-line system diagrams in gray/white with emerald nodes
+- One "hero" visual: abstract emerald glow orb/mesh (very subtle)
+- Optional professional portrait of Emanuel in monochrome
+
+Provide image slots:
+- /images/hero-orb-emerald.png (subtle emerald glow on black)
+- /images/architecture-lines.svg (minimal layered diagram with emerald accents)
+- /images/case-lina.png (case study screenshot collage placeholder)
 - /images/logos-placeholder.svg (client logos placeholder)
+
+Optional: Add subtle grain overlay (2–4% opacity noise) across entire page.
 
 ---
 
@@ -129,9 +157,9 @@ Use short, concrete signals (no emojis in headers, no hype):
 - Omnichannel automation (WhatsApp, web, email, API)
 
 ### Hero visual
-Right side: abstract glow + minimal layered diagram:
+Right side: emerald orb/glow + minimal diagram lines:
 - Channel Layer → Agent Layer → Tools/Workflows → Data → Observability
-Keep as simple SVG.
+Keep contrast crisp; no busy illustrations. Simple SVG with emerald accent nodes.
 
 ---
 
@@ -410,9 +438,9 @@ Track events:
 - Calendar_Booked
 
 SEO:
-- Title: “Emanuel Hernández Castillo — AI & Software Consulting”
-- Meta description: mention “agents, RAG, automation, AWS, FastAPI”
-- OpenGraph image: generate a simple branded OG (dark + cyan/violet glow)
+- Title: "Emanuel Hernández Castillo — AI & Software Consulting"
+- Meta description: mention "agents, RAG, automation, AWS, FastAPI"
+- OpenGraph image: black background, white type, subtle emerald orb, minimal
 - Performance: optimize images, use next/image
 
 Accessibility:
