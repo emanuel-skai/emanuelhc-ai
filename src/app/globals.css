@@ -408,6 +408,10 @@ h1, h2, h3, h4, h5, h6 {
   animation: rotate-slow 20s linear infinite;
 }
 
+.animate-spin-slow {
+  animation: rotate-slow 60s linear infinite;
+}
+
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
