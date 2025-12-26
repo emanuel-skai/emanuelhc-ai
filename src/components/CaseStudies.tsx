@@ -7,7 +7,7 @@ const caseStudies = [
   {
     title: 'Lina',
     subtitle: 'WhatsApp Lead Routing + Media AI',
-    logo: '/images/SKAI-LOGO.png',
+    logo: '/images/telasreal.avif',
     problem:
       'A fashion retailer needed intelligent lead routing across 13 store locations, B2B wholesale, and e-commerce—plus handling images and voice in real conversations.',
     solution:

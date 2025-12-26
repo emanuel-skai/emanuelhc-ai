@@ -21,9 +21,10 @@ const pricingOptions = [
     unit: '/ 50 hours',
     bestFor: 'Building a full feature, shipping to production, or iterative sprints',
     includes: ['Priority scheduling', 'Async support', 'Weekly syncs', 'Documentation'],
-    cta: 'Buy 50-hour block',
+    cta: 'Apply for 50-hour block',
     href: '#discovery',
     featured: true,
+    note: 'Requires qualification via discovery call',
   },
   {
     title: 'Free Discovery',
@@ -186,6 +187,11 @@ export default function Pricing() {
                   >
                     {option.featured ? <span>{option.cta}</span> : option.cta}
                   </a>
+
+                  {/* Note */}
+                  {'note' in option && option.note && (
+                    <p className="text-xs text-[var(--muted)] text-center mt-3">{option.note}</p>
+                  )}
                 </div>
               </div>
             </div>

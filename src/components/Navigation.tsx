@@ -82,8 +82,9 @@ export default function Navigation() {
             Free discovery
           </a>
           <a
-            href="#pricing"
-            onClick={(e) => scrollToSection(e, '#pricing')}
+            href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary !py-2.5 !px-5 !text-sm !rounded-lg"
           >
             <span>Book $200/hr</span>
@@ -137,9 +138,10 @@ export default function Navigation() {
                 Free 15-min discovery
               </a>
               <a
-                href="#pricing"
+                href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary !py-3 text-center"
-                onClick={(e) => scrollToSection(e, '#pricing')}
               >
                 <span>Book $200/hr</span>
               </a>

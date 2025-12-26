@@ -106,7 +106,7 @@ export default function DiscoveryForm() {
             {/* Calendar Booking */}
             <div className="p-8 rounded-2xl bg-[var(--panel)] border border-[var(--border)]">
               <a
-                href="https://calendar.app.google/CWAdozVLhT9LDaoF6"
+                href="https://calendar.app.google/g3v7PbEf9fkuWCRs7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full !py-4 text-center"
@@ -213,10 +213,10 @@ export default function DiscoveryForm() {
                 Website (optional)
               </label>
               <input
-                type="url"
+                type="text"
                 name="website"
                 className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                placeholder="https://yourcompany.com"
+                placeholder="yourcompany.com"
               />
             </div>
 
