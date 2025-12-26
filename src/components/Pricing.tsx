@@ -11,7 +11,7 @@ const pricingOptions = [
     bestFor: 'Architecture review, debugging, design decisions, fast implementation sessions',
     includes: ['Session notes', 'Action plan', 'Follow-up support via email'],
     cta: 'Book $200/hr',
-    href: 'https://calendar.app.google/CGVjezzgzrPxkhMU8',
+    href: 'https://calendar.app.google/1P4C3Q9yWTBsxLv38',
     featured: false,
   },
   {

@@ -40,11 +40,40 @@ export default function DiscoveryForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      fullName: formData.get('fullName'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      role: formData.get('role'),
+      website: formData.get('website'),
+      projectDescription: formData.get('projectDescription'),
+      outcomeMetric: formData.get('outcomeMetric'),
+      currentStack: formData.get('currentStack'),
+      channels: selectedChannels,
+      timeline: formData.get('timeline'),
+      budget: formData.get('budget'),
+      readyToStart: formData.get('readyToStart') === 'on',
+    };
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('There was an error submitting the form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -77,7 +106,7 @@ export default function DiscoveryForm() {
             {/* Calendar Booking */}
             <div className="p-8 rounded-2xl bg-[var(--panel)] border border-[var(--border)]">
               <a
-                href="https://calendar.app.google/CGVjezzgzrPxkhMU8"
+                href="https://calendar.app.google/CWAdozVLhT9LDaoF6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full !py-4 text-center"
@@ -134,6 +163,7 @@ export default function DiscoveryForm() {
                 </label>
                 <input
                   type="text"
+                  name="fullName"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                   placeholder="Your name"
@@ -145,6 +175,7 @@ export default function DiscoveryForm() {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                   placeholder="you@company.com"
@@ -159,6 +190,7 @@ export default function DiscoveryForm() {
                 </label>
                 <input
                   type="text"
+                  name="company"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                   placeholder="Company name"
@@ -168,6 +200,7 @@ export default function DiscoveryForm() {
                 <label className="block text-sm font-medium text-[var(--text)] mb-2">Role *</label>
                 <input
                   type="text"
+                  name="role"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                   placeholder="Your role"
@@ -181,6 +214,7 @@ export default function DiscoveryForm() {
               </label>
               <input
                 type="url"
+                name="website"
                 className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                 placeholder="https://yourcompany.com"
               />
@@ -195,6 +229,7 @@ export default function DiscoveryForm() {
                 What are you trying to build? *
               </label>
               <textarea
+                name="projectDescription"
                 required
                 rows={4}
                 className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors resize-none"
@@ -208,6 +243,7 @@ export default function DiscoveryForm() {
               </label>
               <input
                 type="text"
+                name="outcomeMetric"
                 className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
                 placeholder="e.g., reduce response time, increase conversion, lower costs"
               />
@@ -218,6 +254,7 @@ export default function DiscoveryForm() {
                 Current stack
               </label>
               <textarea
+                name="currentStack"
                 rows={2}
                 className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors resize-none"
                 placeholder="e.g., Python, FastAPI, PostgreSQL, AWS..."
@@ -257,6 +294,7 @@ export default function DiscoveryForm() {
                   Timeline *
                 </label>
                 <select
+                  name="timeline"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] focus:outline-none focus:border-[var(--emerald)] transition-colors"
                 >
@@ -272,7 +310,10 @@ export default function DiscoveryForm() {
                 <label className="block text-sm font-medium text-[var(--text)] mb-2">
                   Budget range
                 </label>
-                <select className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] focus:outline-none focus:border-[var(--emerald)] transition-colors">
+                <select
+                  name="budget"
+                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] focus:outline-none focus:border-[var(--emerald)] transition-colors"
+                >
                   <option value="">Select budget</option>
                   {budgets.map((b) => (
                     <option key={b} value={b}>
@@ -287,6 +328,7 @@ export default function DiscoveryForm() {
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
+                  name="readyToStart"
                   className="w-5 h-5 rounded border-[var(--border)] bg-[var(--bg2)] text-[var(--emerald)] focus:ring-[var(--emerald)] focus:ring-offset-0"
                 />
                 <span className="text-sm text-[var(--muted)]">
