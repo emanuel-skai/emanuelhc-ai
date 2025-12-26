@@ -176,13 +176,12 @@ export default function Hero() {
                 }}
               />
 
-              {/* Center void */}
+              {/* Center solid green */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full"
                 style={{
-                  background: 'radial-gradient(circle, #080808 0%, #030303 100%)',
-                  border: '1px solid rgba(16, 185, 129, 0.25)',
-                  boxShadow: 'inset 0 0 20px rgba(16, 185, 129, 0.1)',
+                  background: '#10B981',
+                  boxShadow: '0 0 30px rgba(16, 185, 129, 0.6)',
                 }}
               />
             </div>
