@@ -124,8 +124,8 @@ export default function Hero() {
           </div>
 
           {/* Right - Spirograph Visual */}
-          <div className="reveal hidden lg:flex flex-col justify-center items-center">
-            <div className="relative w-[420px] h-[420px]">
+          <div className="reveal flex flex-col justify-center items-center mt-8 lg:mt-0">
+            <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] lg:w-[420px] lg:h-[420px]">
               {/* Outer glow */}
               <div
                 className="absolute inset-0"
@@ -188,7 +188,7 @@ export default function Hero() {
             </div>
 
             {/* Caption below spirograph */}
-            <p className="mt-6 text-center text-[var(--muted)] text-sm tracking-wide max-w-[280px]">
+            <p className="mt-4 lg:mt-6 text-center text-[var(--muted)] text-xs lg:text-sm tracking-wide max-w-[280px]">
               <span className="text-[var(--text-secondary)]">Many moving parts.</span>
               <br />
               <span className="text-[var(--emerald)]">One coherent system.</span>
