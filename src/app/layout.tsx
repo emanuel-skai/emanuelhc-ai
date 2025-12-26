@@ -13,15 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Emanuel Hernández Castillo — AI & Software Consulting",
-  description: "Production-grade AI systems: agents, RAG, automation, AWS, FastAPI. I help teams ship reliable AI software designed for real constraints.",
-  icons: {
-    icon: "/images/emanuehc-logo.jpeg",
-    apple: "/images/emanuehc-logo.jpeg",
-  },
+  title: "Emanuel Hernández Castillo — AI & ML Engineering",
+  description: "I build AI and ML systems that work in production — from predictive models to intelligent applications. Engineered for reliability, cost, and scale.",
   openGraph: {
-    title: "Emanuel Hernández Castillo — AI & Software Consulting",
-    description: "Production-grade AI systems: agents, RAG, automation, AWS, FastAPI.",
+    title: "Emanuel Hernández Castillo — AI & ML Engineering",
+    description: "AI and ML systems that work in production — from predictive models to intelligent applications.",
     type: "website",
   },
 };

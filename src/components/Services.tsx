@@ -6,14 +6,26 @@ const services = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    title: 'Machine Learning & Analytics',
+    description:
+      'Predictive models that drive decisions — forecasting, classification, recommendations, anomaly detection.',
+    deliverables: ['Model development', 'Feature engineering', 'Validation pipeline', 'Deployment'],
+    timeline: '2-6 weeks',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
       </svg>
     ),
-    title: 'Agentic Workflows & Tooling',
+    title: 'LLM Applications & Agents',
     description:
-      'Build agent workflows with robust tool calling, guardrails, retries, validations, and audit logs.',
-    deliverables: ['Prompt & policy design', 'Tool contracts', 'Error taxonomy', 'Tracing'],
-    timeline: '1-3 weeks',
+      'Chatbots, RAG systems, agent workflows, and AI-powered features built on foundation models.',
+    deliverables: ['Prompt engineering', 'Tool integration', 'Memory patterns', 'Guardrails'],
+    timeline: '1-4 weeks',
   },
   {
     icon: (
@@ -21,35 +33,11 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
       </svg>
     ),
-    title: 'RAG & Knowledge Systems',
+    title: 'Data Engineering & Pipelines',
     description:
-      'Retrieval strategies, chunking, evaluation, grounding, citations, and memory patterns.',
-    deliverables: ['Vector + hybrid retrieval', 'Reranking', 'Eval harness', 'Governance'],
-    timeline: '1-4 weeks',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-      </svg>
-    ),
-    title: 'Multimodal AI (Vision/Voice)',
-    description:
-      'Image understanding, voice notes, speech pipelines, media handling for real channels.',
-    deliverables: ['Media ingestion', 'Model selection', 'Latency/cost tuning', 'UX flows'],
-    timeline: '2-6 weeks',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
-    title: 'AI Automation for Sales/Support',
-    description:
-      'WhatsApp-first or inbox-first automation that increases conversion and reduces response time.',
-    deliverables: ['Routing logic', 'Lead labeling', 'Summaries', 'Handoff & analytics'],
-    timeline: '2-6 weeks',
+      'ETL workflows, data lakes, feature stores, and the infrastructure that feeds your models.',
+    deliverables: ['Pipeline architecture', 'Data validation', 'Orchestration', 'Monitoring'],
+    timeline: '2-4 weeks',
   },
   {
     icon: (
@@ -57,23 +45,35 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
     ),
-    title: 'AWS + FastAPI Production Delivery',
+    title: 'Cloud Architecture & Backend',
     description:
-      'Backend architecture, infra patterns, CI/CD, scaling, observability, secure deployments.',
-    deliverables: ['Repo structure', 'IaC', 'ECS/Lambda patterns', 'Monitoring'],
+      'Scalable APIs, serverless patterns, CI/CD, and production infrastructure on AWS.',
+    deliverables: ['System design', 'IaC templates', 'Security hardening', 'Cost optimization'],
     timeline: '1-4 weeks',
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
     ),
-    title: 'AI Cost, Reliability & Evaluation',
+    title: 'Intelligent Automation',
     description:
-      'Make systems safe, stable, and cheaper with measurement and controls.',
-    deliverables: ['Eval harness', 'Tracing', 'Regression checks', 'Rate limiting'],
-    timeline: '1-3 weeks',
+      'Workflow automation, business process AI, and channel integrations that reduce manual work.',
+    deliverables: ['Process mapping', 'Integration design', 'Handoff logic', 'Analytics'],
+    timeline: '2-6 weeks',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    title: 'Full-stack Development',
+    description:
+      'End-to-end product development — from database to UI — when AI is just one piece of the puzzle.',
+    deliverables: ['Architecture', 'API development', 'Frontend', 'Testing & deployment'],
+    timeline: '2-8 weeks',
   },
 ];
 
@@ -122,11 +122,11 @@ export default function Services() {
             </p>
           </div>
           <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-5 tracking-tight">
-            AI engineering for<br />
-            <span className="text-gradient">production systems</span>
+            Engineering that spans<br />
+            <span className="text-gradient">the full stack</span>
           </h2>
           <p className="text-[var(--muted)] text-lg leading-relaxed">
-            From architecture to deployment. I build AI systems designed for real constraints—not demos.
+            From ML models to production infrastructure. I build systems designed for real constraints—not demos.
           </p>
         </div>
 

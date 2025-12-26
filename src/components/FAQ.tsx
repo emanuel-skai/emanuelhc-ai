@@ -6,7 +6,7 @@ const faqs = [
   {
     question: 'What types of projects are a good fit?',
     answer:
-      'Projects that involve production AI systems: agent workflows, RAG pipelines, multimodal processing, or automation for real business channels. I focus on systems that need to work reliably under constraints like latency, cost, and failure handling.',
+      'Projects where software meets intelligence — ML models, data pipelines, LLM applications, automation, or traditional backend/full-stack work. I focus on systems that need to work reliably in production under real constraints.',
   },
   {
     question: 'Can you work with our in-house team?',
@@ -29,9 +29,9 @@ const faqs = [
       'Both. I can advise on architecture and review existing systems, or I can implement complete features from design through deployment. The 50-hour block is ideal for end-to-end delivery.',
   },
   {
-    question: 'Which stacks do you prefer?',
+    question: 'Which stacks do you work with?',
     answer:
-      'Python (FastAPI) for backends, AWS for infrastructure, and modern LLM tooling (LangChain, LlamaIndex, or custom). I also work with Next.js, PostgreSQL, Redis, and various vector databases.',
+      'Python for ML and backends (FastAPI, scikit-learn, PyTorch), AWS for infrastructure, and modern AI tooling. I also work with Next.js/React, PostgreSQL, Redis, and various data tools depending on the project.',
   },
   {
     question: 'How do you handle scope and change requests?',

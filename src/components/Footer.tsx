@@ -17,8 +17,8 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-[var(--muted)] text-sm leading-relaxed max-w-sm mb-6">
-              I build AI systems that behave reliably under real-world constraints: tool failures,
-              messy data, latency, and cost ceilings.
+              I build AI and ML systems that work in production — from predictive models to
+              intelligent applications, engineered for reliability and scale.
             </p>
 
             {/* Social Links */}

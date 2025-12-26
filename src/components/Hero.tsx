@@ -53,17 +53,16 @@ export default function Hero() {
 
             {/* Main headline */}
             <h1 className="reveal text-[40px] md:text-[52px] lg:text-[60px] font-bold text-[var(--text)] leading-[1.05] mb-6 tracking-tight">
-              Production-grade{' '}
-              <span className="text-gradient">AI systems.</span>
+              Software that{' '}
+              <span className="text-gradient">thinks.</span>
               <br />
-              <span className="text-[var(--text-secondary)]">Built fast. Built right.</span>
+              <span className="text-[var(--text-secondary)]">From models to production.</span>
             </h1>
 
             {/* Subheadline */}
             <p className="reveal text-[17px] md:text-[19px] text-[var(--muted)] leading-relaxed mb-10 max-w-xl">
-              I help teams ship reliable AI software: agent workflows, RAG systems, and multimodal
-              pipelines — designed for real constraints like tool failures, latency budgets, and
-              cost ceilings.
+              I build AI and ML systems that work in the real world — from predictive models and
+              intelligent automation to LLM applications. Engineered for reliability, cost, and scale.
             </p>
 
             {/* CTAs */}
@@ -99,27 +98,27 @@ export default function Hero() {
             <div className="reveal flex flex-wrap gap-3">
               <span className="chip">
                 <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
-                Agents & tool calling
+                Machine Learning
               </span>
               <span className="chip">
                 <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
-                RAG & knowledge systems
+                LLM Applications
               </span>
               <span className="chip">
                 <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                 </svg>
-                AWS-native delivery
+                Cloud & Infrastructure
               </span>
               <span className="chip">
                 <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
-                Cost + evaluation
+                Full-stack Development
               </span>
             </div>
           </div>

@@ -105,7 +105,7 @@ export default function CaseStudies() {
             Real systems, real outcomes
           </h2>
           <p className="text-[var(--muted)] text-lg">
-            Production AI systems I&apos;ve designed and delivered.
+            Production systems I&apos;ve designed and delivered.
           </p>
         </div>
 
