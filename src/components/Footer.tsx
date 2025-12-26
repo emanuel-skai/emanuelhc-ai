@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -10,8 +10,11 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <a href="#" className="text-[var(--text)] font-semibold text-lg tracking-tight mb-4 block">
-              emanuel<span className="text-[var(--emerald)]">.</span>hc
+            <a href="#" className="flex items-center gap-2.5 mb-4">
+              <Logo size={32} />
+              <span className="text-[var(--text)] font-semibold text-lg tracking-tight">
+                emanuel<span className="text-[var(--emerald)]">.</span>hc
+              </span>
             </a>
             <p className="text-[var(--muted)] text-sm leading-relaxed max-w-sm mb-6">
               I build AI systems that behave reliably under real-world constraints: tool failures,

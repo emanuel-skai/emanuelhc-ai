@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Logo from './Logo';
 
 const navLinks = [
   { href: '#services', label: 'Services' },
@@ -23,6 +24,23 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -33,10 +51,8 @@ export default function Navigation() {
     >
       <nav className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--emerald)] to-[var(--emerald-dark)] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">E</span>
-          </div>
+        <a href="#" className="flex items-center gap-2.5 group">
+          <Logo size={36} />
           <span className="text-[var(--text)] font-semibold text-lg tracking-tight hidden sm:block">
             emanuel<span className="text-[var(--emerald)]">.</span>hc
           </span>
@@ -48,6 +64,7 @@ export default function Navigation() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
               className="text-[var(--muted)] text-sm font-medium px-4 py-2 rounded-lg hover:text-[var(--text)] hover:bg-white/5 transition-all"
             >
               {link.label}
@@ -59,11 +76,16 @@ export default function Navigation() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#discovery"
+            onClick={(e) => scrollToSection(e, '#discovery')}
             className="text-[var(--muted)] text-sm font-medium hover:text-[var(--emerald)] transition-colors px-4 py-2"
           >
             Free discovery
           </a>
-          <a href="#pricing" className="btn-primary !py-2.5 !px-5 !text-sm !rounded-lg">
+          <a
+            href="#pricing"
+            onClick={(e) => scrollToSection(e, '#pricing')}
+            className="btn-primary !py-2.5 !px-5 !text-sm !rounded-lg"
+          >
             <span>Book $200/hr</span>
           </a>
         </div>
@@ -100,17 +122,25 @@ export default function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, link.href)}
                 className="text-[var(--muted)] text-base font-medium hover:text-[var(--text)] transition-colors py-3 px-2 rounded-lg hover:bg-white/5"
               >
                 {link.label}
               </a>
             ))}
             <div className="flex flex-col gap-3 pt-4 mt-2 border-t border-[var(--border)]">
-              <a href="#discovery" className="btn-secondary !py-3 text-center" onClick={() => setIsMobileMenuOpen(false)}>
+              <a
+                href="#discovery"
+                className="btn-secondary !py-3 text-center"
+                onClick={(e) => scrollToSection(e, '#discovery')}
+              >
                 Free 15-min discovery
               </a>
-              <a href="#pricing" className="btn-primary !py-3 text-center" onClick={() => setIsMobileMenuOpen(false)}>
+              <a
+                href="#pricing"
+                className="btn-primary !py-3 text-center"
+                onClick={(e) => scrollToSection(e, '#pricing')}
+              >
                 <span>Book $200/hr</span>
               </a>
             </div>
