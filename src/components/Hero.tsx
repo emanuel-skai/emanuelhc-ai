@@ -167,21 +167,30 @@ export default function Hero() {
                 </g>
               </svg>
 
-              {/* Pulsing core glow */}
+              {/* Outer glow ring */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full animate-pulse-glow"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full animate-pulse-glow"
                 style={{
-                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%)',
-                  boxShadow: '0 0 60px 20px rgba(16, 185, 129, 0.25)',
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%)',
+                  boxShadow: '0 0 80px 30px rgba(16, 185, 129, 0.2)',
                 }}
               />
 
-              {/* Center solid green */}
+              {/* Middle glow ring */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full"
                 style={{
-                  background: '#10B981',
-                  boxShadow: '0 0 30px rgba(16, 185, 129, 0.6)',
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.2) 50%, transparent 100%)',
+                  boxShadow: '0 0 40px 10px rgba(16, 185, 129, 0.3)',
+                }}
+              />
+
+              {/* Center bright core */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, #34D399 0%, #10B981 60%, #059669 100%)',
+                  boxShadow: '0 0 20px 5px rgba(16, 185, 129, 0.8), 0 0 40px 10px rgba(16, 185, 129, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3)',
                 }}
               />
             </div>
