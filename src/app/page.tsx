@@ -17,12 +17,12 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <CaseStudies />
         <About />
+        <CaseStudies />
         <Process />
         <Pricing />
-        <DiscoveryForm />
         <FAQ />
+        <DiscoveryForm />
         <FinalCTA />
       </main>
       <Footer />

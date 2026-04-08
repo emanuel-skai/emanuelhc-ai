@@ -37,25 +37,24 @@ export default function FinalCTA() {
       <div className="container relative z-10">
         <div className="reveal text-center max-w-2xl mx-auto">
           <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-[var(--text)] mb-6">
-            Ready to ship?
+            Let&apos;s talk about your project
           </h2>
           <p className="text-[var(--muted)] text-lg md:text-xl mb-10 max-w-lg mx-auto">
-            Book paid time for immediate progress, or start with a free discovery call if you&apos;re
-            not sure about scope.
+            15 minutes. No commitment. Find out if we&apos;re the right fit.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#pricing" className="btn-primary">
-              Book $200/hr
-            </a>
-            <a href="#pricing" className="btn-secondary">
-              Buy 50-hour block
-            </a>
-            <a href="#discovery" className="btn-ghost">
-              Free 15-min discovery
-            </a>
-          </div>
+          {/* CTA */}
+          <a href="#discovery" className="btn-primary">
+            <span>Start free discovery</span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

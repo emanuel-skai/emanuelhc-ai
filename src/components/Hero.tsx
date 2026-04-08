@@ -68,8 +68,8 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="reveal flex flex-wrap gap-4 mb-12">
-              <a href="#pricing" className="btn-primary group">
-                <span>Book $200/hr</span>
+              <a href="#discovery" className="btn-primary group">
+                <span>Free 15-min discovery</span>
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -79,11 +79,16 @@ export default function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <a href="#pricing" className="btn-secondary">
-                Buy 50-hour block
+              <a
+                href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                Book $200/hr
               </a>
-              <a href="#discovery" className="btn-ghost group">
-                Free 15-min discovery
+              <a href="#process" className="btn-ghost group">
+                See how I work
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -95,32 +100,15 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Proof chips */}
-            <div className="reveal flex flex-wrap gap-3">
-              <span className="chip">
-                <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                Machine Learning
-              </span>
-              <span className="chip">
-                <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-                LLM Applications
-              </span>
-              <span className="chip">
-                <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-                Cloud & Infrastructure
-              </span>
-              <span className="chip">
-                <svg className="w-4 h-4 text-[var(--emerald)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                Full-stack Development
-              </span>
+            {/* Social proof */}
+            <div className="reveal flex items-center gap-3 text-sm text-[var(--muted)]">
+              <span>Previously at</span>
+              <span className="text-[var(--text)] font-medium">Intel</span>
+              <span className="text-[var(--border-bright)]">&</span>
+              <span className="text-[var(--text)] font-medium">Apple</span>
+              <span className="text-[var(--border-bright)]">·</span>
+              <span>Now building</span>
+              <span className="text-[var(--emerald)] font-medium">Skillful AI</span>
             </div>
           </div>
 
