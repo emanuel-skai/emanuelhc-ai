@@ -46,23 +46,24 @@ export default function Hero() {
             {/* Status badge */}
             <div className="reveal flex items-center gap-3 mb-8">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--panel)]/80 border border-[var(--border)] backdrop-blur-sm">
-                <span className="status-dot" />
-                <span className="text-sm text-[var(--muted)]">Available for new projects</span>
+                <span className="w-2 h-2 rounded-full bg-white/60" />
+                <span className="text-sm text-[var(--muted)]">Co-founder &amp; CTO · Skillful AI</span>
               </div>
             </div>
 
             {/* Main headline */}
             <h1 className="reveal text-[40px] md:text-[52px] lg:text-[60px] font-bold text-[var(--text)] leading-[1.05] mb-6 tracking-tight">
-              Software that{' '}
-              <span className="text-gradient">thinks.</span>
+              Agentic AI that{' '}
+              <span className="text-gradient">works</span>
               <br />
-              <span className="text-[var(--text-secondary)]">From models to production.</span>
+              <span className="text-[var(--text-secondary)]">in production.</span>
             </h1>
 
             {/* Subheadline */}
             <p className="reveal text-[17px] md:text-[19px] text-[var(--muted)] leading-relaxed mb-10 max-w-xl">
-              I build AI and ML systems that work in the real world — from predictive models and
-              intelligent automation to LLM applications. Engineered for reliability, cost, and scale.
+              I&apos;m the co-founder and CTO of Skillful AI — building enterprise agentic AI systems
+              for companies in LATAM, Europe, and North America. I also take on a limited number of
+              consulting engagements with teams working on complex AI architecture problems.
             </p>
 
             {/* CTAs */}

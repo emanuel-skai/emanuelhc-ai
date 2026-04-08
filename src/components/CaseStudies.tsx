@@ -5,6 +5,29 @@ import Image from 'next/image';
 
 const caseStudies = [
   {
+    title: 'Skillful AI',
+    subtitle: 'Agent Platform & Workflow Engine',
+    logo: '/images/SKAI-LOGO.png',
+    isOwnCompany: true,
+    problem:
+      'Building a platform that combines agents, workflows, integrations, and measurable outcomes for diverse business use cases.',
+    solution:
+      'Created a platform approach with standardized agent templates, tool calling patterns, memory design, and comprehensive observability.',
+    metrics: [
+      'Reusable agent templates',
+      'Standardized tool contracts',
+      'Built-in observability',
+      'Multi-channel support',
+    ],
+    deliverables: [
+      'Agent template system',
+      'Tool calling standards',
+      'Memory design patterns',
+      'Observability strategy',
+    ],
+    stack: ['Python', 'FastAPI', 'AWS', 'Redis', 'Vector DBs'],
+  },
+  {
     title: 'Lina',
     subtitle: 'WhatsApp Lead Routing + Media AI',
     logo: '/images/telasreal.avif',
@@ -47,28 +70,6 @@ const caseStudies = [
       'Payment integration flows',
     ],
     stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'LLMs', 'Stripe'],
-  },
-  {
-    title: 'Skillful AI',
-    subtitle: 'Agent Platform & Workflow Engine',
-    logo: '/images/SKAI-LOGO.png',
-    problem:
-      'Building a platform that combines agents, workflows, integrations, and measurable outcomes for diverse business use cases.',
-    solution:
-      'Created a platform approach with standardized agent templates, tool calling patterns, memory design, and comprehensive observability.',
-    metrics: [
-      'Reusable agent templates',
-      'Standardized tool contracts',
-      'Built-in observability',
-      'Multi-channel support',
-    ],
-    deliverables: [
-      'Agent template system',
-      'Tool calling standards',
-      'Memory design patterns',
-      'Observability strategy',
-    ],
-    stack: ['Python', 'FastAPI', 'AWS', 'Redis', 'Vector DBs'],
   },
 ];
 
@@ -122,6 +123,11 @@ export default function CaseStudies() {
                   {/* Left - Info */}
                   <div>
                     {/* Header */}
+                    {'isOwnCompany' in study && study.isOwnCompany && (
+                      <span className="inline-block text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-full border border-[var(--emerald)] text-[var(--emerald)] mb-3">
+                        MY COMPANY
+                      </span>
+                    )}
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 rounded-xl bg-[var(--panel2)] border border-[var(--border)] flex items-center justify-center overflow-hidden">
                         <Image

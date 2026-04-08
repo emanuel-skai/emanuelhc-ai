@@ -6,6 +6,7 @@ import Logo from './Logo';
 const navLinks = [
   { href: '#services', label: 'Services' },
   { href: '#case-studies', label: 'Case Studies' },
+  { href: '/writing', label: 'Writing' },
   { href: '#process', label: 'Process' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQs' },
@@ -25,7 +26,20 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) {
+      // Non-anchor links (e.g. /writing) — let browser navigate normally
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
+
+    if (window.location.pathname !== '/') {
+      // On a sub-page — navigate home with the anchor
+      window.location.assign('/' + href);
+      return;
+    }
+
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {

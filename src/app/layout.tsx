@@ -13,13 +13,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Emanuel Hernández Castillo — AI & ML Engineering",
-  description: "I build AI and ML systems that work in production — from predictive models to intelligent applications. Engineered for reliability, cost, and scale.",
+  metadataBase: new URL("https://emanuelhc.ai"),
+  title: "Emanuel Hernandez — Co-founder & CTO, Skillful AI | Agentic AI Architect",
+  description: "Co-founder and CTO of Skillful AI. I design and build production-grade agentic AI systems for enterprise clients in LATAM, Europe, and North America. Available for a limited number of consulting engagements.",
   openGraph: {
-    title: "Emanuel Hernández Castillo — AI & ML Engineering",
-    description: "AI and ML systems that work in production — from predictive models to intelligent applications.",
+    title: "Emanuel Hernandez — Co-founder & CTO, Skillful AI | Agentic AI Architect",
+    description: "Co-founder and CTO of Skillful AI. I design and build production-grade agentic AI systems for enterprise clients in LATAM, Europe, and North America.",
     type: "website",
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Emanuel Hernandez',
+  jobTitle: 'Co-founder & CTO',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Skillful AI',
+  },
+  url: 'https://emanuelhc.ai',
+  sameAs: ['https://www.linkedin.com/in/emanuelhc/'],
+  knowsAbout: ['Agentic AI', 'Machine Learning', 'Enterprise AI Systems'],
 };
 
 export default function RootLayout({
@@ -32,6 +47,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

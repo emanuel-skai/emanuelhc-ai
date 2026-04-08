@@ -99,12 +99,28 @@ export default function About() {
               Emanuel Hernández Castillo
             </h2>
 
-            <p className="text-[var(--muted)] text-lg leading-relaxed mb-8">
-              I build AI systems that behave reliably under real-world constraints: tool failures,
-              messy data, latency, and cost ceilings. As founder of Skillful AI and a senior AI/software
-              architect, I&apos;ve shipped production systems across sales automation, recruitment,
-              and enterprise operations.
-            </p>
+            <div className="text-[var(--muted)] text-lg leading-relaxed mb-8 space-y-4">
+              <p>
+                I&apos;m the co-founder and CTO of Skillful AI, an enterprise AI platform serving
+                clients across the automotive, healthcare, and digital commerce verticals in LATAM,
+                Europe, and North America.
+              </p>
+              <p>
+                My work centers on agentic AI systems that work under real enterprise constraints —
+                regulated environments, latency ceilings, messy legacy data, and the expectation that
+                agents don&apos;t hallucinate when money is on the line.
+              </p>
+              <p>
+                Before Skillful AI: Intel (GPU software engineering), Apple (data science for App Store
+                and Apple TV+), and a decade of ML work across growth-stage companies. Based in Costa
+                Rica. Working across time zones.
+              </p>
+              <p>
+                I also architect AI systems as a consultant for a small number of teams per year —
+                particularly in healthcare, mobility, and financial operations — when the problem is
+                genuinely complex.
+              </p>
+            </div>
 
             {/* Expertise */}
             <div className="space-y-3 mb-8">

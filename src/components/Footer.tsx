@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -78,6 +79,14 @@ export default function Footer() {
                 >
                   Case Studies
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/writing"
+                  className="text-[var(--muted)] text-sm hover:text-[var(--text)] transition-colors"
+                >
+                  Writing
+                </Link>
               </li>
               <li>
                 <a
