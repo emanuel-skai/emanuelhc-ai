@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { remark } from 'remark';
-import html from 'remark-html';
-import { articles } from '@/data/articles';
+import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -21,16 +19,26 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug && a.published);
+  const article = await getArticleBySlug(slug);
   if (!article) return { title: 'Article Not Found' };
   return {
     title: `${article.title} — Emanuel Hernandez`,
     description: article.description,
+    keywords: article.keywords,
+    alternates: { canonical: `https://emanuelhc.ai/writing/${slug}` },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: 'article',
+      publishedTime: article.date,
+      authors: ['Emanuel Hernandez'],
+      tags: article.keywords,
+    },
   };
 }
 
 export function generateStaticParams() {
-  return articles.filter((a) => a.published).map((a) => ({ slug: a.slug }));
+  return getAllArticles().map((a) => ({ slug: a.slug }));
 }
 
 export default async function ArticlePage({
@@ -39,20 +47,44 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug && a.published);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
-  const processedContent = await remark().use(html).process(article.content);
-  const contentHtml = processedContent.toString();
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    datePublished: article.date,
+    author: {
+      '@type': 'Person',
+      name: 'Emanuel Hernandez',
+      jobTitle: 'Co-founder & CTO',
+      url: 'https://emanuelhc.ai',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Emanuel Hernandez',
+      url: 'https://emanuelhc.ai',
+    },
+    url: `https://emanuelhc.ai/writing/${slug}`,
+    keywords: article.keywords?.join(', '),
+    wordCount: article.content.trim().split(/\s+/).length,
+    timeRequired: `PT${article.readTimeMinutes}M`,
+  };
 
   return (
     <>
       <Navigation />
       <main className="min-h-screen pt-32 pb-20">
-        <div className="container max-w-3xl">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <article className="container max-w-3xl">
           {/* Back link */}
           <Link
             href="/writing"
@@ -76,7 +108,7 @@ export default async function ArticlePage({
 
           {/* Article Header */}
           <header className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <span
                 className={`text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-full border ${
                   pillarColors[article.pillar] || pillarColors['Agentic AI']
@@ -84,13 +116,16 @@ export default async function ArticlePage({
               >
                 {article.pillar}
               </span>
-              <span className="text-[var(--muted2)] text-xs">
+              <time
+                dateTime={article.date}
+                className="text-[var(--muted2)] text-xs"
+              >
                 {new Date(article.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
                 })}
-              </span>
+              </time>
               <span className="text-[var(--muted2)] text-xs">
                 {article.readTimeMinutes} min read
               </span>
@@ -103,9 +138,9 @@ export default async function ArticlePage({
           {/* Article Body */}
           <div
             className="prose"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
+            dangerouslySetInnerHTML={{ __html: article.contentHtml }}
           />
-        </div>
+        </article>
       </main>
       <Footer />
     </>

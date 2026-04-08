@@ -25,7 +25,7 @@ No test framework is configured.
 Single-page landing site for AI/ML consulting services. The home page (`src/app/page.tsx`) composes 11 section components in order:
 
 ```
-Navigation > Hero > Services > CaseStudies > About > Process > Pricing > DiscoveryForm > FAQ > FinalCTA > Footer
+Navigation > Hero > Services > About > CaseStudies > Process > Pricing > FAQ > DiscoveryForm > FinalCTA > Footer
 ```
 
 All components live in `src/components/` and are client components (`'use client'`) since they use hooks, event listeners, and IntersectionObserver for scroll-reveal animations.
@@ -54,3 +54,25 @@ Most sections use `.reveal` elements + IntersectionObserver. Elements start hidd
 - Colors must use CSS variables (e.g., `var(--emerald)`), never hardcoded values
 - Animations use CSS keyframes, not JavaScript
 - Design reference docs: `landing.md` (product spec/copy) and `palette.md` (color/design rules)
+
+## Blog / Writing System
+
+Articles live as markdown files in `src/content/writing/[slug].md` with YAML frontmatter:
+
+```yaml
+---
+title: "Article Title"
+description: "2-sentence summary"
+date: "YYYY-MM-DD"
+pillar: "Agentic AI"  # Agentic AI | Enterprise | LATAM | Frontier | CTO Craft
+published: true
+keywords: [keyword-one, keyword-two]
+---
+```
+
+- **Slug** is derived from the filename, not frontmatter
+- **Reading time** is auto-calculated from word count (230 wpm)
+- **Article loader** is in `src/lib/articles.ts` — reads filesystem at build time via `gray-matter` + `remark`
+- **Routes:** `/writing` (index) and `/writing/[slug]` (article detail)
+- **GEO:** Each article gets JSON-LD Article schema, canonical URL, OpenGraph article metadata, and keyword meta tags
+- **Skill:** Use `/add-article` to add new blog entries with frontmatter validation and GEO optimization
