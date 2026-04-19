@@ -39,16 +39,6 @@ export default function About() {
           {/* Left - Image */}
           <div className="reveal order-2 lg:order-1">
             <div className="relative">
-              {/* Emerald glow behind image */}
-              <div
-                className="absolute -inset-4 opacity-30"
-                style={{
-                  background:
-                    'radial-gradient(circle at center, rgba(16, 185, 129, 0.2) 0%, transparent 70%)',
-                  filter: 'blur(40px)',
-                }}
-              />
-
               {/* Image container */}
               <div className="relative rounded-2xl overflow-hidden border border-[var(--border)]">
                 <Image
@@ -60,30 +50,16 @@ export default function About() {
                 />
 
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-50" />
               </div>
 
-              {/* Floating card */}
-              <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 p-4 rounded-xl bg-[var(--panel)] border border-[var(--border)] shadow-xl">
+              {/* Floating card — neutral */}
+              <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 px-5 py-4 rounded-xl bg-[var(--panel)] border border-[var(--border-bright)] shadow-xl backdrop-blur-xl">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[var(--emerald)]/20 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 text-[var(--emerald)]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                      />
-                    </svg>
-                  </div>
+                  <span className="w-2 h-2 rounded-full bg-[var(--emerald)] shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
                   <div>
-                    <p className="text-[var(--text)] text-sm font-medium">Founder</p>
-                    <p className="text-[var(--muted)] text-xs">Skillful AI</p>
+                    <p className="text-[var(--text)] text-sm font-medium leading-none mb-1">Available</p>
+                    <p className="text-[var(--muted)] text-xs font-mono tracking-wide">2 engagements · Q2</p>
                   </div>
                 </div>
               </div>
@@ -92,18 +68,24 @@ export default function About() {
 
           {/* Right - Content */}
           <div className="reveal order-1 lg:order-2">
-            <p className="text-[var(--emerald)] text-sm font-medium tracking-wide mb-3">
-              ABOUT
-            </p>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[40px] font-bold text-[var(--text)] mb-6">
+            <p className="eyebrow mb-5">About</p>
+            <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-6 tracking-tight">
               Emanuel Hernández Castillo
             </h2>
 
             <div className="text-[var(--muted)] text-lg leading-relaxed mb-8 space-y-4">
               <p>
-                I&apos;m the co-founder and CTO of Skillful AI, an enterprise AI platform serving
-                clients across the automotive, healthcare, and digital commerce verticals in LATAM,
-                Europe, and North America.
+                I&apos;m the co-founder and CTO of{' '}
+                <a
+                  href="https://skillfulai.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
+                >
+                  Skillful AI
+                </a>
+                , an enterprise AI platform serving clients across the automotive, healthcare, and
+                digital commerce verticals in LATAM, Europe, and North America.
               </p>
               <p>
                 My work centers on agentic AI systems that work under real enterprise constraints —
@@ -111,9 +93,18 @@ export default function About() {
                 agents don&apos;t hallucinate when money is on the line.
               </p>
               <p>
-                Before Skillful AI: Intel (GPU software engineering), Apple (data science for App Store
-                and Apple TV+), and a decade of ML work across growth-stage companies. Based in Costa
-                Rica. Working across time zones.
+                Before{' '}
+                <a
+                  href="https://skillfulai.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
+                >
+                  Skillful AI
+                </a>
+                : Intel (GPU software engineering), Apple (data science for App Store and Apple TV+),
+                and a decade of ML work across growth-stage companies. Based in Costa Rica. Working
+                across time zones.
               </p>
               <p>
                 I also architect AI systems as a consultant for a small number of teams per year —

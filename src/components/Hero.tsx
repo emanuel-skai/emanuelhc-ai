@@ -52,24 +52,37 @@ export default function Hero() {
             </div>
 
             {/* Main headline */}
-            <h1 className="reveal text-[40px] md:text-[52px] lg:text-[60px] font-bold text-[var(--text)] leading-[1.05] mb-6 tracking-tight">
-              Agentic AI that{' '}
-              <span className="text-gradient">works</span>
+            <h1 className="reveal text-[40px] md:text-[54px] lg:text-[64px] font-bold text-[var(--text)] leading-[1.02] mb-6 tracking-tight">
+              Agentic AI that works
               <br />
-              <span className="text-[var(--text-secondary)]">in production.</span>
+              <span className="text-[var(--muted)]">in production</span>
             </h1>
 
             {/* Subheadline */}
             <p className="reveal text-[17px] md:text-[19px] text-[var(--muted)] leading-relaxed mb-10 max-w-xl">
-              I&apos;m the co-founder and CTO of Skillful AI — building enterprise agentic AI systems
+              I&apos;m the co-founder and CTO of{' '}
+              <a
+                href="https://skillfulai.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
+              >
+                Skillful AI
+              </a>{' '}
+              — building enterprise agentic AI systems
               for companies in LATAM, Europe, and North America. I also take on a limited number of
               consulting engagements with teams working on complex AI architecture problems.
             </p>
 
             {/* CTAs */}
-            <div className="reveal flex flex-wrap gap-4 mb-12">
-              <a href="#discovery" className="btn-primary group">
-                <span>Free 15-min discovery</span>
+            <div className="reveal flex flex-wrap items-center gap-4 mb-12">
+              <a
+                href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary group"
+              >
+                <span>Book $200/hr</span>
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -79,16 +92,8 @@ export default function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <a
-                href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Book $200/hr
-              </a>
-              <a href="#process" className="btn-ghost group">
-                See how I work
+              <a href="#discovery" className="btn-ghost group">
+                Free 15-min discovery
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -101,34 +106,40 @@ export default function Hero() {
             </div>
 
             {/* Social proof */}
-            <div className="reveal flex items-center gap-3 text-sm text-[var(--muted)]">
-              <span>Previously at</span>
+            <div className="reveal flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] md:text-base text-[var(--muted)]">
+              <span className="text-[var(--muted2)] text-xs tracking-[0.2em] uppercase font-mono mr-1">Track record</span>
               <span className="text-[var(--text)] font-medium">Intel</span>
-              <span className="text-[var(--border-bright)]">&</span>
+              <span className="text-[var(--border-bright)]">·</span>
               <span className="text-[var(--text)] font-medium">Apple</span>
               <span className="text-[var(--border-bright)]">·</span>
-              <span>Now building</span>
-              <span className="text-[var(--emerald)] font-medium">Skillful AI</span>
+              <a
+                href="https://skillfulai.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text)] font-medium hover:text-[var(--emerald)] transition-colors"
+              >
+                Skillful AI ↗
+              </a>
             </div>
           </div>
 
           {/* Right - Spirograph Visual */}
           <div className="reveal flex flex-col justify-center items-center mt-8 lg:mt-0">
             <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] lg:w-[420px] lg:h-[420px]">
-              {/* Outer glow */}
+              {/* Outer glow — single emerald hero accent */}
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 50%)',
-                  filter: 'blur(60px)',
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.10) 0%, transparent 55%)',
+                  filter: 'blur(70px)',
                 }}
               />
 
-              {/* Spirograph SVG */}
+              {/* Spirograph SVG — emerald gradient strokes */}
               <svg
                 viewBox="0 0 400 400"
                 className="absolute inset-0 w-full h-full animate-spin-slow"
-                style={{ animationDuration: '80s' }}
+                style={{ animationDuration: '35s' }}
               >
                 <defs>
                   <linearGradient id="spirographGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -137,8 +148,6 @@ export default function Hero() {
                     <stop offset="100%" stopColor="#064E3B" />
                   </linearGradient>
                 </defs>
-
-                {/* Rotated ellipses creating spirograph pattern */}
                 <g fill="none" stroke="url(#spirographGradient)" strokeWidth="1.5" opacity="0.7">
                   {ellipses.map((rotation, i) => (
                     <ellipse
@@ -156,39 +165,30 @@ export default function Hero() {
                 </g>
               </svg>
 
-              {/* Outer glow ring */}
+              {/* Soft middle halo */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full animate-pulse-glow"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full"
                 style={{
-                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%)',
-                  boxShadow: '0 0 80px 30px rgba(16, 185, 129, 0.2)',
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%)',
+                  filter: 'blur(10px)',
                 }}
               />
 
-              {/* Middle glow ring */}
+              {/* Center emerald core — the one accent */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full animate-pulse-glow"
                 style={{
-                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.2) 50%, transparent 100%)',
-                  boxShadow: '0 0 40px 10px rgba(16, 185, 129, 0.3)',
-                }}
-              />
-
-              {/* Center bright core */}
-              <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, #34D399 0%, #10B981 60%, #059669 100%)',
-                  boxShadow: '0 0 20px 5px rgba(16, 185, 129, 0.8), 0 0 40px 10px rgba(16, 185, 129, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3)',
+                  background: 'radial-gradient(circle, #34D399 0%, #10B981 70%, #059669 100%)',
+                  boxShadow: '0 0 16px 4px rgba(16, 185, 129, 0.45)',
                 }}
               />
             </div>
 
-            {/* Caption below spirograph */}
+            {/* Caption below spirograph — monochrome */}
             <p className="mt-4 lg:mt-6 text-center text-[var(--muted)] text-xs lg:text-sm tracking-wide max-w-[280px]">
               <span className="text-[var(--text-secondary)]">Many moving parts.</span>
               <br />
-              <span className="text-[var(--emerald)]">One coherent system.</span>
+              <span className="text-[var(--text)]">One coherent system.</span>
             </p>
           </div>
         </div>

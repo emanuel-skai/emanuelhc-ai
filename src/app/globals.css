@@ -33,7 +33,8 @@
   --color-background: var(--bg);
   --color-foreground: var(--text);
   --color-primary: var(--emerald);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-sora);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -48,7 +49,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -57,10 +58,10 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sora), -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
 /* Text Gradients */
@@ -94,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
   position: relative;
   overflow: hidden;
 }
@@ -109,8 +110,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.5), 0 10px 30px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.22), 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .btn-primary:hover::before {
@@ -141,10 +142,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-  border-color: var(--emerald);
-  background: rgba(16, 185, 129, 0.05);
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+  border-color: var(--border-bright);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
 }
 
 .btn-ghost {
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-ghost:hover {
-  color: var(--emerald);
+  color: var(--text);
 }
 
 /* Cards */
@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -190,8 +190,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .card:hover {
   border-color: var(--border-bright);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(16, 185, 129, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .card:hover::before {
@@ -215,9 +215,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .chip:hover {
-  border-color: var(--emerald);
-  color: var(--emerald);
-  background: rgba(16, 185, 129, 0.05);
+  border-color: var(--border-bright);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* Focus styles */
@@ -493,6 +493,47 @@ h1, h2, h3, h4, h5, h6 {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--emerald), transparent);
   opacity: 0.3;
+}
+
+/* Eyebrow label — small uppercase section marker with emerald accent */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--emerald);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--emerald);
+}
+
+.eyebrow-center {
+  justify-content: center;
+}
+
+.eyebrow-center::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--emerald);
+}
+
+/* Micro-label — for in-card PROBLEM/SOLUTION/OUTCOMES markers */
+.micro-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted2);
 }
 
 /* Prose — article body typography */

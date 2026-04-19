@@ -99,10 +99,8 @@ export default function CaseStudies() {
       <div className="container">
         {/* Section Header */}
         <div className="reveal max-w-2xl mb-16">
-          <p className="text-[var(--emerald)] text-sm font-medium tracking-wide mb-3">
-            CASE STUDIES
-          </p>
-          <h2 className="text-[28px] md:text-[36px] lg:text-[40px] font-bold text-[var(--text)] mb-4">
+          <p className="eyebrow mb-5">Case studies</p>
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-5 tracking-tight">
             Real systems, real outcomes
           </h2>
           <p className="text-[var(--muted)] text-lg">
@@ -124,8 +122,8 @@ export default function CaseStudies() {
                   <div>
                     {/* Header */}
                     {'isOwnCompany' in study && study.isOwnCompany && (
-                      <span className="inline-block text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-full border border-[var(--emerald)] text-[var(--emerald)] mb-3">
-                        MY COMPANY
+                      <span className="inline-block text-[10px] font-mono font-medium tracking-[0.2em] uppercase px-2.5 py-1 rounded-full border border-[var(--border-bright)] text-[var(--muted)] mb-3">
+                        My company
                       </span>
                     )}
                     <div className="flex items-center gap-4 mb-6">
@@ -139,16 +137,26 @@ export default function CaseStudies() {
                         />
                       </div>
                       <div>
-                        <h3 className="text-[var(--text)] text-xl font-semibold">{study.title}</h3>
+                        {'isOwnCompany' in study && study.isOwnCompany ? (
+                          <a
+                            href="https://skillfulai.io"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-1.5 text-[var(--text)] text-xl font-semibold hover:text-[var(--emerald)] transition-colors"
+                          >
+                            <h3>{study.title}</h3>
+                            <span className="text-sm text-[var(--muted)] group-hover:text-[var(--emerald)] transition-colors">↗</span>
+                          </a>
+                        ) : (
+                          <h3 className="text-[var(--text)] text-xl font-semibold">{study.title}</h3>
+                        )}
                         <p className="text-[var(--muted)] text-sm">{study.subtitle}</p>
                       </div>
                     </div>
 
                     {/* Problem */}
                     <div className="mb-6">
-                      <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-2">
-                        PROBLEM
-                      </p>
+                      <p className="micro-label mb-2">Problem</p>
                       <p className="text-[var(--muted)] text-[15px] leading-relaxed">
                         {study.problem}
                       </p>
@@ -156,9 +164,7 @@ export default function CaseStudies() {
 
                     {/* Solution */}
                     <div className="mb-6">
-                      <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-2">
-                        SOLUTION
-                      </p>
+                      <p className="micro-label mb-2">Solution</p>
                       <p className="text-[var(--muted)] text-[15px] leading-relaxed">
                         {study.solution}
                       </p>
@@ -181,9 +187,7 @@ export default function CaseStudies() {
                   <div className="space-y-6">
                     {/* Metrics */}
                     <div className="p-5 rounded-xl bg-[var(--bg2)] border border-[var(--border)]">
-                      <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-4">
-                        OUTCOMES
-                      </p>
+                      <p className="micro-label mb-4">Outcomes</p>
                       <div className="grid grid-cols-2 gap-3">
                         {study.metrics.map((metric) => (
                           <div key={metric} className="flex items-start gap-2">
@@ -196,9 +200,7 @@ export default function CaseStudies() {
 
                     {/* Deliverables */}
                     <div className="p-5 rounded-xl bg-[var(--bg2)] border border-[var(--border)]">
-                      <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-4">
-                        WHAT I DELIVERED
-                      </p>
+                      <p className="micro-label mb-4">What I delivered</p>
                       <div className="space-y-2">
                         {study.deliverables.map((item) => (
                           <div key={item} className="flex items-center gap-2">

@@ -91,7 +91,7 @@ export default function Navigation() {
           <a
             href="#discovery"
             onClick={(e) => scrollToSection(e, '#discovery')}
-            className="text-[var(--muted)] text-sm font-medium hover:text-[var(--emerald)] transition-colors px-4 py-2"
+            className="text-[var(--muted)] text-sm font-medium hover:text-[var(--text)] transition-colors px-4 py-2"
           >
             Free discovery
           </a>
@@ -145,19 +145,19 @@ export default function Navigation() {
             ))}
             <div className="flex flex-col gap-3 pt-4 mt-2 border-t border-[var(--border)]">
               <a
-                href="#discovery"
-                className="btn-secondary !py-3 text-center"
-                onClick={(e) => scrollToSection(e, '#discovery')}
-              >
-                Free 15-min discovery
-              </a>
-              <a
                 href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary !py-3 text-center"
               >
                 <span>Book $200/hr</span>
+              </a>
+              <a
+                href="#discovery"
+                className="btn-secondary !py-3 text-center"
+                onClick={(e) => scrollToSection(e, '#discovery')}
+              >
+                Free 15-min discovery
               </a>
             </div>
           </div>

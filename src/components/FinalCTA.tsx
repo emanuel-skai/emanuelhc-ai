@@ -24,37 +24,43 @@ export default function FinalCTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section relative">
-      {/* Subtle emerald glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(16, 185, 129, 0.06) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-      />
-
+    <section ref={sectionRef} className="section relative border-t border-[var(--border)]">
       <div className="container relative z-10">
-        <div className="reveal text-center max-w-2xl mx-auto">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-[var(--text)] mb-6">
-            Let&apos;s talk about your project
+        <div className="reveal max-w-3xl">
+          <p className="eyebrow mb-6">Ready to ship</p>
+          <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-[var(--text)] mb-6 tracking-tight leading-[1.05]">
+            Book time and start shipping
+            <br />
+            <span className="text-[var(--muted)]">this week.</span>
           </h2>
-          <p className="text-[var(--muted)] text-lg md:text-xl mb-10 max-w-lg mx-auto">
-            15 minutes. No commitment. Find out if we&apos;re the right fit.
+          <p className="text-[var(--muted)] text-lg md:text-xl mb-10 max-w-xl">
+            Most engagements start with a single paid hour. Architecture review, debugging, or a design decision — leave with a written plan.
           </p>
 
-          {/* CTA */}
-          <a href="#discovery" className="btn-primary">
-            <span>Start free discovery</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary group"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+              <span>Book $200/hr</span>
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="#pricing" className="btn-secondary">
+              See 50-hour block
+            </a>
+            <a href="#discovery" className="btn-ghost">
+              Or start with free discovery
+            </a>
+          </div>
         </div>
       </div>
     </section>

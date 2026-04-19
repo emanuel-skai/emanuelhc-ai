@@ -75,18 +75,12 @@ export default function Pricing() {
       />
 
       {/* Top separator */}
-      <div className="absolute top-0 left-0 right-0 separator-emerald" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-[var(--border)]" />
 
       <div className="container relative z-10">
         {/* Section Header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-12 bg-[var(--emerald)]" />
-            <p className="text-[var(--emerald)] text-sm font-medium tracking-widest">
-              PRICING
-            </p>
-            <div className="h-px w-12 bg-[var(--emerald)]" />
-          </div>
+          <p className="eyebrow eyebrow-center mb-5 justify-center">Pricing</p>
           <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-5 tracking-tight">
             Clear, decisive pricing
           </h2>
@@ -131,7 +125,7 @@ export default function Pricing() {
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className={`text-4xl font-bold ${option.featured ? 'text-gradient' : 'text-[var(--text)]'}`}>
+                    <span className="text-4xl font-bold text-[var(--text)] tracking-tight">
                       {option.price}
                     </span>
                     <span className="text-[var(--muted)] text-sm ml-1">{option.unit}</span>
@@ -139,17 +133,13 @@ export default function Pricing() {
 
                   {/* Best for */}
                   <div className="mb-6">
-                    <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-2">
-                      BEST FOR
-                    </p>
+                    <p className="micro-label mb-2">Best for</p>
                     <p className="text-[var(--muted)] text-sm leading-relaxed">{option.bestFor}</p>
                   </div>
 
                   {/* Includes */}
                   <div className="mb-8 flex-1">
-                    <p className="text-xs text-[var(--emerald)] font-medium tracking-wide mb-3">
-                      INCLUDES
-                    </p>
+                    <p className="micro-label mb-3">Includes</p>
                     <ul className="space-y-2.5">
                       {option.includes.map((item) => (
                         <li key={item} className="flex items-center gap-2.5">
@@ -182,7 +172,7 @@ export default function Pricing() {
                     className={`w-full text-center py-3.5 rounded-xl font-semibold transition-all ${
                       option.featured
                         ? 'btn-primary !rounded-xl'
-                        : 'border border-[var(--border)] text-[var(--text)] hover:border-[var(--emerald)] hover:text-[var(--emerald)] hover:bg-[var(--emerald)]/5'
+                        : 'border border-[var(--border-light)] text-[var(--text)] hover:border-[var(--border-bright)] hover:bg-white/[0.04]'
                     }`}
                   >
                     {option.featured ? <span>{option.cta}</span> : option.cta}

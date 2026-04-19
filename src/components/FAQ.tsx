@@ -70,13 +70,13 @@ export default function FAQ() {
   return (
     <section id="faq" ref={sectionRef} className="section relative bg-[var(--bg2)]">
       {/* Top border accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--emerald)]/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-[var(--border)]" />
 
       <div className="container max-w-3xl">
         {/* Section Header */}
         <div className="reveal text-center mb-12">
-          <p className="text-[var(--emerald)] text-sm font-medium tracking-wide mb-3">FAQs</p>
-          <h2 className="text-[28px] md:text-[36px] lg:text-[40px] font-bold text-[var(--text)] mb-4">
+          <p className="eyebrow eyebrow-center mb-5 justify-center">FAQs</p>
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-4 tracking-tight">
             Common questions
           </h2>
         </div>

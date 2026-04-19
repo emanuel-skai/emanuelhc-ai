@@ -141,14 +141,12 @@ export default function DiscoveryForm() {
       <div className="container max-w-3xl">
         {/* Section Header */}
         <div className="reveal text-center mb-12">
-          <p className="text-[var(--emerald)] text-sm font-medium tracking-wide mb-3">
-            FREE DISCOVERY
-          </p>
-          <h2 className="text-[28px] md:text-[36px] lg:text-[40px] font-bold text-[var(--text)] mb-4">
-            Let&apos;s talk about your project
+          <p className="eyebrow eyebrow-center mb-5 justify-center">Free discovery</p>
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-4 tracking-tight">
+            Qualify for a 15-minute call
           </h2>
           <p className="text-[var(--muted)] text-lg max-w-xl mx-auto">
-            Fill out this form to qualify for a free 15-minute discovery call.
+            A few details so I can prep before we talk. High-signal answers beat long ones.
           </p>
         </div>
 
