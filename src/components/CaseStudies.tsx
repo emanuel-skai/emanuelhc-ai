@@ -139,7 +139,7 @@ export default function CaseStudies() {
                       <div>
                         {'isOwnCompany' in study && study.isOwnCompany ? (
                           <a
-                            href="https://skillfulai.io"
+                            href="https://skillful.ai"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group inline-flex items-center gap-1.5 text-[var(--text)] text-xl font-semibold hover:text-[var(--emerald)] transition-colors"

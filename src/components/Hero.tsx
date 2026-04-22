@@ -62,7 +62,7 @@ export default function Hero() {
             <p className="reveal text-[17px] md:text-[19px] text-[var(--muted)] leading-relaxed mb-10 max-w-xl">
               I&apos;m the co-founder and CTO of{' '}
               <a
-                href="https://skillfulai.io"
+                href="https://skillful.ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
@@ -113,7 +113,7 @@ export default function Hero() {
               <span className="text-[var(--text)] font-medium">Apple</span>
               <span className="text-[var(--border-bright)]">·</span>
               <a
-                href="https://skillfulai.io"
+                href="https://skillful.ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--text)] font-medium hover:text-[var(--emerald)] transition-colors"

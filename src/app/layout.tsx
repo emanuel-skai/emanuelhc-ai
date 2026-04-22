@@ -42,7 +42,7 @@ const jsonLd = {
   worksFor: {
     '@type': 'Organization',
     name: 'Skillful AI',
-    url: 'https://skillfulai.io',
+    url: 'https://skillful.ai',
   },
   url: 'https://emanuelhc.ai',
   sameAs: ['https://www.linkedin.com/in/emanuelhc/'],

@@ -77,7 +77,7 @@ export default function About() {
               <p>
                 I&apos;m the co-founder and CTO of{' '}
                 <a
-                  href="https://skillfulai.io"
+                  href="https://skillful.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
@@ -95,7 +95,7 @@ export default function About() {
               <p>
                 Before{' '}
                 <a
-                  href="https://skillfulai.io"
+                  href="https://skillful.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
