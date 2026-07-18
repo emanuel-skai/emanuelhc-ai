@@ -20,7 +20,9 @@ const pillarColors: Record<string, string> = {
 };
 
 export default function WritingPage() {
-  const publishedArticles = getAllArticles();
+  // Spanish translations are reachable via the language toggle on the article
+  // page; the index lists each piece once.
+  const publishedArticles = getAllArticles().filter((a) => a.lang === 'en');
 
   const jsonLd = {
     '@context': 'https://schema.org',

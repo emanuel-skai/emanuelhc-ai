@@ -21,11 +21,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return { title: 'Article Not Found' };
+  const enSlug = article.lang === 'es' ? article.translationSlug : slug;
+  const esSlug = article.lang === 'es' ? slug : article.translationSlug;
   return {
     title: `${article.title} — Emanuel Hernandez`,
     description: article.description,
     keywords: article.keywords,
-    alternates: { canonical: `https://emanuelhc.ai/writing/${slug}` },
+    alternates: {
+      canonical: `https://emanuelhc.ai/writing/${slug}`,
+      ...(article.translationSlug && {
+        languages: {
+          en: `https://emanuelhc.ai/writing/${enSlug}`,
+          es: `https://emanuelhc.ai/writing/${esSlug}`,
+        },
+      }),
+    },
     openGraph: {
       title: article.title,
       description: article.description,
@@ -74,7 +84,11 @@ export default async function ArticlePage({
     keywords: article.keywords?.join(', '),
     wordCount: article.content.trim().split(/\s+/).length,
     timeRequired: `PT${article.readTimeMinutes}M`,
+    inLanguage: article.lang,
   };
+
+  const enSlug = article.lang === 'es' ? article.translationSlug : slug;
+  const esSlug = article.lang === 'es' ? slug : article.translationSlug;
 
   return (
     <>
@@ -84,7 +98,7 @@ export default async function ArticlePage({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <article className="container max-w-3xl">
+        <article className="container max-w-3xl" lang={article.lang}>
           {/* Back link */}
           <Link
             href="/writing"
@@ -120,15 +134,43 @@ export default async function ArticlePage({
                 dateTime={article.date}
                 className="text-[var(--muted2)] text-xs"
               >
-                {new Date(article.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
+                {new Date(article.date).toLocaleDateString(
+                  article.lang === 'es' ? 'es-CO' : 'en-US',
+                  {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  }
+                )}
               </time>
               <span className="text-[var(--muted2)] text-xs">
-                {article.readTimeMinutes} min read
+                {article.readTimeMinutes}{' '}
+                {article.lang === 'es' ? 'min de lectura' : 'min read'}
               </span>
+              {article.translationSlug && (
+                <span className="inline-flex items-center rounded-full border border-[var(--border)] overflow-hidden text-[10px] font-semibold tracking-wider">
+                  <Link
+                    href={`/writing/${enSlug}`}
+                    className={
+                      article.lang === 'es'
+                        ? 'px-2.5 py-1 text-[var(--muted)] hover:text-[var(--emerald)] transition-colors'
+                        : 'px-2.5 py-1 bg-[var(--emerald)] text-black'
+                    }
+                  >
+                    EN
+                  </Link>
+                  <Link
+                    href={`/writing/${esSlug}`}
+                    className={
+                      article.lang === 'es'
+                        ? 'px-2.5 py-1 bg-[var(--emerald)] text-black'
+                        : 'px-2.5 py-1 text-[var(--muted)] hover:text-[var(--emerald)] transition-colors'
+                    }
+                  >
+                    ES
+                  </Link>
+                </span>
+              )}
             </div>
             <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] leading-tight tracking-tight">
               {article.title}

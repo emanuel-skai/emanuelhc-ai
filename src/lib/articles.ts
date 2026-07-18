@@ -17,6 +17,8 @@ export interface ArticleMeta {
   pillar: Pillar;
   published: boolean;
   keywords?: string[];
+  lang: 'en' | 'es';
+  translationSlug?: string;
 }
 
 export interface Article extends ArticleMeta {
@@ -52,6 +54,8 @@ export function getAllArticles(): ArticleMeta[] {
         pillar: (data.pillar || 'Agentic AI') as Pillar,
         published: Boolean(data.published),
         keywords: data.keywords || [],
+        lang: (data.lang || 'en') as 'en' | 'es',
+        translationSlug: data.translationSlug,
       } as ArticleMeta;
     })
     .filter((a): a is ArticleMeta => a !== null);
@@ -83,6 +87,8 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     pillar: (data.pillar || 'Agentic AI') as Pillar,
     published: Boolean(data.published),
     keywords: data.keywords || [],
+    lang: (data.lang || 'en') as 'en' | 'es',
+    translationSlug: data.translationSlug,
     content,
     contentHtml: processedContent.toString(),
   };
