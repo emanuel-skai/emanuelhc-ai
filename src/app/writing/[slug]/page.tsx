@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Comments from '@/components/Comments';
 
 const pillarColors: Record<string, string> = {
   'Agentic AI': 'border-[var(--emerald)] text-[var(--emerald)]',
@@ -182,6 +183,8 @@ export default async function ArticlePage({
             className="prose"
             dangerouslySetInnerHTML={{ __html: article.contentHtml }}
           />
+
+          <Comments slug={slug} lang={article.lang} />
         </article>
       </main>
       <Footer />

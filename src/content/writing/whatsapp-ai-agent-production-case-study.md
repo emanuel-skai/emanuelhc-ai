@@ -13,6 +13,8 @@ keywords:
   - human handoff design
   - LATAM AI
   - conversational AI architecture
+  - visual search
+  - multimodal embeddings
 lang: "en"
 translationSlug: "whatsapp-ai-agent-production-case-study-es"
 ---
@@ -70,6 +72,10 @@ The number that matters to the business is not "how much did the AI automate." I
 
 **Voice is not optional in Colombia.** A large share of customers communicate mainly through voice notes. Tere transcribes them and answers with a natural Colombian voice. Adoption of the channel changed visibly once she could speak.
 
+**A fabric photo is really two vision problems.** Fabric recognition is built into Tere's config, and the first thing her image analysis decides is what it is looking at. A real photo of a fabric sample gets analyzed for textile characteristics — texture, weave, fiber — while stickers, memes, and photos of people are flagged as non-fabric and silently ignored. A *texture* is a catalog question: "elephant skin," a velvet feel, a ribbed knit all become database searches. And the rule that makes this safe in production: vision only nominates candidates. Before asserting anything, Tere confirms them against the live catalog and answers with actual fabric names, three candidates at most. She never declares a match the database cannot back.
+
+**Prints are the second problem, and generic image search fails at them.** A photo of a *print* means the customer wants the matching design from a catalog of roughly 10,000 sublimation images. Our first pipeline was the standard one: a vision model describes the photo, we embed the description, we search. It could not do exact visual matching, because descriptions are non-deterministic and throw away pixel-level detail — a query photo would return designs that were similar in theme, not the design itself. We rebuilt it on multimodal embeddings: images and text queries share one vector space, a single embedding column serves both search modes over pgvector, and the same photo now matches its catalog design near-perfectly. The vision model stayed, but only for auto-tagging metadata; it is out of the search path. Same lesson as the pricing decision: when the answer must be exact, retrieval has to be grounded in the actual asset, not in a model's paraphrase of it.
+
 **Platform scar tissue is real.** We learned that cloning an agent template does not carry its tool attachments. Costs you a day exactly once. Production is made of details like this.
 
 ## Why this matters beyond fabric
@@ -79,14 +85,6 @@ The number that matters to the business is not "how much did the AI automate." I
 The pattern is general: customers who live on WhatsApp, answers that must come from a catalog or price list, demand that arrives after hours. That describes an enormous share of commerce in Latin America. We are already reusing about 80% of this architecture for the next vertical.
 
 More than a third of Telas Real's customer messages arrive when every store is closed. Those used to be silent lost leads. Now they are answered in seconds and waiting in the CRM the next morning. That gap — between when customers want to buy and when businesses are available to sell — is where most of the value of production agents is sitting right now, and it has nothing to do with how impressive the demo looks.
-
-## Visuals in Spanish
-
-This case study serves a bilingual audience — these are the shareable Spanish versions of the metrics card and the handoff decision tree.
-
-![Tarjeta de métricas de Tere en español: 27.482 conversaciones atendidas, 26.490 clientes distintos, 99,96% resueltas sin intervención humana, 19.668 contactos registrados en el CRM](/writing/tere/metrics-card-ES.png)
-
-![Árbol de decisión de Tere en español: negociación de precios, pagos y reclamos pasan a asesores humanos por diseño, mientras consultas de producto, cotizaciones y captura de leads permanecen automatizadas](/writing/tere/decision-tree-ES.png)
 
 ---
 
