@@ -48,6 +48,7 @@ const jsonLd = {
     '@type': 'Organization',
     name: 'Skillful AI',
     url: 'https://skillfulai.io',
+    sameAs: ['https://skillful.ai'],
   },
   url: 'https://emanuelhc.ai',
   sameAs: [
