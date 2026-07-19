@@ -19,6 +19,7 @@ export interface ArticleMeta {
   keywords?: string[];
   lang: 'en' | 'es';
   translationSlug?: string;
+  image?: string;
 }
 
 export interface Article extends ArticleMeta {
@@ -56,6 +57,7 @@ export function getAllArticles(): ArticleMeta[] {
         keywords: data.keywords || [],
         lang: (data.lang || 'en') as 'en' | 'es',
         translationSlug: data.translationSlug,
+        image: data.image,
       } as ArticleMeta;
     })
     .filter((a): a is ArticleMeta => a !== null);
@@ -89,6 +91,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     keywords: data.keywords || [],
     lang: (data.lang || 'en') as 'en' | 'es',
     translationSlug: data.translationSlug,
+    image: data.image,
     content,
     contentHtml: processedContent.toString(),
   };

@@ -1,0 +1,23 @@
+# Emanuel Hernandez — emanuelhc.ai
+
+> Personal site of Emanuel Hernández Castillo, co-founder & CTO of Skillful AI and production AI systems architect. He designs and operates production-grade agentic AI systems — grounded tool calling, versioned agent configuration, evaluation gates, observability, and human handoff — for enterprise clients in LATAM, Europe, and North America. The site offers consulting services and publishes long-form, data-backed case studies and essays on production agentic AI.
+
+Emanuel's core thesis: the model is only one part of the system — AI systems fail less often because the model is weak than because the surrounding system is poorly designed.
+
+## Writing
+
+- [What 27,000 WhatsApp Conversations Taught Me About Production AI Agents](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study): Production case study of Tere, an AI sales agent for Colombian fabric retailer Telas Real. 27,482 conversations, 99.96% resolved without human takeover, 29,508 grounded database lookups. Covers grounded tool calling vs. model knowledge, four-layer versioned agent configuration, human handoff design, and multimodal embedding search for exact visual matching. Data verified as of July 15, 2026.
+- [Caso de estudio: Tere, nueve meses de una agente de ventas por WhatsApp en producción](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study-es): Spanish version of the Telas Real / Tere production case study.
+- [Human-in-the-loop for voice agents: why your architecture decides whether it's possible](https://emanuelhc.ai/writing/voice-agent-hitl-architecture): Cascaded vs. native speech-to-speech tradeoffs, and why the architecture choice determines whether human review before delivery is possible for enterprise compliance.
+
+## Pages
+
+- [Home](https://emanuelhc.ai): Services, process, pricing, and discovery form for AI consulting engagements.
+- [Writing index](https://emanuelhc.ai/writing): All published articles.
+- [RSS feed](https://emanuelhc.ai/feed.xml)
+
+## About
+
+- Emanuel Hernández Castillo is co-founder & CTO of Skillful AI (https://skillfulai.io), a platform for multi-channel production AI agents with grounded tools, versioned configuration, evaluation gates, and built-in human handoff.
+- Profiles: https://www.linkedin.com/in/emanuelhc/ · https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html · https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez
+- Contact: emanuel@skillfulai.io

@@ -67,8 +67,22 @@ export default function FAQ() {
     return () => observer.disconnect();
   }, []);
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
   return (
     <section id="faq" ref={sectionRef} className="section relative bg-[var(--bg2)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Top border accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-[var(--border)]" />
 

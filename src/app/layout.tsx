@@ -21,6 +21,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://emanuelhc.ai"),
+  alternates: {
+    types: {
+      "application/rss+xml": "https://emanuelhc.ai/feed.xml",
+    },
+  },
   title: "Emanuel Hernandez — Co-founder & CTO, Skillful AI | Agentic AI Architect",
   description: "Co-founder and CTO of Skillful AI. I design and build production-grade agentic AI systems for enterprise clients in LATAM, Europe, and North America. Available for a limited number of consulting engagements.",
   verification: {
@@ -42,7 +47,7 @@ const jsonLd = {
   worksFor: {
     '@type': 'Organization',
     name: 'Skillful AI',
-    url: 'https://skillful.ai',
+    url: 'https://skillfulai.io',
   },
   url: 'https://emanuelhc.ai',
   sameAs: [

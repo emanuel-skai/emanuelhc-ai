@@ -44,7 +44,16 @@ export async function generateMetadata({
       publishedTime: article.date,
       authors: ['Emanuel Hernandez'],
       tags: article.keywords,
+      ...(article.image && {
+        images: [{ url: article.image, width: 2400, height: 1254 }],
+      }),
     },
+    ...(article.image && {
+      twitter: {
+        card: 'summary_large_image',
+        images: [article.image],
+      },
+    }),
   };
 }
 
@@ -86,6 +95,7 @@ export default async function ArticlePage({
     wordCount: article.content.trim().split(/\s+/).length,
     timeRequired: `PT${article.readTimeMinutes}M`,
     inLanguage: article.lang,
+    ...(article.image && { image: `https://emanuelhc.ai${article.image}` }),
   };
 
   const enSlug = article.lang === 'es' ? article.translationSlug : slug;

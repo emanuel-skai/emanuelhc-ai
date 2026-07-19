@@ -17,6 +17,7 @@ keywords:
   - multimodal embeddings
 lang: "en"
 translationSlug: "whatsapp-ai-agent-production-case-study-es"
+image: "/writing/tere/metrics-card-EN.png"
 ---
 
 ![Tere, the generated avatar of Telas Real's WhatsApp textile advisor, smiling in front of shelves stacked with colorful fabric rolls](/writing/tere/tere-avatar.jpg)

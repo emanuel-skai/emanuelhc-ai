@@ -15,6 +15,7 @@ keywords:
   - arquitectura de IA conversacional
 lang: "es"
 translationSlug: "whatsapp-ai-agent-production-case-study"
+image: "/writing/tere/metrics-card-ES.png"
 ---
 
 ![Tere, el avatar generado de la asesora textil de Telas Real en WhatsApp, sonriendo frente a estantes llenos de rollos de tela de colores](/writing/tere/tere-avatar.jpg)
