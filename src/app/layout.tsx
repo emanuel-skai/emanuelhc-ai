@@ -45,7 +45,11 @@ const jsonLd = {
     url: 'https://skillful.ai',
   },
   url: 'https://emanuelhc.ai',
-  sameAs: ['https://www.linkedin.com/in/emanuelhc/'],
+  sameAs: [
+    'https://www.linkedin.com/in/emanuelhc/',
+    'https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html',
+    'https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez',
+  ],
   knowsAbout: ['Agentic AI', 'Machine Learning', 'Enterprise AI Systems'],
 };
 
