@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sora.variable} ${inter.variable} ${geistMono.variable} antialiased`}
+        className={`${sora.variable} ${inter.variable} ${geistMono.variable} antialiased grain-overlay`}
       >
         <script
           type="application/ld+json"

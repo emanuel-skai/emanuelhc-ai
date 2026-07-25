@@ -1,13 +1,14 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import StatsBand from '@/components/StatsBand';
+import CaseStudies from '@/components/CaseStudies';
 import Services from '@/components/Services';
 import Process from '@/components/Process';
-import CaseStudies from '@/components/CaseStudies';
 import About from '@/components/About';
 import Pricing from '@/components/Pricing';
-import DiscoveryForm from '@/components/DiscoveryForm';
 import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
+import DiscoveryForm from '@/components/DiscoveryForm';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -16,14 +17,15 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <Services />
-        <About />
+        <StatsBand />
         <CaseStudies />
+        <Services />
         <Process />
+        <About />
         <Pricing />
         <FAQ />
-        <DiscoveryForm />
         <FinalCTA />
+        <DiscoveryForm />
       </main>
       <Footer />
     </>

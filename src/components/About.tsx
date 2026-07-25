@@ -1,150 +1,83 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useReveal } from '@/hooks/useReveal';
+import AboutField from '@/components/visuals/AboutField';
 
 const expertise = [
   'LLM agent design and tool contracts',
-  'RAG evaluation and grounding strategies',
+  'RAG evaluation and grounding strategy',
   'Production FastAPI and AWS delivery',
   'Multimodal pipelines for business channels',
-  'Observability, cost controls, and reliability testing',
+  'Observability, cost controls, reliability testing',
+  'Regulated and latency-bound environments',
 ];
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="section relative">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left - Image */}
-          <div className="reveal order-2 lg:order-1">
-            <div className="relative">
-              {/* Image container */}
-              <div className="relative rounded-2xl overflow-hidden border border-[var(--border)]">
-                <Image
-                  src="/images/PFP_EMANUEL.jpeg"
-                  alt="Emanuel Hernández Castillo"
-                  width={500}
-                  height={600}
-                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
+    <section id="about" ref={ref} className="relative border-t border-[var(--border)] bg-[var(--bg2)] overflow-hidden">
+      {/* Extended spirograph field bleeding off the right edge */}
+      <AboutField className="absolute top-1/2 -right-[320px] w-[820px] h-[820px] -translate-y-1/2 pointer-events-none opacity-55" />
 
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-50" />
-              </div>
-
-              {/* Floating card — neutral */}
-              <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 px-5 py-4 rounded-xl bg-[var(--panel)] border border-[var(--border-bright)] shadow-xl backdrop-blur-xl">
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[var(--emerald)] shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
-                  <div>
-                    <p className="text-[var(--text)] text-sm font-medium leading-none mb-1">Available</p>
-                    <p className="text-[var(--muted)] text-xs font-mono tracking-wide">2 engagements · Q2</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="relative z-[2] max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,130px)] grid lg:grid-cols-[minmax(260px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
+        <div className="reveal">
+          <div className="relative rounded-[20px] overflow-hidden border border-[var(--border-light)] bg-[var(--panel)] aspect-[4/5] grid place-items-center">
+            <Image
+              src="/images/PFP_EMANUEL.jpeg"
+              alt="Emanuel Hernández Castillo"
+              width={680}
+              height={850}
+              className="w-full h-full object-cover [filter:grayscale(0.25)_contrast(1.05)]"
+            />
           </div>
+          <div className="flex items-center gap-2.5 mt-5">
+            <span className="status-dot" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--text-secondary)]">
+              Available · 2 engagements, Q3
+            </span>
+          </div>
+          <div className="mt-3.5 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+            Costa Rica · all time zones
+          </div>
+        </div>
 
-          {/* Right - Content */}
-          <div className="reveal order-1 lg:order-2">
-            <p className="eyebrow mb-5">About</p>
-            <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-6 tracking-tight">
-              Emanuel Hernández Castillo
-            </h2>
+        <div className="reveal">
+          <div className="flex items-center gap-3.5 mb-[26px]">
+            <span className="w-7 h-px bg-[var(--emerald)]" />
+            <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
+              About
+            </span>
+          </div>
+          <h2 className="m-0 font-bold text-[clamp(30px,3.6vw,44px)] leading-[1.06] tracking-[-0.035em] text-[var(--text)]">
+            Emanuel Hernández Castillo
+          </h2>
+          <p className="mt-7 mb-0 max-w-[620px] text-lg leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
+            I&apos;m co-founder and CTO of{' '}
+            <a
+              href="https://skillful.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--text)] border-b border-[rgba(16,185,129,0.5)] hover:text-[var(--emerald2)] transition-colors"
+            >
+              Skillful AI
+            </a>
+            , an enterprise AI platform serving automotive, healthcare, and digital commerce clients
+            across three continents.
+          </p>
+          <p className="mt-5 mb-0 max-w-[620px] text-[17px] leading-[1.65] text-[var(--muted)] [text-wrap:pretty]">
+            Before that: GPU software engineering at Intel, data science for App Store and Apple
+            TV+ at Apple, and a decade of ML across growth-stage companies. The through-line is
+            systems that hold up when the demo ends.
+          </p>
 
-            <div className="text-[var(--muted)] text-lg leading-relaxed mb-8 space-y-4">
-              <p>
-                I&apos;m the co-founder and CTO of{' '}
-                <a
-                  href="https://skillful.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
-                >
-                  Skillful AI
-                </a>
-                , an enterprise AI platform serving clients across the automotive, healthcare, and
-                digital commerce verticals in LATAM, Europe, and North America.
-              </p>
-              <p>
-                My work centers on agentic AI systems that work under real enterprise constraints —
-                regulated environments, latency ceilings, messy legacy data, and the expectation that
-                agents don&apos;t hallucinate when money is on the line.
-              </p>
-              <p>
-                Before{' '}
-                <a
-                  href="https://skillful.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--text)] hover:text-[var(--emerald)] underline underline-offset-4 decoration-[var(--border-bright)] hover:decoration-[var(--emerald)] transition-colors"
-                >
-                  Skillful AI
-                </a>
-                : Intel (GPU software engineering), Apple (data science for App Store and Apple TV+),
-                and a decade of ML work across growth-stage companies. Based in Costa Rica. Working
-                across time zones.
-              </p>
-              <p>
-                I also architect AI systems as a consultant for a small number of teams per year —
-                particularly in healthcare, mobility, and financial operations — when the problem is
-                genuinely complex.
-              </p>
-            </div>
-
-            {/* Expertise */}
-            <div className="space-y-3 mb-8">
-              {expertise.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--emerald)]" />
-                  <span className="text-[var(--text)] text-[15px]">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Logos */}
-            <div className="pt-8 border-t border-[var(--border)]">
-              <p className="text-[var(--muted)] text-sm mb-4">
-                Projects across LATAM, US, and EU
-              </p>
-              <div className="flex items-center gap-6 opacity-60">
-                <Image
-                  src="/images/SKAI-LOGO.png"
-                  alt="Skillful AI"
-                  width={100}
-                  height={32}
-                  className="h-6 w-auto object-contain"
-                />
-                <Image
-                  src="/images/talboost-logo.svg"
-                  alt="Talboost"
-                  width={100}
-                  height={32}
-                  className="h-6 w-auto object-contain"
-                />
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px mt-11 bg-[var(--border)] border border-[var(--border)] rounded-2xl overflow-hidden">
+            {expertise.map((e) => (
+              <div key={e} className="bg-black px-[22px] py-5 text-[15px] leading-normal text-[var(--text-secondary)]">
+                {e}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

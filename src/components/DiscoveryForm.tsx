@@ -78,7 +78,7 @@ export default function DiscoveryForm() {
 
   if (submitted) {
     return (
-      <section id="discovery" ref={sectionRef} className="section relative">
+      <section id="discovery-form" ref={sectionRef} className="section relative border-t border-[var(--border)]">
         <div className="container max-w-2xl">
           <div className="reveal text-center">
             <div className="w-16 h-16 rounded-full bg-[var(--emerald)]/20 flex items-center justify-center mx-auto mb-6">
@@ -137,7 +137,7 @@ export default function DiscoveryForm() {
   }
 
   return (
-    <section id="discovery" ref={sectionRef} className="section relative">
+    <section id="discovery-form" ref={sectionRef} className="section relative border-t border-[var(--border)]">
       <div className="container max-w-3xl">
         {/* Section Header */}
         <div className="reveal text-center mb-12">
