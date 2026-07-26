@@ -4,7 +4,7 @@ import Logo from './Logo';
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--bg2)]">
-      <div className="max-w-[1240px] mx-auto px-8 pt-[70px] pb-10 grid md:grid-cols-[minmax(280px,1fr)_auto_auto] gap-[clamp(32px,6vw,80px)]">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 pt-[70px] pb-10 grid md:grid-cols-[minmax(280px,1fr)_auto_auto] gap-[clamp(32px,6vw,80px)]">
         <div>
           <div className="flex items-center gap-2.5">
             <Logo size={32} />
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-[1240px] mx-auto px-8 pt-6 pb-[46px] border-t border-[var(--border)] flex flex-wrap justify-between gap-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 pt-6 pb-[46px] border-t border-[var(--border)] flex flex-wrap justify-between gap-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
         <span>© 2026 Emanuel Hernández Castillo</span>
         <span className="flex gap-6">
           <Link href="/writing" className="text-[var(--muted2)] hover:text-[var(--text)] transition-colors">

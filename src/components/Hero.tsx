@@ -15,9 +15,9 @@ export default function Hero() {
         style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, #000 100%)' }}
       />
 
-      <div className="relative z-[2] max-w-[1320px] mx-auto px-8 pt-[100px] pb-[90px] w-full grid lg:grid-cols-[minmax(300px,0.9fr)_minmax(340px,1fr)] gap-[clamp(24px,4vw,60px)] items-center">
+      <div className="relative z-[2] max-w-[1320px] mx-auto px-6 md:px-8 pt-[64px] pb-[70px] md:pt-[100px] md:pb-[90px] w-full grid lg:grid-cols-[minmax(300px,0.9fr)_minmax(340px,1fr)] gap-[clamp(24px,4vw,60px)] items-center">
         {/* Left — geometry resolving into the brand avatar */}
-        <div className="relative justify-self-center w-full max-w-[660px] aspect-[1.18/1] max-h-[min(62vh,560px)] order-2 lg:order-1">
+        <div className="relative justify-self-center w-full max-w-[420px] lg:max-w-[660px] aspect-[1.18/1] max-h-[min(40vh,360px)] lg:max-h-[min(62vh,560px)] order-2 lg:order-1">
           <AvatarGeometry className="absolute inset-0 w-full h-full pointer-events-none" />
         </div>
 
@@ -60,7 +60,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="flex items-center gap-5 mt-14 pt-[26px] border-t border-[var(--border)] w-full max-w-[480px] font-mono text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--muted2)]">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 md:mt-14 pt-[26px] border-t border-[var(--border)] w-full max-w-[480px] font-mono text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--muted2)]">
             <span>Track record</span>
             <span className="text-[var(--muted)]">Intel</span>
             <span className="text-[#333]">/</span>

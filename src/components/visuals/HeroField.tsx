@@ -25,9 +25,12 @@ export default function HeroField({ className }: { className?: string }) {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
+      // Portrait screens get a calmer field: wings pushed to the edges,
+      // smaller radius, and a full-width central clearing for the text.
+      const portrait = w < h || w < 768;
       const cy = h * 0.5;
-      const R = Math.max(h * 0.72, w * 0.26);
-      const wingX = w * 0.17;
+      const R = portrait ? h * 0.42 : Math.max(h * 0.72, w * 0.26);
+      const wingX = portrait ? -w * 0.22 : w * 0.17;
 
       const arc = (
         x: number, y: number, rx: number, ry: number,
@@ -107,30 +110,49 @@ export default function HeroField({ className }: { className?: string }) {
         wing(wingX, p);
         ctx.restore();
 
-        // clear the message zone (right column) and the artwork's own core
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.save();
-        ctx.translate(w * 0.72, cy);
-        ctx.scale(1, 0.78);
-        const clear = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.34);
-        clear.addColorStop(0, 'rgba(0,0,0,0.99)');
-        clear.addColorStop(0.6, 'rgba(0,0,0,0.82)');
-        clear.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = clear;
-        ctx.beginPath();
-        ctx.arc(0, 0, w * 0.34, 0, TAU);
-        ctx.fill();
-        ctx.restore();
-        ctx.save();
-        ctx.translate(w * 0.26, cy);
-        const clear2 = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.18);
-        clear2.addColorStop(0, 'rgba(0,0,0,0.9)');
-        clear2.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = clear2;
-        ctx.beginPath();
-        ctx.arc(0, 0, w * 0.18, 0, TAU);
-        ctx.fill();
-        ctx.restore();
+        if (portrait) {
+          // dim the whole field, then carve one full-width central clearing
+          ctx.fillStyle = 'rgba(0,0,0,0.38)';
+          ctx.fillRect(0, 0, w, h);
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.save();
+          ctx.translate(w * 0.5, cy);
+          ctx.scale(1, 1.2);
+          const clearM = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.62);
+          clearM.addColorStop(0, 'rgba(0,0,0,0.96)');
+          clearM.addColorStop(0.6, 'rgba(0,0,0,0.75)');
+          clearM.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = clearM;
+          ctx.beginPath();
+          ctx.arc(0, 0, w * 0.62, 0, TAU);
+          ctx.fill();
+          ctx.restore();
+        } else {
+          // clear the message zone (right column) and the artwork's own core
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.save();
+          ctx.translate(w * 0.72, cy);
+          ctx.scale(1, 0.78);
+          const clear = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.34);
+          clear.addColorStop(0, 'rgba(0,0,0,0.99)');
+          clear.addColorStop(0.6, 'rgba(0,0,0,0.82)');
+          clear.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = clear;
+          ctx.beginPath();
+          ctx.arc(0, 0, w * 0.34, 0, TAU);
+          ctx.fill();
+          ctx.restore();
+          ctx.save();
+          ctx.translate(w * 0.26, cy);
+          const clear2 = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.18);
+          clear2.addColorStop(0, 'rgba(0,0,0,0.9)');
+          clear2.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = clear2;
+          ctx.beginPath();
+          ctx.arc(0, 0, w * 0.18, 0, TAU);
+          ctx.fill();
+          ctx.restore();
+        }
 
         const vfade = ctx.createLinearGradient(0, 0, 0, h);
         vfade.addColorStop(0, 'rgba(0,0,0,0.9)');

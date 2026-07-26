@@ -54,7 +54,7 @@ export default function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,120px)] grid lg:grid-cols-[minmax(240px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,120px)] grid lg:grid-cols-[minmax(240px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
         <div className="reveal">
           <div className="flex items-center gap-3.5 mb-[26px]">
             <span className="w-7 h-px bg-[var(--emerald)]" />

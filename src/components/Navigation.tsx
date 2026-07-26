@@ -34,7 +34,7 @@ export default function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-xl border-b border-[var(--border)]">
-      <div className="max-w-[1240px] mx-auto px-8 h-[68px] flex items-center justify-between gap-8">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 h-[68px] flex items-center justify-between gap-8">
         {/* Logo */}
         <a href="#top" onClick={(e) => scrollToSection(e, '#top')} className="flex items-center gap-2.5 group">
           <Logo size={36} />
@@ -103,7 +103,7 @@ export default function Navigation() {
         }`}
       >
         <div className="bg-black/95 backdrop-blur-xl border-b border-[var(--border)]">
-          <div className="px-8 py-4 flex flex-col gap-1">
+          <div className="px-6 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}

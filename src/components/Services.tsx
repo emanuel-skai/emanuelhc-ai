@@ -40,7 +40,7 @@ export default function Services() {
 
   return (
     <section id="services" ref={ref} className="border-t border-[var(--border)] bg-[var(--bg2)]">
-      <div className="max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,130px)]">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
         <div className="reveal max-w-[700px]">
           <div className="flex items-center gap-3.5 mb-[26px]">
             <span className="w-7 h-px bg-[var(--emerald)]" />

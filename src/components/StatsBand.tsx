@@ -14,7 +14,7 @@ export default function StatsBand() {
 
   return (
     <section ref={ref} className="border-t border-[var(--border)] bg-[var(--bg2)]">
-      <div className="max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,120px)]">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,120px)]">
         <h2 className="reveal m-0 max-w-[900px] font-bold text-[clamp(32px,4vw,52px)] leading-[1.08] tracking-[-0.035em] text-[var(--text)] [text-wrap:balance]">
           Demos are easy. <span className="text-[var(--muted2)]">Uptime is the product.</span>
         </h2>

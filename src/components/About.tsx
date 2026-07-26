@@ -19,9 +19,9 @@ export default function About() {
   return (
     <section id="about" ref={ref} className="relative border-t border-[var(--border)] bg-[var(--bg2)] overflow-hidden">
       {/* Extended spirograph field bleeding off the right edge */}
-      <AboutField className="absolute top-1/2 -right-[320px] w-[820px] h-[820px] -translate-y-1/2 pointer-events-none opacity-55" />
+      <AboutField className="hidden md:block absolute top-1/2 -right-[320px] w-[820px] h-[820px] -translate-y-1/2 pointer-events-none opacity-55" />
 
-      <div className="relative z-[2] max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,130px)] grid lg:grid-cols-[minmax(260px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
+      <div className="relative z-[2] max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)] grid lg:grid-cols-[minmax(260px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
         <div className="reveal">
           <div className="relative rounded-[20px] overflow-hidden border border-[var(--border-light)] bg-[var(--panel)] aspect-[4/5] grid place-items-center">
             <Image

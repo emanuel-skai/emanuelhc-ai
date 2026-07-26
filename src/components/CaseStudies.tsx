@@ -61,7 +61,7 @@ export default function CaseStudies() {
 
   return (
     <section id="work" ref={ref} className="border-t border-[var(--border)] bg-black">
-      <div className="max-w-[1240px] mx-auto px-8 py-[clamp(80px,10vw,130px)]">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
         <div className="reveal flex items-end justify-between gap-10 flex-wrap">
           <div className="max-w-[660px]">
             <div className="flex items-center gap-3.5 mb-[26px]">
@@ -87,7 +87,7 @@ export default function CaseStudies() {
               <article
                 key={c.title}
                 onClick={() => setOpenCase(open ? -1 : i)}
-                className="reveal bg-gradient-to-b from-[var(--panel)] to-[var(--bg2)] border border-[var(--border)] rounded-[20px] px-[38px] py-9 cursor-pointer transition-all duration-300 hover:border-[var(--border-bright)] hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,0,0,0.7)]"
+                className="reveal bg-gradient-to-b from-[var(--panel)] to-[var(--bg2)] border border-[var(--border)] rounded-[20px] p-6 md:px-[38px] md:py-9 cursor-pointer transition-all duration-300 hover:border-[var(--border-bright)] hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,0,0,0.7)]"
               >
                 <div className="flex items-start justify-between gap-9 flex-wrap">
                   <div className="flex items-baseline gap-[26px] flex-[1_1_420px]">

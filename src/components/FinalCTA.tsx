@@ -15,7 +15,7 @@ export default function FinalCTA() {
             'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(6,78,59,0.22) 60%, rgba(0,0,0,0.85) 100%)',
         }}
       />
-      <div className="reveal relative z-[2] max-w-[900px] mx-auto px-8 py-[clamp(90px,12vw,150px)] text-center">
+      <div className="reveal relative z-[2] max-w-[900px] mx-auto px-6 md:px-8 py-[clamp(90px,12vw,150px)] text-center">
         <div className="flex items-center justify-center gap-3.5 mb-[30px]">
           <span className="w-7 h-px bg-[var(--emerald)]" />
           <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
