@@ -15,6 +15,7 @@ keywords:
   - IA para pymes
 lang: "es"
 translationSlug: "swapping-llm-production-agent-personality"
+image: "/writing/san-roque/tone-card-ES.png"
 ---
 
 Hay una pregunta que casi ningún negocio se hace antes de montar un agente de IA: si mañana cambia el modelo que lo mueve, ¿tu agente sigue siendo tu agente?
@@ -52,6 +53,8 @@ Lo que estaba escrito en la personalidad, sobrevivió completo: el tuteo colombi
 Lo que no estaba escrito, cambió: los mensajes se acortaron 28%, los emojis bajaron a la mitad, y Francesca pasó de preguntar en el 58% de sus mensajes al 76% — hoy conduce más y celebra menos. Los evaluadores ciegos notaron un punto menos de calidez y empatía, sobre todo en momentos delicados: un reclamo, una mascota enferma. Y aparecieron fallas nuevas: algún saludo truncado, una respuesta suelta en inglés.
 
 ¿Los clientes? No se enteraron. El sentimiento positivo pasó de 13,5% a 12,4% y el negativo bajó de 0,7% a 0,5%. Estable.
+
+![Tarjeta comparativa del cambio de modelo: lo que sobrevivió — el tuteo colombiano, el vocabulario de marca, el emoji de firma, siempre proponer el siguiente paso de la cita — versus lo que cambió — palabras por mensaje de 29 a 21, emojis por mensaje de 1,75 a 0,90, respuestas que preguntan de 58% a 76%, un punto menos de calidez y empatía en evaluación ciega. El sentimiento de los clientes se mantuvo estable.](/writing/san-roque/tone-card-ES.png)
 
 ## Por qué esto le importa a cualquier negocio con un agente
 

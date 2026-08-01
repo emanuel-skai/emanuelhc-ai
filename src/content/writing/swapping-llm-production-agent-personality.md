@@ -15,6 +15,7 @@ keywords:
   - AI agent case study
 lang: "en"
 translationSlug: "swapping-llm-production-agent-personality-es"
+image: "/writing/san-roque/tone-card-EN.png"
 ---
 
 On July 8, 2026, we changed the LLM behind Francesca — the WhatsApp receptionist for San Roque, a pet grooming business in Colombia — from Claude Opus 4.5 to Grok 4.3. Her written personality stayed byte-identical. Same instructions, same tools, same WhatsApp line. Different brain.
@@ -52,6 +53,8 @@ What survived: everything we had written down. The informal Colombian register. 
 What changed: everything we hadn't written down. Under Grok, messages got 28% shorter (29 to 21 words median). Emoji density halved, from 1.75 per message to 0.90. The share of messages that ask the customer a question jumped from 58% to 76% — she now drives the funnel harder and celebrates less. Blind raters scored warmth and empathy one point lower, mostly in delicate moments: complaints, sick pets. And new failure modes appeared that Opus never showed — occasionally truncated greetings, one stray reply in English.
 
 Customer-side sentiment didn't move. Positive messages went from 13.5% to 12.4%, negative from 0.7% to 0.5%. Customers, as far as we can measure, did not notice.
+
+![Before/after tone card for the model swap: what survived — informal Colombian register, brand vocabulary, signature emoji, always proposing the next booking step — versus what changed — median words per message 29 to 21, emoji per message 1.75 to 0.90, replies asking a question 58% to 76%, warmth and empathy one point lower in blind ratings. Customer sentiment stayed stable.](/writing/san-roque/tone-card-EN.png)
 
 ## What this means if you run agents in production
 
