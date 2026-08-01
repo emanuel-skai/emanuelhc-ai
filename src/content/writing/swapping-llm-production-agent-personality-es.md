@@ -30,7 +30,19 @@ En Colombia, como en casi toda Latinoamérica, el canal de ventas de una pyme no
 
 Eso tiene un costo operativo que cualquier dueño de negocio reconoce: alguien tiene que contestar. Y los clientes no escriben en horario de oficina — el 25% de los mensajes de San Roque llegan con el local cerrado. El que pregunta un precio a las 9 de la noche y no recibe respuesta, a la mañana siguiente ya le escribió a otra peluquería.
 
-Francesca atiende esa línea desde enero de 2026. En seis meses gestionó más de 4.600 conversaciones: cotiza el servicio según raza y tamaño, revisa la disponibilidad real de cada groomer, agenda la cita, manda la invitación al calendario, y también hace la parte aburrida que ningún bot de demos muestra: cancela y reprograma citas existentes. En julio, el 9% de las citas agendadas se cancelaron y el 12% se reprogramaron — y 4 de cada 5 de esas gestiones las resolvió ella de punta a punta, calendario incluido.
+Francesca atiende esa línea desde enero de 2026 — más de 4.600 conversaciones en seis meses. Antes de llegar al experimento vale la pena desglosar su trabajo real, porque "recepcionista" se queda cortísimo.
+
+## El trabajo es más difícil de lo que parece
+
+![Francesca — el avatar mascota de San Roque, "Soy FrancescAI"](/writing/san-roque/francesca-avatar.png)
+
+Empieza por la cotización. San Roque cotiza por raza: un catálogo de 76 razas — 63 de perro, 13 de gato — cada una con su tamaño, su tipo de manto y cuatro niveles de servicio. Las razas de doble capa tienen regla propia: solo corte a tijera, nunca máquina, y hay que decirlo antes de agendar. Los criollos no tienen fila en el catálogo, así que los perros se cotizan por tamaño y los gatos por largo de manto — dos caminos de preguntas distintos que Francesca tiene que elegir bien a mitad de conversación, por contexto. Y nunca cotiza de memoria: cada precio sale de una herramienta conectada al catálogo vivo, porque un número equivocado en WhatsApp es una conversación de reembolso después.
+
+Sigue el agendamiento, que es cirugía de calendarios de verdad. San Roque maneja un calendario por groomer más tres calendarios de piso — perros, perros pequeños y un piso aparte para gatos. Confirmar una cita significa revisar la disponibilidad real del groomer, crear el evento en su calendario y en el del piso, y enviarle al cliente la invitación por correo — como una sola operación atómica, para que dos clientes no ganen el mismo cupo. Las familias con varias mascotas tienen una sola conversación y un evento por mascota, cada una con su groomer. Y si el cliente pide a alguien por nombre, agenda contra el calendario de esa persona, no del primero que esté libre.
+
+Luego viene donde casi todos los bots de agendamiento se rinden en silencio: el ciclo de vida. Los planes cambian — en julio el 9% de las citas se cancelaron y el 12% se reprogramaron. Francesca encuentra la cita existente por teléfono y nombre de la mascota, la borra de ambos calendarios, reagenda el cupo nuevo y confirma — y 4 de cada 5 de esas gestiones las resolvió de punta a punta, sin que un humano tocara un calendario.
+
+Alrededor de todo eso están las capacidades que la hacen sentir parte del equipo y no un formulario: reconoce a los clientes que vuelven y los saluda con el historial de su mascota en vez de un pitch de bienvenida; entiende notas de voz, fotos, videos y documentos, porque así se usa WhatsApp de verdad; deriva las preguntas de salud al aliado veterinario en lugar de jugar al doctor; y comparte la bandeja con el equipo humano, que puede pausarla o tomar cualquier conversación a mitad de camino — que es exactamente como ocurrió el arco de entrenamiento que sigue.
 
 ## El equipo humano no desapareció: entrenó
 

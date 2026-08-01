@@ -30,7 +30,19 @@ San Roque runs a grooming operation where the whole customer relationship lives 
 
 Before Francesca, a human team answered everything from the WhatsApp Business app. That works until it doesn't: a quarter of customer messages arrive outside business hours, and every price question interrupts someone who is holding a dog.
 
-Francesca has been on that line since late January 2026. Over six months she has handled more than 4,600 conversations. She quotes services by breed and size, checks real groomer availability, books the appointment, sends the calendar invitation, and — this is the part most scheduling bots skip — cancels and reschedules existing appointments on her own. In July, cancellations ran at 9% of booked appointments and reschedules at 12% — and the AI resolved four out of five of those end to end, calendar included.
+Francesca has been on that line since late January 2026 — more than 4,600 conversations in six months. Before getting to the experiment, it's worth spelling out what her job actually involves, because "receptionist" undersells it badly.
+
+## The job is harder than it looks
+
+![Francesca — San Roque's mascot avatar, "Soy FrancescAI"](/writing/san-roque/francesca-avatar.png)
+
+Start with the quote. San Roque prices by breed: a catalogue of 76 breeds — 63 dog, 13 cat — each mapped to a size, a coat type, and four service tiers. Double-coated breeds carry their own rule: scissor cut only, never clippers, and the agent has to say so before booking. Mixed breeds have no row in the catalogue, so dogs get quoted by size and cats by coat length — two different question paths Francesca has to pick correctly mid-conversation, from context. And she never quotes from memory: every price comes from a pricing tool wired to the live catalogue, because a wrong number on WhatsApp is a refund conversation later.
+
+Then the booking, which is real calendar surgery. San Roque runs one calendar per groomer plus three floor calendars — dogs, small dogs, and a separate cat floor. A confirmed appointment means checking the groomer's actual availability, creating the event on both the groomer's calendar and the floor's, and emailing the client a calendar invitation — as one atomic operation, so two customers can't win the same slot. Families with several pets get one conversation and one event per pet, each assigned to its own groomer. If a client asks for a specific groomer by name, she books against that person's calendar, not whoever is free.
+
+Then the part where most scheduling bots quietly give up: the lifecycle. Plans change — in July, 9% of booked appointments were cancelled and 12% rescheduled. Francesca finds the existing appointment from the client's phone and pet name, removes it from both calendars, rebooks the new slot, and confirms — and the AI resolved four out of five of those end to end, no human touching a calendar.
+
+Around all of that sit the capabilities that make her feel like staff rather than a form: she recognizes returning clients and greets them with their pet's history instead of a welcome pitch; she understands voice notes, photos, videos, and documents, because that is how people actually use WhatsApp; she escalates to the vet-partner conversation when a health question appears instead of playing doctor; and she shares the inbox with the human team, who can pause her or take over any conversation mid-flow — which is exactly how the training arc below happened.
 
 ## The part nobody puts in the demo: humans trained her by working next to her
 
