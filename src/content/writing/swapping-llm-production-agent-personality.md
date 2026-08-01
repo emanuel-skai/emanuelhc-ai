@@ -36,13 +36,25 @@ Francesca has been on that line since late January 2026 — more than 4,600 conv
 
 ![Francesca — San Roque's mascot avatar, "Soy FrancescAI"](/writing/san-roque/francesca-avatar.png)
 
+### Breed-based quoting, not a price list
+
 Start with the quote. San Roque prices by breed: a catalogue of 76 breeds — 63 dog, 13 cat — each mapped to a size, a coat type, and four service tiers. Double-coated breeds carry their own rule: scissor cut only, never clippers, and the agent has to say so before booking. Mixed breeds have no row in the catalogue, so dogs get quoted by size and cats by coat length — two different question paths Francesca has to pick correctly mid-conversation, from context. And she never quotes from memory: every price comes from a pricing tool wired to the live catalogue, because a wrong number on WhatsApp is a refund conversation later.
+
+### Calendar surgery
 
 Then the booking, which is real calendar surgery. San Roque runs one calendar per groomer plus three floor calendars — dogs, small dogs, and a separate cat floor. A confirmed appointment means checking the groomer's actual availability, creating the event on both the groomer's calendar and the floor's, and emailing the client a calendar invitation — as one atomic operation, so two customers can't win the same slot. Families with several pets get one conversation and one event per pet, each assigned to its own groomer. If a client asks for a specific groomer by name, she books against that person's calendar, not whoever is free.
 
+### The full appointment lifecycle — including the part bots skip
+
 Then the part where most scheduling bots quietly give up: the lifecycle. Plans change — in July, 9% of booked appointments were cancelled and 12% rescheduled. Francesca finds the existing appointment from the client's phone and pet name, removes it from both calendars, rebooks the new slot, and confirms — and the AI resolved four out of five of those end to end, no human touching a calendar.
 
+### The abilities that make her feel like staff, not a form
+
 Around all of that sit the capabilities that make her feel like staff rather than a form: she recognizes returning clients and greets them with their pet's history instead of a welcome pitch; she understands voice notes, photos, videos, and documents, because that is how people actually use WhatsApp; she escalates to the vet-partner conversation when a health question appears instead of playing doctor; and she shares the inbox with the human team, who can pause her or take over any conversation mid-flow — which is exactly how the training arc below happened.
+
+### The other half: welcome, materials, surveys, CRM
+
+And that's only the booking half of the job. New clients get a proper welcome — presentation videos of the spa, not a wall of text. Questions about the grooming process or a service get answered with curated material the business approved, because "what exactly do you do in the bath?" deserves photos, not improvisation. After the visit, she runs the post-service survey that feeds the quality loop. And underneath every conversation she maintains the client records — who you are, which pets you have, what service they got last time — which is what makes the recognition work on your next message. All told, she operates a dozen production workflows wired to the business's real calendars, catalogue, and CRM.
 
 ## The part nobody puts in the demo: humans trained her by working next to her
 
