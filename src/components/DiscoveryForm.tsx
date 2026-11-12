@@ -6,9 +6,16 @@ const channels = ['WhatsApp', 'Web', 'Email', 'API', 'Other'];
 const timelines = ['Immediately', '2-4 weeks', '1-2 months', '3+ months', 'Just exploring'];
 const budgets = ['< $5,000', '$5,000 - $15,000', '$15,000 - $50,000', '$50,000+', 'Not sure yet'];
 
+const DISCOVERY_CALENDAR = 'https://calendar.app.google/g3v7PbEf9fkuWCRs7';
+
+const fieldClass =
+  'w-full px-4 py-3 rounded-[var(--radius-md)] bg-black border border-[var(--border-light)] text-[var(--text)] text-[15px] placeholder:text-[var(--muted2)] transition-colors hover:border-[var(--border-bright)] focus:outline-none focus-visible:outline-none focus:border-[var(--emerald)] focus:ring-1 focus:ring-[var(--emerald)]';
+const labelClass = 'block mb-2 text-sm font-medium text-[var(--text-secondary)]';
+
 export default function DiscoveryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   const [selectedChannels, setSelectedChannels] = useState<string[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -45,6 +52,7 @@ export default function DiscoveryForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(false);
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -74,9 +82,9 @@ export default function DiscoveryForm() {
       }
 
       setSubmitted(true);
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('There was an error submitting the form. Please try again.');
+    } catch (err) {
+      console.error('Form submission error:', err);
+      setError(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -84,58 +92,38 @@ export default function DiscoveryForm() {
 
   if (submitted) {
     return (
-      <section id="discovery-form" ref={sectionRef} className="section relative border-t border-[var(--border)]">
-        <div className="container max-w-2xl">
-          <div className="reveal text-center">
-            <div className="w-16 h-16 rounded-full bg-[var(--emerald)]/20 flex items-center justify-center mx-auto mb-6">
-              <svg
-                className="w-8 h-8 text-[var(--emerald)]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <h2 className="text-[28px] md:text-[36px] font-bold text-[var(--text)] mb-4">
-              Thank you!
-            </h2>
-            <p className="text-[var(--muted)] text-lg mb-8">
-              I&apos;ve received your information. Book your free 15-minute discovery call below.
+      <section
+        id="discovery-form"
+        ref={sectionRef}
+        aria-labelledby="discovery-done-heading"
+        className="border-t border-[var(--border)] bg-black"
+      >
+        <div className="frame section-pad">
+          <div className="reveal max-w-[640px] mx-auto panel panel-accent p-8 md:p-10" role="status">
+            <p className="flex items-center gap-2.5 m-0 label text-[var(--emerald2)]">
+              <span className="status-dot is-static" aria-hidden="true" />
+              Received
             </p>
-
-            {/* Calendar Booking */}
-            <div className="p-8 rounded-2xl bg-[var(--panel)] border border-[var(--border)]">
-              <a
-                href="https://calendar.app.google/g3v7PbEf9fkuWCRs7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full !py-4 text-center"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>Schedule 15-min Discovery Call</span>
-              </a>
-              <p className="text-[var(--muted)] text-sm text-center mt-4">
-                Opens Google Calendar scheduling page
-              </p>
-            </div>
+            <h2
+              id="discovery-done-heading"
+              className="mt-5 mb-0 font-bold text-[clamp(28px,3.4vw,38px)] tracking-[-0.035em] text-[var(--text)]"
+              style={{ lineHeight: 1.1 }}
+            >
+              Now pick a time for the call.
+            </h2>
+            <p className="mt-4 mb-0 text-base leading-relaxed text-[var(--muted)]">
+              I read every form before the call, so the fifteen minutes go to your problem, not to
+              introductions.
+            </p>
+            <a
+              href={DISCOVERY_CALENDAR}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full mt-8"
+            >
+              Schedule the 15-min call
+            </a>
+            <p className="mt-3 mb-0 label label-sm text-center">Opens Google Calendar</p>
           </div>
         </div>
       </section>
@@ -143,227 +131,191 @@ export default function DiscoveryForm() {
   }
 
   return (
-    <section id="discovery-form" ref={sectionRef} className="section relative border-t border-[var(--border)]">
-      <div className="container max-w-3xl">
-        {/* Section Header */}
-        <div className="reveal text-center mb-12">
-          <p className="eyebrow eyebrow-center mb-5 justify-center">Free discovery</p>
-          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[var(--text)] mb-4 tracking-tight">
-            Qualify for a 15-minute call
+    <section
+      id="discovery-form"
+      ref={sectionRef}
+      aria-labelledby="discovery-form-heading"
+      className="border-t border-[var(--border)] bg-black scroll-mt-[var(--nav-h)]"
+    >
+      <div className="frame section-pad grid gap-[clamp(36px,6vw,88px)] lg:grid-cols-[minmax(240px,340px)_minmax(0,1fr)] items-start">
+        <div className="reveal lg:sticky lg:top-[calc(var(--nav-h)+40px)]">
+          <p className="eyebrow m-0">
+            <span aria-hidden="true" className="eyebrow-rule" />
+            <span>Free discovery</span>
+          </p>
+          <h2
+            id="discovery-form-heading"
+            className="mt-6 mb-0 font-bold text-[clamp(30px,3.4vw,44px)] tracking-[-0.038em] text-[var(--text)]"
+            style={{ lineHeight: 1.06 }}
+          >
+            Fifteen minutes to check fit.
           </h2>
-          <p className="text-[var(--muted)] text-lg max-w-xl mx-auto">
-            A few details so I can prep before we talk. High-signal answers beat long ones.
+          <p className="mt-5 mb-0 text-base leading-[1.65] text-[var(--muted)] [text-wrap:pretty]">
+            A few answers so I come prepared. Specific beats long: what the system does today, what
+            breaks, and what number should move.
           </p>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="reveal space-y-6">
-          <div className="card p-6 md:p-8 space-y-6">
-            {/* Basic Info */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Full name *
-                </label>
-                <input
-                  type="text"
-                  name="fullName"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                  placeholder="you@company.com"
-                />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Company / Project *
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                  placeholder="Company name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">Role *</label>
-                <input
-                  type="text"
-                  name="role"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                  placeholder="Your role"
-                />
-              </div>
-            </div>
-
+        <form onSubmit={handleSubmit} className="reveal panel p-5 md:p-8 flex flex-col gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                Website (optional)
+              <label htmlFor="df-name" className={labelClass}>
+                Full name <span className="text-[var(--muted2)]">*</span>
               </label>
-              <input
-                type="text"
-                name="website"
-                className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                placeholder="yourcompany.com"
-              />
+              <input id="df-name" type="text" name="fullName" required autoComplete="name" className={fieldClass} placeholder="Your name" />
             </div>
-
-            {/* Divider */}
-            <div className="h-px bg-[var(--border)]" />
-
-            {/* Project Details */}
             <div>
-              <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                What are you trying to build? *
+              <label htmlFor="df-email" className={labelClass}>
+                Email <span className="text-[var(--muted2)]">*</span>
               </label>
-              <textarea
-                name="projectDescription"
-                required
-                rows={4}
-                className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors resize-none"
-                placeholder="Describe your project, goals, and any specific challenges..."
-              />
+              <input id="df-email" type="email" name="email" required autoComplete="email" className={fieldClass} placeholder="you@company.com" />
             </div>
+          </div>
 
+          <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                Primary outcome metric
+              <label htmlFor="df-company" className={labelClass}>
+                Company or project <span className="text-[var(--muted2)]">*</span>
               </label>
-              <input
-                type="text"
-                name="outcomeMetric"
-                className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                placeholder="e.g., reduce response time, increase conversion, lower costs"
-              />
+              <input id="df-company" type="text" name="company" required autoComplete="organization" className={fieldClass} placeholder="Company name" />
             </div>
-
             <div>
-              <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                Current stack
+              <label htmlFor="df-role" className={labelClass}>
+                Role <span className="text-[var(--muted2)]">*</span>
               </label>
-              <textarea
-                name="currentStack"
-                rows={2}
-                className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-[var(--emerald)] transition-colors resize-none"
-                placeholder="e.g., Python, FastAPI, PostgreSQL, AWS..."
-              />
+              <input id="df-role" type="text" name="role" required autoComplete="organization-title" className={fieldClass} placeholder="Your role" />
             </div>
+          </div>
 
-            {/* Channels */}
-            <div>
-              <label className="block text-sm font-medium text-[var(--text)] mb-3">
-                Channels involved
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {channels.map((channel) => (
+          <div>
+            <label htmlFor="df-website" className={labelClass}>
+              Website <span className="text-[var(--muted2)] font-normal">(optional)</span>
+            </label>
+            <input id="df-website" type="text" name="website" autoComplete="url" className={fieldClass} placeholder="yourcompany.com" />
+          </div>
+
+          <div className="h-px bg-[var(--border)]" />
+
+          <div>
+            <label htmlFor="df-project" className={labelClass}>
+              What should the system do, and what breaks today? <span className="text-[var(--muted2)]">*</span>
+            </label>
+            <textarea
+              id="df-project"
+              name="projectDescription"
+              required
+              rows={4}
+              className={`${fieldClass} resize-y min-h-[112px]`}
+              placeholder="e.g. Our WhatsApp agent books appointments but double-books on Saturdays, and we only find out when a customer complains."
+            />
+          </div>
+
+          <div>
+            <label htmlFor="df-metric" className={labelClass}>
+              The number that should move
+            </label>
+            <input
+              id="df-metric"
+              type="text"
+              name="outcomeMetric"
+              className={fieldClass}
+              placeholder="e.g. first-reply time, unanswered chats, bookings per week"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="df-stack" className={labelClass}>
+              Current stack
+            </label>
+            <textarea
+              id="df-stack"
+              name="currentStack"
+              rows={2}
+              className={`${fieldClass} resize-y`}
+              placeholder="e.g. Python, FastAPI, PostgreSQL, AWS"
+            />
+          </div>
+
+          <fieldset className="m-0 p-0 border-0">
+            <legend className={`${labelClass} mb-3`}>Channels involved</legend>
+            <div className="flex flex-wrap gap-2">
+              {channels.map((channel) => {
+                const on = selectedChannels.includes(channel);
+                return (
                   <button
                     key={channel}
                     type="button"
+                    aria-pressed={on}
                     onClick={() => toggleChannel(channel)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                      selectedChannels.includes(channel)
-                        ? 'bg-[var(--emerald)] text-white'
-                        : 'bg-[var(--bg2)] border border-[var(--border)] text-[var(--muted)] hover:border-[var(--emerald)] hover:text-[var(--text)]'
+                    className={`min-h-[40px] px-4 rounded-full text-sm font-medium border transition-colors ${
+                      on
+                        ? 'bg-[var(--emerald)] border-[var(--emerald)] text-[var(--on-emerald)]'
+                        : 'bg-black border-[var(--border-light)] text-[var(--muted)] hover:border-[var(--border-bright)] hover:text-[var(--text)]'
                     }`}
                   >
                     {channel}
                   </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          <div className="h-px bg-[var(--border)]" />
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="df-timeline" className={labelClass}>
+                Timeline <span className="text-[var(--muted2)]">*</span>
+              </label>
+              <select id="df-timeline" name="timeline" required className={fieldClass} defaultValue="">
+                <option value="">Select timeline</option>
+                {timelines.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
-
-            {/* Divider */}
-            <div className="h-px bg-[var(--border)]" />
-
-            {/* Timeline & Budget */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Timeline *
-                </label>
-                <select
-                  name="timeline"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                >
-                  <option value="">Select timeline</option>
-                  {timelines.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Budget range
-                </label>
-                <select
-                  name="budget"
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg2)] border border-[var(--border)] text-[var(--text)] focus:outline-none focus:border-[var(--emerald)] transition-colors"
-                >
-                  <option value="">Select budget</option>
-                  {budgets.map((b) => (
-                    <option key={b} value={b}>
-                      {b}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
             <div>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="readyToStart"
-                  className="w-5 h-5 rounded border-[var(--border)] bg-[var(--bg2)] text-[var(--emerald)] focus:ring-[var(--emerald)] focus:ring-offset-0"
-                />
-                <span className="text-sm text-[var(--muted)]">
-                  Ready to start in the next 2–4 weeks
-                </span>
+              <label htmlFor="df-budget" className={labelClass}>
+                Budget range
               </label>
-            </div>
-
-            {/* Consent */}
-            <div>
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  required
-                  className="w-5 h-5 rounded border-[var(--border)] bg-[var(--bg2)] text-[var(--emerald)] focus:ring-[var(--emerald)] focus:ring-offset-0 mt-0.5"
-                />
-                <span className="text-sm text-[var(--muted)]">
-                  I agree to be contacted about this request.
-                </span>
-              </label>
+              <select id="df-budget" name="budget" className={fieldClass} defaultValue="">
+                <option value="">Select budget</option>
+                {budgets.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn-primary w-full !py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit and book free call'}
-          </button>
+          <div className="flex flex-col gap-3">
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="readyToStart" className="w-[18px] h-[18px] accent-[var(--emerald)]" />
+              <span className="text-sm text-[var(--muted)]">Ready to start in the next 2–4 weeks</span>
+            </label>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" required className="w-[18px] h-[18px] mt-0.5 accent-[var(--emerald)]" />
+              <span className="text-sm text-[var(--muted)]">I agree to be contacted about this request.</span>
+            </label>
+          </div>
+
+          <div>
+            <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
+              {isSubmitting ? 'Sending…' : 'Send and book the free call'}
+            </button>
+            {error && (
+              <p role="alert" className="mt-3 mb-0 text-sm text-[var(--danger)]">
+                That didn’t go through. Try again, or email{' '}
+                <a href="mailto:emanuel@skillfulai.io" className="underline underline-offset-2">
+                  emanuel@skillfulai.io
+                </a>
+                .
+              </p>
+            )}
+          </div>
         </form>
       </div>
     </section>
