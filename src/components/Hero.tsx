@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import HeroField from '@/components/visuals/HeroField';
 import AvatarGeometry from '@/components/visuals/AvatarGeometry';
 
@@ -26,21 +27,28 @@ export default function Hero() {
           <div className="flex items-center gap-3.5 mb-[34px]">
             <span className="w-7 h-px bg-[var(--emerald)]" />
             <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-              Co-founder &amp; CTO · Skillful AI
+              AI systems architect · Building potenci
             </span>
           </div>
 
           <h1 className="m-0 font-bold text-[clamp(40px,4.8vw,74px)] leading-[1.03] tracking-[-0.04em] text-[var(--text)] [text-wrap:balance]">
-            Agentic AI that survives production.
+            AI agents that answer, quote and book. In production.
           </h1>
 
           <p className="mt-8 mb-0 max-w-[640px] text-[19px] leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
-            I architect enterprise agent systems for companies across LATAM, Europe, and North
-            America — regulated data, latency ceilings, legacy mess, and no tolerance for a
-            hallucination when money moves.
+            I architect and operate WhatsApp agents for real businesses, and I own the platform
+            underneath them: runtime, infrastructure, releases, on-call. One of them has answered a
+            grooming spa chain&apos;s line for ten months:{' '}
+            <span className="text-[var(--text)]">234,000+ messages, first reply in ~50 seconds</span>{' '}
+            against ~17 minutes for the human team.
           </p>
           <p className="mt-3.5 mb-0 max-w-[620px] text-base leading-relaxed text-[var(--muted)]">
-            Two consulting engagements open per quarter.
+            <Link
+              href="/writing/whatsapp-ai-agent-ten-months-production"
+              className="text-[var(--emerald2)] hover:text-[var(--emerald3)] transition-colors"
+            >
+              Read the ten-month case study →
+            </Link>
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5 mt-10">
@@ -59,20 +67,23 @@ export default function Hero() {
               Free 15-min discovery
             </a>
           </div>
+          <p className="mt-4 mb-0 text-sm text-[var(--muted)]">Two consulting engagements open per quarter.</p>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 md:mt-14 pt-[26px] border-t border-[var(--border)] w-full max-w-[480px] font-mono text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--muted2)]">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 md:mt-14 pt-[26px] border-t border-[var(--border)] w-full max-w-[560px] font-mono text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--muted2)]">
             <span>Track record</span>
             <span className="text-[var(--muted)]">Intel</span>
-            <span className="text-[#333]">/</span>
+            <span aria-hidden="true" className="text-[#333]">/</span>
             <span className="text-[var(--muted)]">Apple</span>
-            <span className="text-[#333]">/</span>
+            <span aria-hidden="true" className="text-[#333]">/</span>
+            <span className="text-[var(--muted)]">Skillful AI</span>
+            <span aria-hidden="true" className="text-[#333]">/</span>
             <a
-              href="https://skillful.ai"
+              href="https://potenci.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--muted)] hover:text-[var(--emerald2)] transition-colors"
             >
-              Skillful AI ↗
+              potenci ↗
             </a>
           </div>
         </div>
