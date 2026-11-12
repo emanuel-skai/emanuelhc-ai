@@ -66,8 +66,8 @@ export default function OgImage() {
             maxWidth: '800px',
           }}
         >
-          AI agents that answer, quote and book. In production: 234,000+
-          messages in ten months, ~50 s median first reply.
+          AI agents on the front desk, operated like infrastructure.
+          234,000+ messages in ten months, ~50 s median first reply.
         </p>
         <div
           style={{

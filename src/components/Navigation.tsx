@@ -6,10 +6,10 @@ import Logo from './Logo';
 const navLinks = [
   { href: '#work', label: 'Work' },
   { href: '#practice', label: 'Practice' },
+  { href: '#log', label: 'Log' },
   { href: '#services', label: 'Services' },
   { href: '#about', label: 'About' },
   { href: '/writing', label: 'Writing' },
-  { href: '#engage', label: 'Engage' },
 ];
 
 export default function Navigation() {
@@ -27,31 +27,31 @@ export default function Navigation() {
     }
     const element = document.getElementById(href.replace('#', ''));
     if (element) {
-      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - 68;
+      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - 64;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-xl border-b border-[var(--border)]">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 h-[68px] flex items-center justify-between gap-8">
+    <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[var(--border)]">
+      <div className="frame h-[var(--nav-h)] flex items-center justify-between gap-8">
         {/* Logo */}
         <a href="#top" onClick={(e) => scrollToSection(e, '#top')} aria-label="Emanuel Hernández Castillo, home" className="flex items-center gap-2.5 group">
-          <Logo size={36} />
+          <Logo size={32} />
           <span className="text-[var(--text)] font-semibold text-lg tracking-tight hidden sm:block">
             emanuel<span className="text-[var(--emerald)]">.</span>hc
           </span>
         </a>
 
         {/* Desktop nav */}
-        <nav aria-label="Primary" className="hidden md:flex items-center gap-[30px] font-mono text-[11px] tracking-[0.16em] uppercase">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-7 label">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--text)] transition-colors py-2"
             >
               {link.label}
             </a>
@@ -71,7 +71,7 @@ export default function Navigation() {
             href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-white bg-gradient-to-br from-[#10B981] to-[#0D9668] px-[22px] py-[11px] rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_10px_30px_rgba(16,185,129,0.25)]"
+            className="btn-primary !min-h-[40px] !px-[18px] !text-sm"
           >
             Book an hour
           </a>
@@ -80,7 +80,7 @@ export default function Navigation() {
         {/* Mobile menu button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden w-10 h-10 flex items-center justify-center text-[var(--text)] rounded-lg hover:bg-white/5 transition-colors"
+          className="md:hidden w-11 h-11 -mr-2 flex items-center justify-center text-[var(--text)] rounded-lg hover:bg-white/5 transition-colors"
           aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
@@ -108,13 +108,13 @@ export default function Navigation() {
         }`}
       >
         <div className="bg-black/95 backdrop-blur-xl border-b border-[var(--border)]">
-          <div className="px-6 py-4 flex flex-col gap-1">
+          <div className="frame py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="font-mono text-xs tracking-[0.16em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors py-3 px-2"
+                className="label text-[var(--muted)] hover:text-[var(--text)] transition-colors py-3"
               >
                 {link.label}
               </a>
@@ -123,7 +123,7 @@ export default function Navigation() {
               href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 text-center text-sm font-semibold text-white bg-gradient-to-br from-[#10B981] to-[#0D9668] px-[22px] py-3 rounded-xl"
+              className="btn-primary mt-3"
             >
               Book an hour
             </a>

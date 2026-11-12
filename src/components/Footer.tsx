@@ -4,7 +4,7 @@ import Logo from './Logo';
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--bg2)]">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 pt-[70px] pb-10 grid md:grid-cols-[minmax(280px,1fr)_auto_auto] gap-[clamp(32px,6vw,80px)]">
+      <div className="frame pt-[64px] pb-10 grid md:grid-cols-[minmax(280px,1fr)_auto_auto] gap-[clamp(32px,6vw,80px)]">
         <div>
           <div className="flex items-center gap-2.5">
             <Logo size={32} />
@@ -13,12 +13,12 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-5 mb-0 max-w-[380px] text-[15px] leading-relaxed text-[var(--muted)]">
-            AI agents in production, and the platform that keeps them answering. Architected, operated and measured every day.
+            AI agents in production, and the platform that keeps them answering. Built, operated and measured from Costa Rica.
           </p>
         </div>
 
         <nav aria-label="Footer" className="flex flex-col gap-3">
-          <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+          <div className="label label-sm">
             Navigate
           </div>
           <Link href="/#work" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
@@ -30,13 +30,16 @@ export default function Footer() {
           <Link href="/#practice" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Practice
           </Link>
+          <Link href="/#log" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+            Operating log
+          </Link>
           <Link href="/writing" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Writing
           </Link>
         </nav>
 
         <div className="flex flex-col gap-3">
-          <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+          <div className="label label-sm">
             Contact
           </div>
           <a
@@ -64,7 +67,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 pt-6 pb-[46px] border-t border-[var(--border)] flex flex-wrap justify-between gap-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+      <div className="frame pt-6 pb-[44px] border-t border-[var(--border)] flex flex-wrap justify-between gap-4 label label-sm">
         <span>© 2026 Emanuel Hernández Castillo</span>
         <span className="flex gap-6">
           <Link href="/writing" className="text-[var(--muted2)] hover:text-[var(--text)] transition-colors">

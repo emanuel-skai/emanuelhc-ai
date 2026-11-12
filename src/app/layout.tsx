@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 const SITE = 'https://emanuelhc.ai';
 const TITLE = 'Emanuel Hernández Castillo — AI agents in production';
 const DESCRIPTION =
-  'AI systems architect building potenci, a business OS with native AI agents. I architect and operate WhatsApp agents that answer, quote and book for real businesses, and the platform under them. Flagship: 234,000+ messages in ten months, ~50 s median first reply.';
+  'AI systems architect building potenci. I build WhatsApp agents that answer, quote and book for real businesses, and I run the platform under them. Flagship: 234,000+ messages in ten months, ~50 s median first reply against ~17 min for the human team.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
