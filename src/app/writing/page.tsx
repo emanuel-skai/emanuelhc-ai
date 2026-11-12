@@ -5,10 +5,23 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Writing — Emanuel Hernandez',
+  title: 'Writing — Emanuel Hernández Castillo',
   description:
-    'Occasional long-form pieces on agentic AI, enterprise systems, and building in LATAM. Substantive over frequent.',
+    'Long-form case studies and essays on running AI agents in production, with real data from WhatsApp agents in Latin America. Substantive over frequent.',
   alternates: { canonical: 'https://emanuelhc.ai/writing' },
+  openGraph: {
+    title: 'Writing — Emanuel Hernández Castillo',
+    description:
+      'Long-form case studies and essays on running AI agents in production, with real data from WhatsApp agents in Latin America.',
+    url: 'https://emanuelhc.ai/writing',
+    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Writing — Emanuel Hernández Castillo',
+    images: ['/opengraph-image'],
+  },
 };
 
 const pillarColors: Record<string, string> = {
@@ -27,13 +40,15 @@ export default function WritingPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'Writing — Emanuel Hernandez',
+    '@id': 'https://emanuelhc.ai/writing',
+    name: 'Writing — Emanuel Hernández Castillo',
     description:
       'Occasional long-form pieces on agentic AI, enterprise systems, and building in LATAM.',
     url: 'https://emanuelhc.ai/writing',
     author: {
       '@type': 'Person',
-      name: 'Emanuel Hernandez',
+      '@id': 'https://emanuelhc.ai/#person',
+      name: 'Emanuel Hernández Castillo',
       url: 'https://emanuelhc.ai',
     },
     blogPost: publishedArticles.map((a) => ({

@@ -19,44 +19,101 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE = 'https://emanuelhc.ai';
+const TITLE = 'Emanuel Hernández Castillo — AI agents in production';
+const DESCRIPTION =
+  'AI systems architect building potenci, a business OS with native AI agents. I architect and operate WhatsApp agents that answer, quote and book for real businesses, and the platform under them. Flagship: 234,000+ messages in ten months, ~50 s median first reply.';
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://emanuelhc.ai"),
+  metadataBase: new URL(SITE),
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
+    canonical: SITE,
     types: {
-      "application/rss+xml": "https://emanuelhc.ai/feed.xml",
+      'application/rss+xml': `${SITE}/feed.xml`,
     },
   },
-  title: "Emanuel Hernandez — Co-founder & CTO, Skillful AI | Agentic AI Architect",
-  description: "Co-founder and CTO of Skillful AI. I design and build production-grade agentic AI systems for enterprise clients in LATAM, Europe, and North America. Available for a limited number of consulting engagements.",
+  authors: [{ name: 'Emanuel Hernández Castillo', url: SITE }],
+  creator: 'Emanuel Hernández Castillo',
+  keywords: [
+    'AI agents in production',
+    'WhatsApp AI agent',
+    'AI systems architect',
+    'agent operations',
+    'LLM ops',
+    'potenci',
+    'Costa Rica',
+    'LATAM',
+  ],
   verification: {
-    google: "WkiypRy9XA2ZnZlQhMilAc5BAidxxAiQczNcShjB5gg",
+    google: 'WkiypRy9XA2ZnZlQhMilAc5BAidxxAiQczNcShjB5gg',
   },
   openGraph: {
-    title: "Emanuel Hernandez — Co-founder & CTO, Skillful AI | Agentic AI Architect",
-    description: "Co-founder and CTO of Skillful AI. I design and build production-grade agentic AI systems for enterprise clients in LATAM, Europe, and North America.",
-    type: "website",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE,
+    siteName: 'emanuelhc.ai',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Emanuel Hernandez',
-  alternateName: 'Emanuel Hernández Castillo',
-  jobTitle: 'Co-founder and CTO',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Skillful AI',
-    url: 'https://skillfulai.io',
-    sameAs: ['https://skillful.ai'],
-  },
-  url: 'https://emanuelhc.ai',
-  sameAs: [
-    'https://www.linkedin.com/in/emanuelhc/',
-    'https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html',
-    'https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE}/#person`,
+      name: 'Emanuel Hernández Castillo',
+      alternateName: ['Emanuel Hernandez', 'Emanuel Hernandez Castillo'],
+      jobTitle: 'AI Systems Architect',
+      description:
+        'Architects and operates production AI agents (WhatsApp booking, quoting and sales) and the multi-tenant platform under them. Building potenci.',
+      url: SITE,
+      image: `${SITE}/images/PFP_EMANUEL.jpeg`,
+      worksFor: { '@id': 'https://potenci.ai/#organization' },
+      founder: { '@id': 'https://potenci.ai/#organization' },
+      homeLocation: { '@type': 'Country', name: 'Costa Rica' },
+      sameAs: [
+        'https://www.linkedin.com/in/emanuelhc/',
+        'https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html',
+        'https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez',
+      ],
+      knowsAbout: [
+        'AI agents in production',
+        'WhatsApp AI agents',
+        'Agentic AI',
+        'LLM operations and evaluation',
+        'Human-in-the-loop systems',
+        'AWS cloud architecture',
+        'Machine Learning',
+      ],
+      knowsLanguage: ['es', 'en'],
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://potenci.ai/#organization',
+      name: 'potenci',
+      url: 'https://potenci.ai',
+      description:
+        'A business OS with native AI agents that serve customers on WhatsApp and other channels: they sell from the catalog, send priced quotes, book into the calendar and hand off to the team.',
+      founder: { '@id': `${SITE}/#person` },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: 'emanuelhc.ai',
+      inLanguage: ['en', 'es'],
+      publisher: { '@id': `${SITE}/#person` },
+    },
   ],
-  knowsAbout: ['Agentic AI', 'Machine Learning', 'Enterprise AI Systems'],
 };
 
 export default function RootLayout({

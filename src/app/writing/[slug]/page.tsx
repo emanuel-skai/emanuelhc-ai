@@ -25,7 +25,7 @@ export async function generateMetadata({
   const enSlug = article.lang === 'es' ? article.translationSlug : slug;
   const esSlug = article.lang === 'es' ? slug : article.translationSlug;
   return {
-    title: `${article.title} — Emanuel Hernandez`,
+    title: `${article.title} — Emanuel Hernández Castillo`,
     description: article.description,
     keywords: article.keywords,
     alternates: {
@@ -42,18 +42,22 @@ export async function generateMetadata({
       description: article.description,
       type: 'article',
       publishedTime: article.date,
-      authors: ['Emanuel Hernandez'],
+      authors: ['Emanuel Hernández Castillo'],
+      url: `https://emanuelhc.ai/writing/${slug}`,
+      locale: article.lang === 'es' ? 'es_CO' : 'en_US',
       tags: article.keywords,
-      ...(article.image && {
-        images: [{ url: article.image, width: 2400, height: 1254 }],
-      }),
+      images: [
+        article.image
+          ? { url: article.image, width: 2400, height: 1254 }
+          : { url: `/og/${slug}`, width: 1200, height: 630, alt: article.title },
+      ],
     },
-    ...(article.image && {
-      twitter: {
-        card: 'summary_large_image',
-        images: [article.image],
-      },
-    }),
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+      images: [article.image ?? `/og/${slug}`],
+    },
   };
 }
 
@@ -73,29 +77,46 @@ export default async function ArticlePage({
     notFound();
   }
 
+  const url = `https://emanuelhc.ai/writing/${slug}`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${url}#article`,
     headline: article.title,
     description: article.description,
     datePublished: article.date,
+    dateModified: article.date,
     author: {
       '@type': 'Person',
-      name: 'Emanuel Hernandez',
-      jobTitle: 'Co-founder & CTO',
+      '@id': 'https://emanuelhc.ai/#person',
+      name: 'Emanuel Hernández Castillo',
+      jobTitle: 'AI Systems Architect',
       url: 'https://emanuelhc.ai',
+      sameAs: ['https://www.linkedin.com/in/emanuelhc/'],
     },
     publisher: {
       '@type': 'Person',
-      name: 'Emanuel Hernandez',
+      '@id': 'https://emanuelhc.ai/#person',
+      name: 'Emanuel Hernández Castillo',
       url: 'https://emanuelhc.ai',
     },
-    url: `https://emanuelhc.ai/writing/${slug}`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    isPartOf: { '@type': 'Blog', '@id': 'https://emanuelhc.ai/writing', name: 'Writing' },
+    url,
+    articleSection: article.pillar,
     keywords: article.keywords?.join(', '),
     wordCount: article.content.trim().split(/\s+/).length,
     timeRequired: `PT${article.readTimeMinutes}M`,
     inLanguage: article.lang,
-    ...(article.image && { image: `https://emanuelhc.ai${article.image}` }),
+    image: `https://emanuelhc.ai${article.image ?? `/og/${slug}`}`,
+    ...(article.translationSlug && {
+      [article.lang === 'es' ? 'translationOfWork' : 'workTranslation']: {
+        '@type': 'Article',
+        '@id': `https://emanuelhc.ai/writing/${article.translationSlug}#article`,
+        url: `https://emanuelhc.ai/writing/${article.translationSlug}`,
+        inLanguage: article.lang === 'es' ? 'en' : 'es',
+      },
+    }),
   };
 
   const enSlug = article.lang === 'es' ? article.translationSlug : slug;

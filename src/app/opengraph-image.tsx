@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Emanuel Hernandez — Co-founder & CTO, Skillful AI';
+export const alt = 'Emanuel Hernández Castillo — AI agents in production';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -42,7 +42,7 @@ export default function OgImage() {
               fontSize: '20px',
             }}
           >
-            Co-founder &amp; CTO · Skillful AI
+            AI systems architect · Building potenci
           </span>
         </div>
         <h1
@@ -55,7 +55,7 @@ export default function OgImage() {
             marginBottom: '24px',
           }}
         >
-          Emanuel Hernandez
+          Emanuel Hernández Castillo
         </h1>
         <p
           style={{
@@ -66,8 +66,8 @@ export default function OgImage() {
             maxWidth: '800px',
           }}
         >
-          Production-grade agentic AI systems for enterprise clients in LATAM,
-          Europe, and North America.
+          AI agents that answer, quote and book. In production: 234,000+
+          messages in ten months, ~50 s median first reply.
         </p>
         <div
           style={{
@@ -76,7 +76,7 @@ export default function OgImage() {
             right: '80px',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '0px',
           }}
         >
           <span
