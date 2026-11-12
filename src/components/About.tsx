@@ -4,83 +4,97 @@ import Image from 'next/image';
 import { useReveal } from '@/hooks/useReveal';
 import AboutField from '@/components/visuals/AboutField';
 
-const expertise = [
+const workingSet = [
   'WhatsApp agents that quote, book and hand off',
-  'Tool contracts, write gates and grounding',
-  'Evals and regression benches before release',
+  'Tool contracts, write gates, grounding',
+  'Regression benches before every release',
   'Model choice by cost per conversation',
-  'AWS, Terraform, CI/CD and canaries',
-  'Incident response and honest post-mortems',
+  'AWS, Terraform, tag releases, canaries',
+  'Incident response and post-mortems',
 ];
 
 export default function About() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section id="about" ref={ref} className="relative border-t border-[var(--border)] bg-[var(--bg2)] overflow-hidden">
-      {/* Extended spirograph field bleeding off the right edge */}
-      <AboutField className="hidden md:block absolute top-1/2 -right-[320px] w-[820px] h-[820px] -translate-y-1/2 pointer-events-none opacity-55" />
+    <section
+      id="about"
+      ref={ref}
+      aria-labelledby="about-heading"
+      className="relative border-t border-[var(--border)] bg-[var(--bg2)] overflow-hidden"
+    >
+      {/* Spirograph field bleeding off the right edge, away from the text */}
+      <AboutField className="hidden lg:block absolute top-1/2 -right-[360px] w-[820px] h-[820px] -translate-y-1/2 pointer-events-none opacity-40" />
 
-      <div className="relative z-[2] max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)] grid lg:grid-cols-[minmax(260px,340px)_minmax(320px,1fr)] gap-[clamp(40px,6vw,80px)] items-start">
-        <div className="reveal">
-          <div className="relative rounded-[20px] overflow-hidden border border-[var(--border-light)] bg-[var(--panel)] aspect-[4/5] grid place-items-center">
+      <div className="frame section-pad relative z-[2] grid gap-[clamp(40px,6vw,88px)] lg:grid-cols-[minmax(240px,320px)_minmax(0,1fr)] items-start">
+        <div className="reveal max-w-[320px]">
+          <div className="relative rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border-light)] bg-[var(--panel)] aspect-[4/5]">
             <Image
               src="/images/PFP_EMANUEL.jpeg"
               alt="Emanuel Hernández Castillo"
-              width={680}
-              height={850}
-              className="w-full h-full object-cover [filter:grayscale(0.25)_contrast(1.05)]"
+              width={640}
+              height={800}
+              className="w-full h-full object-cover [filter:grayscale(0.3)_contrast(1.05)]"
             />
           </div>
-          <div className="flex items-center gap-2.5 mt-5">
-            <span className="status-dot" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--text-secondary)]">
-              Available · 2 engagements per quarter
-            </span>
-          </div>
-          <div className="mt-3.5 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-            Costa Rica · all time zones
-          </div>
+          <ul className="m-0 mt-5 p-0 list-none flex flex-col gap-3">
+            <li className="flex items-center gap-2.5 label text-[var(--text-secondary)]">
+              <span className="status-dot" aria-hidden="true" />
+              Taking 2 engagements per quarter
+            </li>
+            <li className="pl-[17px] label label-sm">Costa Rica (UTC−6) · ES / EN</li>
+          </ul>
         </div>
 
-        <div className="reveal">
-          <div className="flex items-center gap-3.5 mb-[26px]">
-            <span className="w-7 h-px bg-[var(--emerald)]" />
-            <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-              About
-            </span>
-          </div>
-          <h2 className="m-0 font-bold text-[clamp(30px,3.6vw,44px)] leading-[1.06] tracking-[-0.035em] text-[var(--text)]">
+        <div className="reveal max-w-[720px]">
+          <p className="eyebrow m-0">
+            <span className="eyebrow-index">05</span>
+            <span aria-hidden="true" className="eyebrow-rule" />
+            <span>About</span>
+          </p>
+          <h2
+            id="about-heading"
+            className="mt-6 mb-0 font-bold text-[clamp(32px,4vw,50px)] tracking-[-0.038em] text-[var(--text)]"
+            style={{ lineHeight: 1.04 }}
+          >
             Emanuel Hernández Castillo
           </h2>
-          <p className="mt-7 mb-0 max-w-[620px] text-lg leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
-            I architect and operate AI agents that do front-desk work on WhatsApp, and I own the
-            platform under them. In 2026 that platform became{' '}
+          <p className="mt-7 mb-0 text-[18px] md:text-[19px] leading-[1.6] text-[var(--text-secondary)] [text-wrap:pretty]">
+            I build and operate AI agents that do front-desk work on WhatsApp, and the platform
+            they run on. In 2026 that platform became{' '}
             <a
               href="https://potenci.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--text)] border-b border-[rgba(16,185,129,0.5)] hover:text-[var(--emerald2)] transition-colors"
+              className="text-[var(--text)] underline decoration-[var(--emerald)] decoration-1 underline-offset-4 hover:text-[var(--emerald2)] transition-colors"
             >
               potenci
             </a>
-            , a business OS with native AI agents. It runs production agents for businesses in
-            grooming, signage and printing, textile retail and online gaming.
+            , a business OS with native AI agents. I run its releases, its infrastructure and its
+            night windows myself.
           </p>
-          <p className="mt-5 mb-0 max-w-[620px] text-[17px] leading-[1.65] text-[var(--muted)] [text-wrap:pretty]">
-            I co-founded Skillful AI and led its engineering as CTO. Before that: GPU software
-            engineering at Intel, data science for App Store and Apple TV+ at Apple, and a decade
-            of ML across growth-stage companies. The through-line is systems that hold up when the
-            demo ends, and the habit of measuring whether they do.
+          <p className="mt-5 mb-0 text-base md:text-[17px] leading-[1.7] text-[var(--muted)] [text-wrap:pretty]">
+            I move fast and I don’t ship untested. A change goes out when the bench passes, at night
+            when volume is low, with the rollback written first. Clients get a daily report that
+            names failures one by one, including the ones I caused.
+          </p>
+          <p className="mt-5 mb-0 text-base md:text-[17px] leading-[1.7] text-[var(--muted)] [text-wrap:pretty]">
+            Before potenci: co-founder and CTO of Skillful AI, GPU software at Intel, data science
+            for App Store and Apple TV+ at Apple, and a decade of machine learning in growth-stage
+            companies. I work in Spanish and English with teams in Latin America, the US and Europe.
           </p>
 
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px mt-11 bg-[var(--border)] border border-[var(--border)] rounded-2xl overflow-hidden">
-            {expertise.map((e) => (
-              <div key={e} className="bg-black px-[22px] py-5 text-[15px] leading-normal text-[var(--text-secondary)]">
+          <p className="mt-11 mb-0 label">Working set</p>
+          <ul className="m-0 mt-4 p-0 list-none grid sm:grid-cols-2 border-t border-[var(--border)]">
+            {workingSet.map((e) => (
+              <li
+                key={e}
+                className="py-3.5 pr-4 border-b border-[var(--border)] text-[15px] leading-snug text-[var(--text-secondary)]"
+              >
                 {e}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

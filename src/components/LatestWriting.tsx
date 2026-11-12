@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useReveal } from '@/hooks/useReveal';
+import SectionHeader from '@/components/SectionHeader';
 
 export interface LatestArticle {
   slug: string;
@@ -30,39 +31,31 @@ export default function LatestWriting({ articles }: { articles: LatestArticle[] 
       id="writing"
       ref={ref}
       aria-labelledby="writing-heading"
-      className="border-t border-[var(--border)] bg-black scroll-mt-[68px]"
+      className="border-t border-[var(--border)] bg-black"
     >
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
-        <div className="reveal flex items-end justify-between gap-10 flex-wrap">
-          <div className="max-w-[660px]">
-            <div className="flex items-center gap-3.5 mb-[26px]">
-              <span className="w-7 h-px bg-[var(--emerald)]" />
-              <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-                Writing
-              </span>
-            </div>
-            <h2
-              id="writing-heading"
-              className="m-0 font-bold text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.035em] text-[var(--text)]"
-            >
-              Production data, written up
-            </h2>
-          </div>
-          <Link
-            href="/writing"
-            className="font-mono text-[11px] tracking-[0.16em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-          >
-            All writing →
-          </Link>
-        </div>
+      <div className="frame section-pad">
+        <SectionHeader
+          index="06"
+          label="Writing"
+          id="writing-heading"
+          title="Long-form, from production logs."
+          aside={
+            <>
+              Case studies with the numbers, including the bad months. English and Spanish.{' '}
+              <Link href="/writing" className="link-arrow">
+                All writing <span aria-hidden="true" className="arrow">→</span>
+              </Link>
+            </>
+          }
+        />
 
-        <ul className="reveal grid md:grid-cols-3 gap-5 mt-16 mb-0 p-0 list-none">
+        <ul className="reveal grid md:grid-cols-3 gap-3 mt-14 md:mt-16 mb-0 p-0 list-none">
           {articles.map((a) => (
             <li
               key={a.slug}
-              className="relative bg-gradient-to-b from-[var(--panel)] to-[var(--bg2)] border border-[var(--border)] rounded-[20px] p-6 md:p-[30px] flex flex-col transition-all duration-300 hover:border-[var(--border-bright)] hover:-translate-y-0.5"
+              className="relative panel p-6 md:p-7 flex flex-col min-h-[220px] transition-colors duration-200 hover:border-[var(--border-bright)] focus-within:border-[var(--border-bright)]"
             >
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 label label-sm">
                 <time dateTime={a.date}>{formatDate(a.date)}</time>
                 <span>{a.readTimeMinutes} min read</span>
               </div>
@@ -72,7 +65,7 @@ export default function LatestWriting({ articles }: { articles: LatestArticle[] 
               >
                 <Link
                   href={`/writing/${a.slug}`}
-                  className="after:absolute after:inset-0 after:rounded-[20px] hover:text-[var(--emerald2)] transition-colors"
+                  className="after:absolute after:inset-0 after:rounded-[var(--radius-lg)] hover:text-[var(--emerald2)] transition-colors"
                 >
                   {a.title}
                 </Link>
@@ -82,7 +75,7 @@ export default function LatestWriting({ articles }: { articles: LatestArticle[] 
                   href={`/writing/${a.translationSlug}`}
                   hrefLang="es"
                   lang="es"
-                  className="relative z-[1] mt-auto pt-8 self-start font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--emerald2)] transition-colors"
+                  className="relative z-[1] mt-auto pt-8 self-start label label-sm text-[var(--muted)] hover:text-[var(--emerald2)] transition-colors"
                 >
                   También en español →
                 </Link>

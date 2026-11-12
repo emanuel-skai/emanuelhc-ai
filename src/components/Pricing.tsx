@@ -1,101 +1,114 @@
 'use client';
 
 import { useReveal } from '@/hooks/useReveal';
+import SectionHeader from '@/components/SectionHeader';
+
+const CALENDAR = 'https://calendar.app.google/1P4C3Q9yWTBsxLv38';
+
+const offers = [
+  {
+    name: 'Consulting hour',
+    price: '$200',
+    unit: '/ hour',
+    desc: 'An architecture review, a live incident, or a design decision you keep circling. Written notes and an action plan after the call.',
+    cta: 'Book an hour',
+    href: CALENDAR,
+    external: true,
+  },
+  {
+    name: '50-hour block',
+    price: '$10,000',
+    unit: '/ 50 hrs',
+    desc: 'One feature, shipped to production: built, benched, released behind gates, with a runbook. Priority scheduling, async support, weekly syncs.',
+    cta: 'Apply via discovery',
+    href: '#discovery',
+    featured: true,
+  },
+  {
+    name: 'Discovery',
+    price: 'Free',
+    unit: '/ 15 min',
+    desc: 'A short form, then fifteen minutes to check fit and scope. If I’m not the right person, I’ll say so and point you to someone who is.',
+    cta: 'Start discovery',
+    href: '#discovery',
+  },
+];
+
+const steps = [
+  {
+    name: 'The hour',
+    desc: 'We look at the real system: logs, conversations, config. You get written notes and the next actions.',
+  },
+  {
+    name: 'The build',
+    desc: 'Work runs from a shared backlog. Every change passes the bench and ships behind gates, one at a time.',
+  },
+  {
+    name: 'The handover',
+    desc: 'Runbook, regression bench and a daily report your team can read. Whoever operates it next can see when it fails.',
+  },
+];
 
 export default function Pricing() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section id="engage" ref={ref} className="border-t border-[var(--border)] bg-black">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
-        <div className="reveal max-w-[700px]">
-          <div className="flex items-center gap-3.5 mb-[26px]">
-            <span className="w-7 h-px bg-[var(--emerald)]" />
-            <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-              Engagement
-            </span>
-          </div>
-          <h2 className="m-0 font-bold text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.035em] text-[var(--text)]">
-            Start with one hour
-          </h2>
-          <p className="mt-6 mb-0 text-lg leading-[1.65] text-[var(--muted)]">
-            Most engagements start with a single paid hour and a written plan. Scale up only if
-            it&apos;s worth it.
-          </p>
+    <section id="engage" ref={ref} aria-labelledby="engage-heading" className="border-t border-[var(--border)] bg-[var(--bg2)]">
+      <div className="frame section-pad">
+        <SectionHeader
+          index="07"
+          label="Engage"
+          id="engage-heading"
+          title="Start with one paid hour."
+          aside="Bring the system and the problem. Anything bigger starts from the plan we write in that hour, not from a pitch."
+        />
+
+        <div className="reveal cells md:grid-cols-3 mt-14 md:mt-16">
+          {offers.map((o) => (
+            <div
+              key={o.name}
+              className={`relative p-6 md:p-8 flex flex-col ${o.featured ? '!bg-[var(--panel2)]' : '!bg-black'}`}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="label">{o.name}</span>
+                {o.featured && <span className="label label-sm text-[var(--emerald2)]">For shipping</span>}
+              </div>
+              <p className="mt-6 mb-0 flex items-baseline gap-2">
+                <span className="font-[family-name:var(--font-sora)] font-bold text-[40px] leading-none tracking-[-0.04em] text-[var(--text)] tnum">
+                  {o.price}
+                </span>
+                <span className="text-[15px] text-[var(--muted)]">{o.unit}</span>
+              </p>
+              <p className="mt-5 mb-0 text-[15px] leading-relaxed text-[var(--muted)] [text-wrap:pretty]">{o.desc}</p>
+              <div className="mt-auto pt-8">
+                <a
+                  href={o.href}
+                  {...(o.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className={o.featured ? 'btn-primary w-full' : 'btn-secondary w-full'}
+                >
+                  {o.cta}
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5 mt-[60px]">
-          {/* Consulting hour */}
-          <div className="reveal bg-gradient-to-b from-[var(--panel)] to-[var(--bg2)] border border-[var(--border)] rounded-[20px] p-[34px] flex flex-col transition-all duration-300 hover:border-[var(--border-bright)] hover:-translate-y-0.5">
-            <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-              Consulting hour
-            </div>
-            <div className="mt-[22px] font-bold text-[40px] tracking-[-0.035em] text-[var(--text)] font-[family-name:var(--font-sora)]">
-              $200
-              <span className="font-[family-name:var(--font-inter)] text-base font-normal text-[var(--muted)]"> / hour</span>
-            </div>
-            <p className="mt-[18px] mb-0 text-[15px] leading-relaxed text-[var(--muted)]">
-              Architecture review, debugging, or a hard design decision. You leave with notes and an
-              action plan.
-            </p>
-            <a
-              href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto pt-[30px] text-[15px] font-semibold text-[var(--emerald2)] hover:text-[var(--emerald3)] transition-colors"
-            >
-              Book an hour →
-            </a>
-          </div>
-
-          {/* 50-hour block — recommended */}
-          <div className="reveal relative bg-gradient-to-b from-[var(--panel2)] to-[#050505] border border-[rgba(16,185,129,0.28)] rounded-[20px] p-[34px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-            <div className="absolute top-[22px] right-[22px] font-mono text-[9px] tracking-[0.2em] uppercase text-[var(--emerald)]">
-              Recommended
-            </div>
-            <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-              50-hour block
-            </div>
-            <div className="mt-[22px] font-bold text-[40px] tracking-[-0.035em] text-[var(--text)] font-[family-name:var(--font-sora)]">
-              $10,000
-              <span className="font-[family-name:var(--font-inter)] text-base font-normal text-[var(--muted)]"> / 50 hrs</span>
-            </div>
-            <p className="mt-[18px] mb-0 text-[15px] leading-relaxed text-[var(--text-secondary)]">
-              Ship a full feature to production. Priority scheduling, async support, weekly syncs,
-              documentation.
-            </p>
-            <a
-              href="#discovery"
-              className="mt-auto pt-[30px] text-[15px] font-semibold text-[var(--emerald2)] hover:text-[var(--emerald3)] transition-colors"
-            >
-              Apply via discovery →
-            </a>
-          </div>
-
-          {/* Discovery */}
-          <div className="reveal bg-gradient-to-b from-[var(--panel)] to-[var(--bg2)] border border-[var(--border)] rounded-[20px] p-[34px] flex flex-col transition-all duration-300 hover:border-[var(--border-bright)] hover:-translate-y-0.5">
-            <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-              Discovery
-            </div>
-            <div className="mt-[22px] font-bold text-[40px] tracking-[-0.035em] text-[var(--text)] font-[family-name:var(--font-sora)]">
-              Free
-              <span className="font-[family-name:var(--font-inter)] text-base font-normal text-[var(--muted)]"> / 15 min</span>
-            </div>
-            <p className="mt-[18px] mb-0 text-[15px] leading-relaxed text-[var(--muted)]">
-              A short qualification form, then fifteen minutes to check fit and scope. No pitch.
-            </p>
-            <a
-              href="#discovery"
-              className="mt-auto pt-[30px] text-[15px] font-semibold text-[var(--emerald2)] hover:text-[var(--emerald3)] transition-colors"
-            >
-              Start discovery →
-            </a>
-          </div>
+        <div className="reveal mt-14">
+          <p className="label m-0">How it runs</p>
+          <ol className="m-0 mt-5 p-0 list-none grid gap-8 md:gap-10 md:grid-cols-3">
+            {steps.map((s, i) => (
+              <li key={s.name} className="pt-5 border-t border-[var(--border-light)]">
+                <span className="label label-sm text-[var(--emerald2)] tnum">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="mt-3 mb-0 font-semibold text-lg tracking-[-0.015em] text-[var(--text)]" style={{ lineHeight: 1.3 }}>
+                  {s.name}
+                </h3>
+                <p className="mt-2 mb-0 text-[15px] leading-relaxed text-[var(--muted)] [text-wrap:pretty]">{s.desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
 
-        <div className="mt-[26px] font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-          NDA on request · blocks paid upfront
-        </div>
+        <p className="reveal mt-12 mb-0 label label-sm">NDA on request · blocks paid upfront</p>
       </div>
     </section>
   );
