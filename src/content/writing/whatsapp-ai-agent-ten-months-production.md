@@ -1,6 +1,6 @@
 ---
 title: "Ten Months Running a WhatsApp AI Agent in Production: The Francesca Case Study"
-description: "Francesca books appointments on WhatsApp for a grooming spa chain in Bogotá. 234,000 messages in ten months, including the month the client switched her off, the outages, and what it took to put her back on full automatic. A detailed case study of operating, not launching, an AI agent."
+description: "Francesca books appointments on WhatsApp for San Roque, a grooming spa chain in Bogotá. 234,000 messages in ten months, including the month the client switched her off, the outages, and what it took to put her back on full automatic. A detailed case study of operating, not launching, an AI agent."
 date: "2026-11-12"
 pillar: "Agentic AI"
 published: true
@@ -17,7 +17,7 @@ lang: "en"
 translationSlug: "agente-ia-whatsapp-diez-meses-produccion"
 ---
 
-Francesca answers WhatsApp for a grooming spa chain in Bogotá: two branches, more than a dozen groomers, dogs and cats. She quotes by breed, books against real calendars, moves and cancels appointments, and hands conversations to the team when a human should take them.
+Francesca answers WhatsApp for San Roque, a grooming spa chain in Bogotá: two branches, more than a dozen groomers, dogs and cats. She quotes by breed, books against real calendars, moves and cancels appointments, and hands conversations to the team when a human should take them.
 
 In ten months she has handled more than 234,000 messages across 6,300 conversations. Her median first reply is about 50 seconds. In August, the client switched her off.
 

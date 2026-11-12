@@ -1,6 +1,6 @@
 ---
 title: "Diez meses operando un agente de IA en WhatsApp: el caso de Francesca"
-description: "Francesca agenda citas por WhatsApp para una cadena de spas de grooming en Bogotá. 234.000 mensajes en diez meses, incluido el mes en que el cliente la apagó, las caídas y lo que costó volver a modo automático. Un caso de estudio sobre operar, no lanzar, un agente de IA."
+description: "Francesca agenda citas por WhatsApp para San Roque, una cadena de spas de grooming en Bogotá. 234.000 mensajes en diez meses, incluido el mes en que el cliente la apagó, las caídas y lo que costó volver a modo automático. Un caso de estudio sobre operar, no lanzar, un agente de IA."
 date: "2026-11-12"
 pillar: "Agentic AI"
 published: true
@@ -17,7 +17,7 @@ lang: "es"
 translationSlug: "whatsapp-ai-agent-ten-months-production"
 ---
 
-Francesca contesta el WhatsApp de una cadena de spas de grooming en Bogotá: dos sedes, más de una docena de groomers, perros y gatos. Cotiza por raza, agenda sobre calendarios reales, mueve y cancela citas, y le pasa la conversación al equipo cuando le toca a una persona.
+Francesca contesta el WhatsApp de San Roque, una cadena de spas de grooming en Bogotá: dos sedes, más de una docena de groomers, perros y gatos. Cotiza por raza, agenda sobre calendarios reales, mueve y cancela citas, y le pasa la conversación al equipo cuando le toca a una persona.
 
 En diez meses ha manejado más de 234.000 mensajes en 6.300 conversaciones. Su primera respuesta tarda, en la mediana, unos 50 segundos. En agosto, el cliente la apagó.
 
