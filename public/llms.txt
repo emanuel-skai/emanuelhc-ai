@@ -1,23 +1,46 @@
-# Emanuel Hernandez — emanuelhc.ai
+# Emanuel Hernández Castillo — emanuelhc.ai
 
-> Personal site of Emanuel Hernández Castillo, co-founder & CTO of Skillful AI and production AI systems architect. He designs and operates production-grade agentic AI systems — grounded tool calling, versioned agent configuration, evaluation gates, observability, and human handoff — for enterprise clients in LATAM, Europe, and North America. The site offers consulting services and publishes long-form, data-backed case studies and essays on production agentic AI.
+> Personal site of Emanuel Hernández Castillo, an AI systems architect based in Costa Rica who is building potenci (https://potenci.ai), a business OS with native AI agents. He architects and operates production AI agents that answer, quote and book on WhatsApp for real businesses, and owns the multi-tenant platform under them: agent runtime, AWS infrastructure, releases and incident response. The site publishes long-form, data-backed case studies on running AI agents in production, in English and Spanish, and offers a limited number of consulting engagements.
 
-Emanuel's core thesis: the model is only one part of the system — AI systems fail less often because the model is weak than because the surrounding system is poorly designed.
+Core thesis: an AI agent in production is an operation, not a launch. Almost none of the failures in a year of production came from the model; they came from the system around it. Rules that matter belong in tools, health checks must verify AI output rather than plumbing, and autonomy is earned with numbers the client can check.
 
-## Writing
+## Flagship case study
 
-- [What 27,000 WhatsApp Conversations Taught Me About Production AI Agents](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study): Production case study of Tere, an AI sales agent for Colombian fabric retailer Telas Real. 27,482 conversations, 99.96% resolved without human takeover, 29,508 grounded database lookups. Covers grounded tool calling vs. model knowledge, four-layer versioned agent configuration, human handoff design, and multimodal embedding search for exact visual matching. Data verified as of July 15, 2026.
-- [Caso de estudio: Tere, nueve meses de una agente de ventas por WhatsApp en producción](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study-es): Spanish version of the Telas Real / Tere production case study.
-- [Human-in-the-loop for voice agents: why your architecture decides whether it's possible](https://emanuelhc.ai/writing/voice-agent-hitl-architecture): Cascaded vs. native speech-to-speech tradeoffs, and why the architecture choice determines whether human review before delivery is possible for enterprise compliance.
+- [Ten Months Running a WhatsApp AI Agent in Production: The Francesca Case Study](https://emanuelhc.ai/writing/whatsapp-ai-agent-ten-months-production): Francesca books appointments on WhatsApp for a grooming spa chain in Bogotá. 234,000+ messages and 6,300+ conversations in ten months. With automatic mode on (Sep 23 – Nov 10, 2026): median first reply ~50 seconds vs ~17 minutes for the human team, 99.7% of AI replies under five minutes, after-hours conversations answered up from 60.3% to 87.4%, 377 appointments booked by the agent in seven weeks, and unanswered conversations down from 72.8% (March) to 7.8% (November). Covers the month the client switched the agent off, why assisted mode failed (about 3% of drafts were approved), gated writes, moving rules from prompt to tools, silent outages behind green dashboards, and two-way calendar sync.
+- [Diez meses operando un agente de IA en WhatsApp: el caso de Francesca](https://emanuelhc.ai/writing/agente-ia-whatsapp-diez-meses-produccion): Spanish version of the Francesca case study.
+
+## Other writing
+
+- [We Swapped the Brain of a Production AI Agent and Measured Whether Its Personality Survived](https://emanuelhc.ai/writing/swapping-llm-production-agent-personality): Changing the LLM behind a production WhatsApp receptionist with a byte-identical persona prompt, and measuring what transferred and what silently changed. Spanish: https://emanuelhc.ai/writing/swapping-llm-production-agent-personality-es
+- [What 27,000 WhatsApp Conversations Taught Me About Production AI Agents](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study): Production case study of an AI sales agent for a Colombian fabric retailer. Grounded tool calling vs. model knowledge, versioned agent configuration, human handoff design, multimodal search. Spanish: https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study-es
+- [Human-in-the-loop for voice agents: why your architecture decides whether it's possible](https://emanuelhc.ai/writing/voice-agent-hitl-architecture): Cascaded vs. native speech-to-speech tradeoffs, and why the architecture choice decides whether human review before delivery is possible.
+
+## How he runs agents in production
+
+- The regression bench decides whether a change ships; it runs before publishing, not after.
+- Agent health means AI replies delivered in the last window, split from human replies. Inbound traffic and HTTP 200s prove nothing.
+- Rules that matter live in tools (pricing, calendar capacity), not only in the prompt.
+- Writes (book, move, cancel) need a summary and an explicit customer "yes".
+- One change per window, at night, with the rollback written first; every change gets a 48-hour readout.
+- The cheapest model that clears the quality and safety bar, measured per conversation.
+- Releases are tagged only from main; post-mortems name their own trigger.
+
+## 2026 work (Aug – Nov)
+
+- Production WhatsApp agents for four businesses: a grooming spa chain, a signage and print shop, a textile retailer (Colombia/Peru) and an online gaming platform.
+- Migrated an entire multi-tenant agent platform to a new AWS account in about four days with a full-dump restore; cut the run-rate within a week without long-term commitments.
+- 585 backend and 169 frontend commits; tag-based releases from v1.2.0 to v1.3.16 with manual migrate and deploy gates; canaries for auth, webhooks and AI output.
+- A scheduling product with two-way Google Calendar sync, billing on Paddle, an operator mobile app on Google Play, and daily client reporting.
 
 ## Pages
 
-- [Home](https://emanuelhc.ai): Services, process, pricing, and discovery form for AI consulting engagements.
+- [Home](https://emanuelhc.ai): Positioning, flagship numbers, selected work, production practices, 2026 operating log, services, engagement options and discovery form.
 - [Writing index](https://emanuelhc.ai/writing): All published articles.
 - [RSS feed](https://emanuelhc.ai/feed.xml)
 
 ## About
 
-- Emanuel Hernández Castillo is co-founder & CTO of Skillful AI (https://skillfulai.io), a platform for multi-channel production AI agents with grounded tools, versioned configuration, evaluation gates, and built-in human handoff.
+- Emanuel Hernández Castillo is building potenci (https://potenci.ai), a business OS with native AI agents. He co-founded Skillful AI and led its engineering as CTO. Earlier: GPU software at Intel and data science for App Store and Apple TV+ at Apple.
+- Based in Costa Rica; works in Spanish and English across Latin America, Europe and North America.
 - Profiles: https://www.linkedin.com/in/emanuelhc/ · https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html · https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez
 - Contact: emanuel@skillfulai.io
