@@ -24,13 +24,14 @@ export const metadata: Metadata = {
   },
 };
 
-const pillarColors: Record<string, string> = {
-  'Agentic AI': 'border-[var(--emerald)] text-[var(--emerald)]',
-  Enterprise: 'border-blue-400 text-blue-400',
-  LATAM: 'border-amber-400 text-amber-400',
-  Frontier: 'border-purple-400 text-purple-400',
-  'CTO Craft': 'border-rose-400 text-rose-400',
-};
+function formatDate(date: string) {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+}
 
 export default function WritingPage() {
   // Spanish translations are reachable via the language toggle on the article
@@ -63,84 +64,68 @@ export default function WritingPage() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen pt-32 pb-20">
+      <main className="min-h-screen pt-[clamp(48px,8vw,96px)] pb-24">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="container max-w-3xl">
-          {/* Header */}
-          <div className="mb-16">
-            <h1 className="text-[40px] md:text-[52px] font-bold text-[var(--text)] mb-4 tracking-tight">
-              Writing
-            </h1>
-            <p className="text-[var(--muted)] text-lg leading-relaxed max-w-xl">
-              Occasional long-form pieces on agentic AI, enterprise systems, and building in LATAM.
-              Substantive over frequent.
-            </p>
-          </div>
-
-          {/* Articles or Empty State */}
-          {publishedArticles.length > 0 ? (
-            <div className="space-y-6">
-              {publishedArticles.map((article) => (
-                <Link
-                  key={article.slug}
-                  href={`/writing/${article.slug}`}
-                  className="block card p-6 md:p-8 group"
-                >
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span
-                      className={`text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-full border ${
-                        pillarColors[article.pillar] || pillarColors['Agentic AI']
-                      }`}
-                    >
-                      {article.pillar}
-                    </span>
-                    <time
-                      dateTime={article.date}
-                      className="text-[var(--muted2)] text-xs"
-                    >
-                      {new Date(article.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                    <span className="text-[var(--muted2)] text-xs">
-                      {article.readTimeMinutes} min read
-                    </span>
-                  </div>
-                  <h2 className="text-xl font-semibold text-[var(--text)] mb-2 group-hover:text-[var(--emerald)] transition-colors">
-                    {article.title}
-                  </h2>
-                  <p className="text-[var(--muted)] text-[15px] leading-relaxed">
-                    {article.description}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="card p-8 md:p-12 text-center">
-              <p className="text-[var(--muted)] text-lg mb-6">
-                First piece coming soon. Subscribe to get notified.
+        <div className="frame">
+          <div className="max-w-[820px] mx-auto">
+            <header className="pb-12 border-b border-[var(--border)]">
+              <p className="eyebrow m-0">
+                <span aria-hidden="true" className="eyebrow-rule" />
+                <span>Writing</span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 px-4 py-3 rounded-lg bg-[var(--panel)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted2)] focus:outline-none focus:border-[var(--emerald)] transition-colors text-sm"
-                  readOnly
-                />
-                <a
-                  href="mailto:emanuel@skillfulai.io?subject=Subscribe%20to%20Writing"
-                  className="btn-primary !py-3 !px-6 text-center"
-                >
-                  Subscribe
-                </a>
-              </div>
-            </div>
-          )}
+              <h1
+                className="mt-6 mb-0 font-bold text-[clamp(38px,5vw,60px)] tracking-[-0.045em] text-[var(--text)]"
+                style={{ lineHeight: 1.02 }}
+              >
+                Long-form, from production logs.
+              </h1>
+              <p className="mt-6 mb-0 max-w-[600px] text-lg leading-[1.6] text-[var(--muted)] [text-wrap:pretty]">
+                Case studies with the numbers, the incidents and the fixes, including the bad
+                months. Most pieces are also in Spanish.
+              </p>
+            </header>
+
+            {publishedArticles.length > 0 ? (
+              <ul className="m-0 p-0 list-none">
+                {publishedArticles.map((article) => (
+                  <li key={article.slug} className="border-b border-[var(--border)]">
+                    <Link
+                      href={`/writing/${article.slug}`}
+                      className="group block py-9 md:py-10"
+                    >
+                      <p className="m-0 flex flex-wrap items-center gap-x-3 gap-y-1 label">
+                        <span className="text-[var(--emerald2)]">{article.pillar}</span>
+                        <span aria-hidden="true" className="text-[var(--faint)]">/</span>
+                        <time dateTime={article.date}>{formatDate(article.date)}</time>
+                        <span aria-hidden="true" className="text-[var(--faint)]">/</span>
+                        <span>{article.readTimeMinutes} min read</span>
+                        {article.translationSlug && (
+                          <>
+                            <span aria-hidden="true" className="text-[var(--faint)]">/</span>
+                            <span>EN · ES</span>
+                          </>
+                        )}
+                      </p>
+                      <h2
+                        className="mt-4 mb-0 font-semibold text-[clamp(22px,2.4vw,28px)] tracking-[-0.025em] text-[var(--text)] group-hover:text-[var(--emerald2)] transition-colors"
+                        style={{ lineHeight: 1.2 }}
+                      >
+                        {article.title}
+                      </h2>
+                      <p className="mt-3 mb-0 max-w-[680px] text-[15px] md:text-base leading-relaxed text-[var(--muted)] [text-wrap:pretty]">
+                        {article.description}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-12 text-[var(--muted)] text-lg">First piece coming soon.</p>
+            )}
+          </div>
         </div>
       </main>
       <Footer />
