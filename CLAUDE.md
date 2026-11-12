@@ -25,7 +25,7 @@ No test framework is configured.
 Personal site: positioning, proof, consulting and writing. The home page (`src/app/page.tsx`, a server component) composes these sections in order:
 
 ```
-Navigation > Hero > StatsBand > CaseStudies > Practices > OperatingLog > Services > Process > About > LatestWriting > Pricing > FAQ > FinalCTA > DiscoveryForm > Footer
+Navigation > Hero (+ HeroReadout) > CaseStudies (01 Work, flagship + other cases) > Practices (02) > OperatingLog (03) > Services (04) > About (05) > LatestWriting (06) > Pricing (07 Engage, includes "How it runs") > FAQ (08) > FinalCTA > DiscoveryForm > Footer
 ```
 
 Section components live in `src/components/` and are client components (`'use client'`) since they use hooks and IntersectionObserver for scroll reveal. `page.tsx` reads articles with `getAllArticles()` and passes the latest English titles to `LatestWriting` as props (components cannot read the filesystem).
@@ -33,7 +33,7 @@ Section components live in `src/components/` and are client components (`'use cl
 ### Content rules for the home page
 
 - Clients are anonymized in home-page copy ("a grooming spa chain in Bogotá", "a textile retailer", "a signage & print shop", "an online gaming platform"). No client names, staff names, prices, costs or vendor/model names in new copy.
-- Flagship numbers in `StatsBand`/`CaseStudies` come from `src/content/writing/whatsapp-ai-agent-ten-months-production.md`; keep them in sync.
+- Flagship numbers in `HeroReadout`/`CaseStudies` come from `src/content/writing/whatsapp-ai-agent-ten-months-production.md`; keep them in sync.
 - `LatestWriting` shows titles only, because older article descriptions name clients.
 
 ### API Route
@@ -47,13 +47,13 @@ Section components live in `src/components/` and are client components (`'use cl
 
 ## Design System
 
-Colors and styles are defined as CSS variables in `src/app/globals.css` `:root`. The design uses a **true black background** (`#000`) with **emerald green accents** (`#10B981`). Key utility classes (`.btn-primary`, `.btn-secondary`, `.card`, `.chip`, `.glass`, `.text-gradient`, `.reveal`) are all defined in `globals.css`.
+Colors and styles are defined as CSS variables in `src/app/globals.css` `:root`. The design uses a **true black background** (`#000`) with **emerald green accents** (`#10B981`). Shared classes live in `globals.css` inside `@layer components` (so Tailwind utilities can override them): `.label` (mono metadata), `.eyebrow`, `.panel`, `.cells` (hairline grid), `.btn-primary` (emerald fill, near-black text for AA contrast), `.btn-secondary`, `.link-arrow`, `.status-dot` (genuine live state only; `.is-incident`, `.is-static`), `.frame` and `.section-pad`. Section openers use `src/components/SectionHeader.tsx` (index + label + headline + aside). `.reveal`, `.bar` and `.prose` stay unlayered.
 
 ### Scroll Reveal Pattern
 
 Most sections use `.reveal` elements + the `useReveal` hook (`src/hooks/useReveal.ts`). Elements start hidden (`opacity: 0; translateY(30px)`) and gain `.active` when scrolled into view. Under `prefers-reduced-motion` everything is shown immediately.
 
-Note: global `h1`–`h6` rules in `globals.css` are unlayered, so they beat Tailwind `leading-*`/`tracking-*` utilities on headings. Use an inline `style={{ lineHeight }}` when a multi-line heading needs different leading.
+Note: global `h1`–`h6` rules now live in `@layer base`, so Tailwind utilities win over them. Headings still set `lineHeight` inline in most components; keep that pattern for consistency.
 
 ## Key Conventions
 
