@@ -637,3 +637,25 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   margin: 1.5em 0;
 }
+
+/* Reduced motion: reveal content in place, no travel or fade. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .status-dot,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-rotate-slow,
+  .animate-spin-slow,
+  .animate-gradient {
+    animation: none;
+  }
+}

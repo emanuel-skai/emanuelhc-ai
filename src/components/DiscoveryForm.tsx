@@ -12,23 +12,29 @@ export default function DiscoveryForm() {
   const [selectedChannels, setSelectedChannels] = useState<string[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Re-run when the view swaps to the thank-you state so its .reveal nodes
+  // get observed too; reduced-motion users get everything at once.
   useEffect(() => {
+    const elements = Array.from(sectionRef.current?.querySelectorAll<HTMLElement>('.reveal') ?? []);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((el) => el.classList.add('active'));
+      return;
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.1 }
     );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [submitted]);
 
   const toggleChannel = (channel: string) => {
     setSelectedChannels((prev) =>
