@@ -5,8 +5,8 @@ import Logo from './Logo';
 
 const navLinks = [
   { href: '#work', label: 'Work' },
+  { href: '#practice', label: 'Practice' },
   { href: '#services', label: 'Services' },
-  { href: '#process', label: 'Process' },
   { href: '#about', label: 'About' },
   { href: '/writing', label: 'Writing' },
   { href: '#engage', label: 'Engage' },
@@ -37,7 +37,7 @@ export default function Navigation() {
     <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-xl border-b border-[var(--border)]">
       <div className="max-w-[1240px] mx-auto px-6 md:px-8 h-[68px] flex items-center justify-between gap-8">
         {/* Logo */}
-        <a href="#top" onClick={(e) => scrollToSection(e, '#top')} className="flex items-center gap-2.5 group">
+        <a href="#top" onClick={(e) => scrollToSection(e, '#top')} aria-label="Emanuel Hernández Castillo, home" className="flex items-center gap-2.5 group">
           <Logo size={36} />
           <span className="text-[var(--text)] font-semibold text-lg tracking-tight hidden sm:block">
             emanuel<span className="text-[var(--emerald)]">.</span>hc
@@ -45,7 +45,7 @@ export default function Navigation() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-[30px] font-mono text-[11px] tracking-[0.16em] uppercase">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-[30px] font-mono text-[11px] tracking-[0.16em] uppercase">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -81,7 +81,9 @@ export default function Navigation() {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden w-10 h-10 flex items-center justify-center text-[var(--text)] rounded-lg hover:bg-white/5 transition-colors"
-          aria-label="Toggle menu"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -99,6 +101,8 @@ export default function Navigation() {
 
       {/* Mobile menu */}
       <div
+        id="mobile-menu"
+        inert={!isMobileMenuOpen}
         className={`md:hidden overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-[420px]' : 'max-h-0'
         }`}
