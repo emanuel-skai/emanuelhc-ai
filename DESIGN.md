@@ -88,24 +88,25 @@ spacing:
 
 components:
   button-primary:
-    background: "linear-gradient(135deg, #10B981 0%, #0D9668 100%)"
-    textColor: "#ffffff"
+    background: "#10B981"
+    textColor: "#03140D"
     typography: "{typography.button}"
     rounded: "{rounded.md}"
-    padding: 14px 32px
-    note: "Hover: -1px lift + soft emerald glow shadow. The main chromatic event on any screen."
+    padding: 0 26px (min-height 48px)
+    note: "Solid emerald, near-black label (white on emerald fails AA). Hover: #34D399. Press: scale(0.97). The main chromatic event on any screen."
   button-secondary:
     background: "rgba(255,255,255,0.03)"
     textColor: "{colors.ink}"
     border: "1px solid {colors.hairline-strong}"
     rounded: "{rounded.md}"
     padding: 14px 32px
-  card:
-    background: "linear-gradient(180deg, #080808 0%, #030303 100%)"
+  panel:
+    background: "{colors.surface-1}"
     border: "1px solid {colors.hairline}"
-    rounded: "{rounded.xl}"
-    padding: 32px
-    note: "Hover: brighter hairline, -2px lift, deep soft shadow. Never emerald-tinted at rest."
+    rounded: "{rounded.lg}"
+    note: "Flat console surface. Hover only brightens the hairline; no lift, no glow. The flagship panel takes an emerald hairline (rgba(16,185,129,0.32))."
+  cells:
+    note: "Hairline grid: 1px gaps over the border color. Used for metrics, totals and offers."
   chip:
     background: "rgba(255,255,255,0.02)"
     textColor: "{colors.ink-muted}"
@@ -117,9 +118,9 @@ components:
     textColor: "{colors.primary}"
     note: "Uppercase mono section marker preceded by a 28px emerald dash. Opens every section."
   status-dot:
-    size: 8px
+    size: 7px
     color: "{colors.primary}"
-    note: "Glowing pulse. Reserved for genuine live/available status only."
+    note: "Solid dot with a thin expanding ring. Reserved for genuine live/available status. Amber (#E5A13B) ring marks incidents in the operating log."
 
 ---
 
@@ -143,9 +144,14 @@ Non-negotiable composition rules, learned the hard way:
 
 Sora carries display (700, tight negative tracking, line-height ≈ 1.02). Inter carries body. **Geist Mono is a signature element**, not a fallback: eyebrows, micro-labels (PROBLEM / SOLUTION / OUTCOMES), timelines, metrics, and any real data render in mono uppercase with wide tracking. Type hierarchy does the heavy lifting on an otherwise dark, quiet canvas.
 
+## The console layer (v2, Nov 2026)
+
+The page reads as an operator's console: evidence first. Section openers carry a mono index ("01 / Work"). Numbers are the visual hero (hero readout bars, flagship metric cells with label on top and value at the bottom). Lists of rules, services and log entries are ledgers (hairline rows, mono numbers), not card grids. The operating log is a dated timeline: emerald dots for shipped work, amber rings for incidents, each incident followed by its fix.
+
 ## Motion
 
-- Scroll-reveal: fade + 20–30px rise, ~0.7s ease-out, staggered ~80–100ms. One system sitewide.
+- Scroll-reveal: fade + 14px rise, 600ms cubic-bezier(0.23, 1, 0.32, 1). One system sitewide.
+- Hero readout bars grow once on load (CSS keyframes, staggered 70–140ms). Accordions open via grid-template-rows.
 - One orchestrated moment per page maximum (e.g., a hero element drawing itself in on load). Everything else is hover micro-interaction scale.
 - Film grain overlay at 2–4% opacity is welcome; it warms the black.
 - `prefers-reduced-motion` always gets a complete, beautiful static state.
