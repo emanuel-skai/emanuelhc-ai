@@ -1,92 +1,80 @@
-'use client';
-
 import Link from 'next/link';
 import HeroField from '@/components/visuals/HeroField';
-import AvatarGeometry from '@/components/visuals/AvatarGeometry';
+import HeroReadout from '@/components/HeroReadout';
+
+const CALENDAR = 'https://calendar.app.google/1P4C3Q9yWTBsxLv38';
+const FLAGSHIP = '/writing/whatsapp-ai-agent-ten-months-production';
 
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-[calc(100vh-68px)] flex items-center overflow-hidden">
-      {/* Mirrored interference field held at the frame */}
-      <HeroField className="absolute inset-0 w-full h-full pointer-events-none" />
-
-      {/* Bottom fade */}
+    <section id="top" aria-labelledby="hero-heading" className="relative overflow-hidden">
+      {/* Interference field held at the frame; the readout panel is opaque. */}
+      <HeroField className="absolute inset-0 w-full h-full pointer-events-none opacity-70" />
       <div
-        className="absolute inset-x-0 bottom-0 h-[300px] pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, #000 100%)' }}
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-[240px] pointer-events-none"
+        style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--bg) 100%)' }}
       />
 
-      <div className="relative z-[2] max-w-[1320px] mx-auto px-6 md:px-8 pt-[64px] pb-[70px] md:pt-[100px] md:pb-[90px] w-full grid lg:grid-cols-[minmax(300px,0.9fr)_minmax(340px,1fr)] gap-[clamp(24px,4vw,60px)] items-center">
-        {/* Left — geometry resolving into the brand avatar */}
-        <div className="relative justify-self-center w-full max-w-[420px] lg:max-w-[660px] aspect-[1.18/1] max-h-[min(40vh,360px)] lg:max-h-[min(62vh,560px)] order-2 lg:order-1">
-          <AvatarGeometry className="absolute inset-0 w-full h-full pointer-events-none" />
-        </div>
+      <div className="frame relative z-[2] pt-[clamp(48px,8vw,112px)] pb-[clamp(64px,8vw,112px)] grid gap-[clamp(44px,5vw,72px)] lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:items-center">
+        <div className="flex flex-col items-start">
+          <p className="eyebrow m-0">
+            <span aria-hidden="true" className="eyebrow-rule hidden sm:block" />
+            <span>AI systems architect · Building potenci</span>
+          </p>
 
-        {/* Right — the message */}
-        <div className="max-w-[640px] flex flex-col items-start text-left order-1 lg:order-2">
-          <div className="flex items-center gap-3.5 mb-[34px]">
-            <span className="w-7 h-px bg-[var(--emerald)]" />
-            <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-              AI systems architect · Building potenci
-            </span>
-          </div>
-
-          <h1 className="m-0 font-bold text-[clamp(40px,4.8vw,74px)] leading-[1.03] tracking-[-0.04em] text-[var(--text)] [text-wrap:balance]">
-            AI agents that answer, quote and book. In production.
+          <h1
+            id="hero-heading"
+            className="mt-7 mb-0 font-bold text-[clamp(42px,5.6vw,82px)] tracking-[-0.045em] text-[var(--text)]"
+            style={{ lineHeight: 1 }}
+          >
+            AI agents on the front desk.{' '}
+            <span className="text-[var(--muted)]">Operated like infrastructure.</span>
           </h1>
 
-          <p className="mt-8 mb-0 max-w-[640px] text-[19px] leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
-            I architect and operate WhatsApp agents for real businesses, and I own the platform
-            underneath them: runtime, infrastructure, releases, on-call. One of them has answered a
-            grooming spa chain&apos;s line for ten months:{' '}
-            <span className="text-[var(--text)]">234,000+ messages, first reply in ~50 seconds</span>{' '}
-            against ~17 minutes for the human team.
-          </p>
-          <p className="mt-3.5 mb-0 max-w-[620px] text-base leading-relaxed text-[var(--muted)]">
-            <Link
-              href="/writing/whatsapp-ai-agent-ten-months-production"
-              className="text-[var(--emerald2)] hover:text-[var(--emerald3)] transition-colors"
-            >
-              Read the ten-month case study →
-            </Link>
+          <p className="mt-8 mb-0 max-w-[580px] text-[18px] md:text-[19px] leading-[1.6] text-[var(--text-secondary)] [text-wrap:pretty]">
+            I build WhatsApp agents that answer, quote and book for real businesses, and I run the
+            platform under them: runtime, releases, canaries, on-call. Nothing ships until the
+            bench passes.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3.5 mt-10">
-            <a
-              href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[15px] font-semibold text-white bg-gradient-to-br from-[#10B981] to-[#0D9668] px-[34px] py-4 rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_14px_40px_rgba(16,185,129,0.28)]"
-            >
+          <div className="mt-10 w-full sm:w-auto flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <a href={CALENDAR} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Book a paid hour — $200
             </a>
-            <a
-              href="#discovery"
-              className="text-[15px] font-semibold text-[var(--text)] bg-white/[0.03] border border-[var(--border-light)] px-[34px] py-4 rounded-xl transition-all hover:border-white/[0.22] hover:bg-white/[0.05]"
-            >
+            <a href="#discovery" className="btn-secondary">
               Free 15-min discovery
             </a>
           </div>
-          <p className="mt-4 mb-0 text-sm text-[var(--muted)]">Two consulting engagements open per quarter.</p>
+          <p className="mt-4 mb-0 text-sm text-[var(--muted)]">
+            Two consulting engagements per quarter.{' '}
+            <Link href={FLAGSHIP} className="link-arrow font-medium">
+              Read the ten-month case study <span aria-hidden="true" className="arrow">→</span>
+            </Link>
+          </p>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 md:mt-14 pt-[26px] border-t border-[var(--border)] w-full max-w-[560px] font-mono text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--muted2)]">
-            <span>Track record</span>
-            <span className="text-[var(--muted)]">Intel</span>
-            <span aria-hidden="true" className="text-[#333]">/</span>
-            <span className="text-[var(--muted)]">Apple</span>
-            <span aria-hidden="true" className="text-[#333]">/</span>
-            <span className="text-[var(--muted)]">Skillful AI</span>
-            <span aria-hidden="true" className="text-[#333]">/</span>
-            <a
-              href="https://potenci.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--muted)] hover:text-[var(--emerald2)] transition-colors"
-            >
-              potenci ↗
-            </a>
-          </div>
+          <dl className="mt-12 m-0 pt-6 w-full max-w-[580px] border-t border-[var(--border)] flex flex-wrap gap-x-10 gap-y-3">
+            <div className="flex items-baseline gap-3">
+              <dt className="label label-sm">Before</dt>
+              <dd className="m-0 label text-[var(--muted)]">Intel · Apple · Skillful AI</dd>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <dt className="label label-sm">Now</dt>
+              <dd className="m-0 label">
+                <a
+                  href="https://potenci.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-secondary)] hover:text-[var(--emerald2)] transition-colors"
+                >
+                  potenci ↗
+                </a>
+              </dd>
+            </div>
+          </dl>
         </div>
+
+        <HeroReadout />
       </div>
     </section>
   );
