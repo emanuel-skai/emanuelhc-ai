@@ -4,34 +4,34 @@ import { useReveal } from '@/hooks/useReveal';
 
 const services = [
   {
-    name: 'LLM applications & agents',
-    desc: 'Agent workflows, RAG systems, tool integrations, memory patterns, and guardrails on foundation models.',
-    time: '1–4 weeks',
-  },
-  {
-    name: 'Machine learning & analytics',
-    desc: 'Forecasting, classification, recommendation, and anomaly detection models that decisions actually depend on.',
+    name: 'WhatsApp & multichannel agents',
+    desc: 'Agents that answer, quote from your catalog, book into your calendar and hand off to your team. Prices and availability come from tools, never from model memory.',
     time: '2–6 weeks',
   },
   {
-    name: 'Data engineering & pipelines',
-    desc: 'ETL workflows, lakes, feature stores, orchestration, and the validation that keeps models honest.',
+    name: 'Agent operations',
+    desc: 'For an agent that is already live and misbehaving: conversation audits, a regression bench, gated rule changes, daily reports the business can check.',
     time: '2–4 weeks',
   },
   {
-    name: 'Cloud architecture & backend',
-    desc: 'Scalable APIs, serverless patterns, IaC, CI/CD, security hardening, and cost control on AWS.',
-    time: '1–4 weeks',
-  },
-  {
-    name: 'Intelligent automation',
-    desc: 'Business process AI across WhatsApp, web, email, and API — with explicit logic for when a human takes over.',
+    name: 'Booking & back-office integration',
+    desc: 'Calendars, CRMs, ERPs and payments behind the agent, with confirmation gates on every write and two-way sync where people still work by hand.',
     time: '2–6 weeks',
   },
   {
-    name: 'Full-stack delivery',
-    desc: 'End-to-end product build when AI is one piece of a larger system, database through UI.',
-    time: '2–8 weeks',
+    name: 'LLM ops & cost',
+    desc: 'Model evals against your own bar, fallback chains that alert instead of failing silently, and cost per conversation as a tracked number.',
+    time: '1–3 weeks',
+  },
+  {
+    name: 'Cloud platform on AWS',
+    desc: 'Terraform, tag-based releases with gates, canaries that check real output, migrations with a rollback written first.',
+    time: '1–4 weeks',
+  },
+  {
+    name: 'Machine learning & data',
+    desc: 'Forecasting, classification and the pipelines that feed them, when the problem is not an agent.',
+    time: '2–6 weeks',
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Services() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section id="services" ref={ref} className="border-t border-[var(--border)] bg-[var(--bg2)]">
+    <section id="services" ref={ref} className="border-t border-[var(--border)] bg-[var(--bg2)] scroll-mt-[68px]">
       <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
         <div className="reveal max-w-[700px]">
           <div className="flex items-center gap-3.5 mb-[26px]">

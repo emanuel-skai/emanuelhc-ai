@@ -5,12 +5,12 @@ import { useReveal } from '@/hooks/useReveal';
 import AboutField from '@/components/visuals/AboutField';
 
 const expertise = [
-  'LLM agent design and tool contracts',
-  'RAG evaluation and grounding strategy',
-  'Production FastAPI and AWS delivery',
-  'Multimodal pipelines for business channels',
-  'Observability, cost controls, reliability testing',
-  'Regulated and latency-bound environments',
+  'WhatsApp agents that quote, book and hand off',
+  'Tool contracts, write gates and grounding',
+  'Evals and regression benches before release',
+  'Model choice by cost per conversation',
+  'AWS, Terraform, CI/CD and canaries',
+  'Incident response and honest post-mortems',
 ];
 
 export default function About() {
@@ -35,7 +35,7 @@ export default function About() {
           <div className="flex items-center gap-2.5 mt-5">
             <span className="status-dot" />
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--text-secondary)]">
-              Available · 2 engagements, Q3
+              Available · 2 engagements per quarter
             </span>
           </div>
           <div className="mt-3.5 font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
@@ -54,22 +54,24 @@ export default function About() {
             Emanuel Hernández Castillo
           </h2>
           <p className="mt-7 mb-0 max-w-[620px] text-lg leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
-            I&apos;m co-founder and CTO of{' '}
+            I architect and operate AI agents that do front-desk work on WhatsApp, and I own the
+            platform under them. In 2026 that platform became{' '}
             <a
-              href="https://skillful.ai"
+              href="https://potenci.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--text)] border-b border-[rgba(16,185,129,0.5)] hover:text-[var(--emerald2)] transition-colors"
             >
-              Skillful AI
+              potenci
             </a>
-            , an enterprise AI platform serving automotive, healthcare, and digital commerce clients
-            across three continents.
+            , a business OS with native AI agents. It runs production agents for businesses in
+            grooming, signage and printing, textile retail and online gaming.
           </p>
           <p className="mt-5 mb-0 max-w-[620px] text-[17px] leading-[1.65] text-[var(--muted)] [text-wrap:pretty]">
-            Before that: GPU software engineering at Intel, data science for App Store and Apple
-            TV+ at Apple, and a decade of ML across growth-stage companies. The through-line is
-            systems that hold up when the demo ends.
+            I co-founded Skillful AI and led its engineering as CTO. Before that: GPU software
+            engineering at Intel, data science for App Store and Apple TV+ at Apple, and a decade
+            of ML across growth-stage companies. The through-line is systems that hold up when the
+            demo ends, and the habit of measuring whether they do.
           </p>
 
           <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px mt-11 bg-[var(--border)] border border-[var(--border)] rounded-2xl overflow-hidden">

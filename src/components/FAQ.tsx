@@ -6,7 +6,7 @@ import { useReveal } from '@/hooks/useReveal';
 const faqs = [
   {
     q: 'What kind of problems are a good fit?',
-    a: 'Where software meets intelligence: agent systems, RAG, ML models, data pipelines, automation, and the backend that carries them. Best fit when the system has to hold up in production under real constraints.',
+    a: 'Agents that talk to your customers and touch real systems: quoting, booking, payments, handoff to your team. Also the platform under them, and ML or data work when the problem is not an agent. Best fit when the system has to hold up in production, not in a demo.',
   },
   {
     q: 'Can you work with our in-house team?',
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: 'Which stacks?',
-    a: 'Python for ML and backends (FastAPI, PyTorch, scikit-learn), AWS for infrastructure, plus Next.js/React, PostgreSQL, Redis, and current AI tooling.',
+    a: 'Python and FastAPI for agents and backends, AWS with Terraform for infrastructure, Next.js/React and React Native for product, PostgreSQL and Redis for state. Models are chosen per task by measured cost and quality, not by brand.',
   },
   {
     q: 'How is scope handled?',
@@ -71,24 +71,29 @@ export default function FAQ() {
           {faqs.map((f, i) => {
             const open = openFaq === i;
             return (
-              <div
-                key={f.q}
-                onClick={() => setOpenFaq(open ? -1 : i)}
-                className="border-t border-[var(--border)] py-[26px] cursor-pointer"
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <div className="font-semibold text-lg tracking-[-0.01em] text-[var(--text)] font-[family-name:var(--font-sora)]">
-                    {f.q}
-                  </div>
-                  <span className="font-mono text-sm text-[var(--emerald)] flex-none">
-                    {open ? '−' : '+'}
-                  </span>
-                </div>
-                {open && (
-                  <p className="mt-4 mb-0 max-w-[620px] text-base leading-[1.65] text-[var(--muted)]">
+              <div key={f.q} className="border-t border-[var(--border)]">
+                <h3 className="m-0">
+                  <button
+                    type="button"
+                    id={`faq-q-${i}`}
+                    aria-expanded={open}
+                    aria-controls={`faq-a-${i}`}
+                    onClick={() => setOpenFaq(open ? -1 : i)}
+                    className="w-full py-[26px] flex items-start justify-between gap-6 text-left cursor-pointer"
+                  >
+                    <span className="font-semibold text-lg tracking-[-0.01em] text-[var(--text)] font-[family-name:var(--font-sora)]">
+                      {f.q}
+                    </span>
+                    <span aria-hidden="true" className="font-mono text-sm text-[var(--emerald)] flex-none">
+                      {open ? '−' : '+'}
+                    </span>
+                  </button>
+                </h3>
+                <div id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`} hidden={!open}>
+                  <p className="mt-0 mb-[26px] max-w-[620px] text-base leading-[1.65] text-[var(--muted)]">
                     {f.a}
                   </p>
-                )}
+                </div>
               </div>
             );
           })}

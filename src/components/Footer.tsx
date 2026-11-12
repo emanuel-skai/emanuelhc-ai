@@ -13,27 +13,27 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-5 mb-0 max-w-[380px] text-[15px] leading-relaxed text-[var(--muted)]">
-            Agentic AI systems engineered for reliability, cost control, and the day after launch.
+            AI agents in production, and the platform that keeps them answering. Architected, operated and measured every day.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <nav aria-label="Footer" className="flex flex-col gap-3">
           <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
             Navigate
           </div>
-          <a href="#work" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+          <Link href="/#work" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Work
-          </a>
-          <a href="#services" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+          </Link>
+          <Link href="/#services" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Services
-          </a>
-          <a href="#process" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
-            Process
-          </a>
+          </Link>
+          <Link href="/#practice" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+            Practice
+          </Link>
           <Link href="/writing" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Writing
           </Link>
-        </div>
+        </nav>
 
         <div className="flex flex-col gap-3">
           <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
@@ -54,12 +54,12 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="https://skillful.ai"
+            href="https://potenci.ai"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors"
           >
-            Skillful AI ↗
+            potenci ↗
           </a>
         </div>
       </div>
