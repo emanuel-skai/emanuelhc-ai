@@ -1,11 +1,9 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import StatsBand from '@/components/StatsBand';
 import CaseStudies from '@/components/CaseStudies';
 import Practices from '@/components/Practices';
 import OperatingLog from '@/components/OperatingLog';
 import Services from '@/components/Services';
-import Process from '@/components/Process';
 import About from '@/components/About';
 import LatestWriting from '@/components/LatestWriting';
 import Pricing from '@/components/Pricing';
@@ -34,12 +32,10 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <StatsBand />
         <CaseStudies />
         <Practices />
         <OperatingLog />
         <Services />
-        <Process />
         <About />
         <LatestWriting articles={latest} />
         <Pricing />
