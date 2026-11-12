@@ -1,6 +1,7 @@
 'use client';
 
 import { useReveal } from '@/hooks/useReveal';
+import SectionHeader from '@/components/SectionHeader';
 
 const totals = [
   { value: '585', label: 'backend commits' },
@@ -9,42 +10,80 @@ const totals = [
   { value: '4', label: 'businesses with agents live' },
 ];
 
-const months = [
+type Kind = 'ship' | 'incident';
+type Entry = { date: string; kind: Kind; text: string; fix?: string };
+
+// Generalized from the 2026 change log and incident notes. No client names,
+// vendors or costs. Incidents stay in, each with the fix that followed.
+const entries: Entry[] = [
+  { date: 'Aug 28', kind: 'ship', text: 'Three production agents go live for an online gaming platform.' },
   {
-    month: 'Aug',
-    entries: [
-      'Three production agents go live for an online gaming platform.',
-      'A payment flow for a retailer’s sales agent ships only after parity scorecards against the old path.',
-      'Found a silent fallback: a provider ran dry and every agent quietly moved to a pricier model. Fallbacks now alert.',
-    ],
+    date: 'Early Sep',
+    kind: 'incident',
+    text: 'A provider ran out of credits. Every agent fell back to a pricier model, silently, for about ten days.',
+    fix: 'Fallbacks now alert, and the chains start cheap.',
   },
   {
-    month: 'Sep',
-    entries: [
-      'Moved the whole multi-tenant agent platform to a new AWS account in about four days, with a full-dump restore.',
-      'Releases by tag from main, with manual migrate and deploy gates. First one: v1.2.0.',
-      'Flagship agent back on full automatic after five weeks of QA fixes and gated writes.',
-      'Cut the run-rate within a week, one change per night, no long-term commitments.',
-    ],
+    date: 'Sep 13–16',
+    kind: 'ship',
+    text: 'Moved the whole multi-tenant platform to a new AWS account in about four days, as a full-dump restore.',
+    fix: 'What broke: three hidden configs still pointing at the old account.',
   },
   {
-    month: 'Oct',
-    entries: [
-      'Billing moved to Paddle; first client payment through it.',
-      'A client’s WhatsApp account blocked most outgoing messages for days. Reconnected, and delivery alarms proposed.',
-      'Empty AI turns traced to a disabled strategy that was still selectable. Shipped a platform-wide kill switch.',
-      'Operator mobile app published on Google Play.',
-    ],
+    date: 'Sep 18',
+    kind: 'incident',
+    text: 'A truncated signing key sat behind a cache for two days. Our own cache flush exposed it and logged everyone out.',
+    fix: 'Auth canary, plus validation when the key is written.',
   },
   {
-    month: 'Nov',
-    entries: [
-      'Paddle becomes the only payment processor.',
-      'Scheduling product ships two-way Google Calendar sync, so a team can migrate without a cutover day.',
-      'Published the ten-month case study of the flagship agent.',
-    ],
+    date: 'Sep 19–21',
+    kind: 'incident',
+    text: 'The assisted path produced no AI replies for 43 hours. Every health check stayed green.',
+    fix: 'Key-rotation runbook. Health now counts AI output, not inbound traffic.',
+  },
+  {
+    date: 'Sep 23',
+    kind: 'ship',
+    text: 'First release tagged from main, v1.2.0. The flagship agent goes back to full automatic.',
+  },
+  {
+    date: 'Sep 24',
+    kind: 'incident',
+    text: 'A cost cut removed a network path that shared infrastructure relied on. Zero replies for 46 minutes.',
+    fix: 'A dependency map before every cut.',
+  },
+  {
+    date: 'Sep 25',
+    kind: 'incident',
+    text: 'A cache resize left automatic agents silent for about 11 hours. A listener never reconnected.',
+    fix: 'A MUTE canary, and a mandatory restart after any cache change.',
+  },
+  {
+    date: 'Sep 26–27',
+    kind: 'ship',
+    text: 'Database and compute cutovers on separate nights. Run-rate down, no long-term commitments.',
+  },
+  {
+    date: 'Oct 10–16',
+    kind: 'incident',
+    text: 'A client’s WhatsApp account blocked 65% of outgoing messages over a billing setting, then lost its number for about two days.',
+    fix: 'Reconnected. Delivery-status alarms proposed.',
+  },
+  {
+    date: 'Oct 20',
+    kind: 'incident',
+    text: 'Empty AI turns, traced to a disabled strategy that was still selectable.',
+    fix: 'A platform-wide kill switch.',
+  },
+  { date: 'Oct 29', kind: 'ship', text: 'Operator app published on Google Play.' },
+  {
+    date: 'Nov 12',
+    kind: 'ship',
+    text: 'Two-way Google Calendar sync, idea to production in one day, so a team can move over without a cutover date. Same day: the ten-month case study.',
   },
 ];
+
+const kindLabel: Record<Kind, string> = { ship: 'Shipped', incident: 'Incident' };
 
 export default function OperatingLog() {
   const ref = useReveal<HTMLElement>();
@@ -54,60 +93,82 @@ export default function OperatingLog() {
       id="log"
       ref={ref}
       aria-labelledby="log-heading"
-      className="border-t border-[var(--border)] bg-black scroll-mt-[68px]"
+      className="border-t border-[var(--border)] bg-[var(--bg2)]"
     >
-      <div className="max-w-[1240px] mx-auto px-6 md:px-8 py-[clamp(80px,10vw,130px)]">
-        <div className="reveal max-w-[700px]">
-          <div className="flex items-center gap-3.5 mb-[26px]">
-            <span className="w-7 h-px bg-[var(--emerald)]" />
-            <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-[var(--emerald)]">
-              2026 operating log
-            </span>
-          </div>
-          <h2
-            id="log-heading"
-            className="m-0 font-bold text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.035em] text-[var(--text)]"
-          >
-            Four months, one platform, real clients
-          </h2>
-          <p className="mt-6 mb-0 text-lg leading-[1.65] text-[var(--muted)] [text-wrap:pretty]">
-            August to November 2026, from the commit log and the incident notes.
-          </p>
-        </div>
+      <div className="frame section-pad">
+        <SectionHeader
+          index="03"
+          label="Operating log · 2026"
+          id="log-heading"
+          title="What shipped, what broke, what changed."
+          aside="August to November 2026, from the commit log and the incident notes. The incidents stay in. They are where the rules came from."
+        />
 
-        <dl className="reveal grid grid-cols-2 md:grid-cols-4 gap-px mt-14 m-0 bg-[var(--border)] border border-[var(--border)] rounded-2xl overflow-hidden">
+        <dl className="reveal cells grid-cols-2 md:grid-cols-4 mt-14 md:mt-16 m-0">
           {totals.map((t) => (
-            <div key={t.label} className="bg-[var(--bg2)] px-5 py-5 md:px-6 flex flex-col-reverse gap-2">
-              <dt className="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--muted2)]">
-                {t.label}
-              </dt>
-              <dd className="m-0 font-bold text-[26px] leading-none tracking-[-0.03em] text-[var(--text)] font-[family-name:var(--font-sora)] tabular-nums">
+            <div key={t.label} className="!bg-[var(--bg2)] px-5 py-5 md:px-7 md:py-6 flex flex-col gap-2">
+              <dt className="order-2 label label-sm">{t.label}</dt>
+              <dd className="order-1 m-0 font-[family-name:var(--font-sora)] font-bold text-[26px] md:text-[30px] leading-none tracking-[-0.03em] text-[var(--text)] tnum">
                 {t.value}
               </dd>
             </div>
           ))}
         </dl>
 
-        <ol className="reveal mt-14 mb-0 p-0 list-none flex flex-col">
-          {months.map((m) => (
+        <div className="reveal mt-12 flex flex-wrap items-center gap-x-6 gap-y-2" aria-hidden="true">
+          <span className="flex items-center gap-2 label label-sm">
+            <span className="status-dot is-static" /> Shipped
+          </span>
+          <span className="flex items-center gap-2 label label-sm">
+            <span className="status-dot is-static is-incident" /> Incident → fix
+          </span>
+        </div>
+
+        <ol className="reveal mt-6 m-0 p-0 list-none">
+          {entries.map((e, i) => (
             <li
-              key={m.month}
-              className="grid grid-cols-[64px_1fr] md:grid-cols-[140px_1fr] gap-x-6 py-7 border-t border-[var(--border)] last:border-b"
+              key={`${e.date}-${i}`}
+              className="grid grid-cols-[20px_minmax(0,1fr)] md:grid-cols-[120px_28px_minmax(0,1fr)] gap-x-3 md:gap-x-4"
             >
-              <div className="flex items-start gap-3 pt-1">
-                <span aria-hidden="true" className="mt-[5px] w-[7px] h-[7px] flex-none rounded-full bg-[var(--emerald)]" />
-                <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--text-secondary)]">
-                  {m.month}
-                  <span className="hidden md:inline text-[var(--muted2)]"> 2026</span>
-                </span>
+              <span className="hidden md:block label pt-[18px] text-[var(--text-secondary)] tnum">{e.date}</span>
+
+              {/* Rail and node */}
+              <span aria-hidden="true" className="relative flex justify-center">
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 w-px bg-[var(--border-light)] ${
+                    i === 0 ? 'top-[24px]' : 'top-0'
+                  } ${i === entries.length - 1 ? 'h-[24px]' : 'bottom-0'}`}
+                />
+                <span
+                  className={`relative mt-[20px] w-[9px] h-[9px] rounded-full ${
+                    e.kind === 'incident'
+                      ? 'bg-[var(--bg2)] border-2 border-[var(--signal)]'
+                      : 'bg-[var(--emerald)]'
+                  }`}
+                />
+              </span>
+
+              <div className="py-4 md:py-[14px] min-w-0">
+                <p className="m-0 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="md:hidden label text-[var(--text-secondary)] tnum">{e.date}</span>
+                  <span
+                    className={`label label-sm ${
+                      e.kind === 'incident' ? 'text-[var(--signal)]' : 'text-[var(--emerald2)]'
+                    }`}
+                  >
+                    {kindLabel[e.kind]}
+                  </span>
+                </p>
+                <p className="mt-1.5 mb-0 max-w-[720px] text-[15px] md:text-base leading-relaxed text-[var(--text-secondary)] [text-wrap:pretty]">
+                  {e.text}
+                </p>
+                {e.fix && (
+                  <p className="mt-1.5 mb-0 max-w-[720px] text-[15px] leading-relaxed text-[var(--muted)] [text-wrap:pretty]">
+                    <span aria-hidden="true" className="text-[var(--emerald2)]">→ </span>
+                    {e.fix}
+                  </p>
+                )}
               </div>
-              <ul className="m-0 p-0 list-none grid lg:grid-cols-2 gap-x-10 gap-y-3">
-                {m.entries.map((e) => (
-                  <li key={e} className="text-[15px] leading-relaxed text-[var(--muted)] [text-wrap:pretty]">
-                    {e}
-                  </li>
-                ))}
-              </ul>
             </li>
           ))}
         </ol>
