@@ -17,6 +17,7 @@ export async function POST(request: NextRequest) {
       timeline,
       budget,
       readyToStart,
+      service,
     } = body;
 
     // Validate required fields
@@ -67,11 +68,13 @@ export async function POST(request: NextRequest) {
       timeline,
       budget || '',
       readyToStart ? 'Yes' : 'No',
+      // Column N, added with the services page (Nov 2026). Earlier rows leave it empty.
+      typeof service === 'string' ? service : '',
     ]];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:M',
+      range: 'Sheet1!A:N',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values,
