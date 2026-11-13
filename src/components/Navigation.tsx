@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import Logo from './Logo';
+import { CALENDAR_HOUR } from '@/lib/site';
 
 const navLinks = [
-  { href: '#work', label: 'Work' },
-  { href: '#practice', label: 'Practice' },
-  { href: '#log', label: 'Log' },
   { href: '#services', label: 'Services' },
-  { href: '#about', label: 'About' },
+  { href: '#about', label: 'Why me' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#faq', label: 'FAQ' },
   { href: '/writing', label: 'Writing' },
 ];
 
@@ -59,21 +59,21 @@ export default function Navigation() {
         </nav>
 
         {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center gap-3.5">
+        <div className="hidden md:flex items-center gap-5">
+          <a
+            href={CALENDAR_HOUR}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+          >
+            Book an hour
+          </a>
           <a
             href="#discovery"
             onClick={(e) => scrollToSection(e, '#discovery')}
-            className="text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-          >
-            Discovery call
-          </a>
-          <a
-            href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary !min-h-[40px] !px-[18px] !text-sm"
           >
-            Book an hour
+            Free 15-min call
           </a>
         </div>
 
@@ -104,7 +104,7 @@ export default function Navigation() {
         id="mobile-menu"
         inert={!isMobileMenuOpen}
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'max-h-[420px]' : 'max-h-0'
+          isMobileMenuOpen ? 'max-h-[480px]' : 'max-h-0'
         }`}
       >
         <div className="bg-black/95 backdrop-blur-xl border-b border-[var(--border)]">
@@ -120,12 +120,14 @@ export default function Navigation() {
               </a>
             ))}
             <a
-              href="https://calendar.app.google/1P4C3Q9yWTBsxLv38"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#discovery"
+              onClick={(e) => scrollToSection(e, '#discovery')}
               className="btn-primary mt-3"
             >
-              Book an hour
+              Free 15-min call
+            </a>
+            <a href={CALENDAR_HOUR} target="_blank" rel="noopener noreferrer" className="btn-secondary mt-2">
+              Book an hour · $200
             </a>
           </div>
         </div>

@@ -1,20 +1,17 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import CaseStudies from '@/components/CaseStudies';
-import Practices from '@/components/Practices';
-import OperatingLog from '@/components/OperatingLog';
 import Services from '@/components/Services';
-import About from '@/components/About';
-import LatestWriting from '@/components/LatestWriting';
+import WhyMe from '@/components/WhyMe';
+import Process from '@/components/Process';
 import Pricing from '@/components/Pricing';
+import LatestWriting from '@/components/LatestWriting';
 import FAQ from '@/components/FAQ';
-import FinalCTA from '@/components/FinalCTA';
 import DiscoveryForm from '@/components/DiscoveryForm';
 import Footer from '@/components/Footer';
 import { getAllArticles } from '@/lib/articles';
 
 export default function Home() {
-  // English originals only; each card links its Spanish translation. Titles only:
+  // English originals only; each row links its Spanish translation. Titles only:
   // older article descriptions name clients, which the home page keeps anonymous.
   const latest = getAllArticles()
     .filter((a) => a.lang === 'en')
@@ -32,15 +29,12 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <CaseStudies />
-        <Practices />
-        <OperatingLog />
         <Services />
-        <About />
-        <LatestWriting articles={latest} />
+        <WhyMe />
+        <Process />
         <Pricing />
+        <LatestWriting articles={latest} />
         <FAQ />
-        <FinalCTA />
         <DiscoveryForm />
       </main>
       <Footer />

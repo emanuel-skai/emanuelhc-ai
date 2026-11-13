@@ -2,73 +2,60 @@
 
 import { useReveal } from '@/hooks/useReveal';
 import SectionHeader from '@/components/SectionHeader';
-
-const services = [
-  {
-    name: 'WhatsApp & multichannel agents',
-    desc: 'Agents that answer, quote from your catalog, book into your calendar and hand off to your team. Prices and availability come from tools, never from the model’s memory.',
-    time: '2–6 weeks',
-  },
-  {
-    name: 'Agent operations',
-    desc: 'Your agent is live and misbehaving. Conversation audits, a regression bench, gated rule changes and a daily report your team can check.',
-    time: '2–4 weeks',
-  },
-  {
-    name: 'Booking & back-office integration',
-    desc: 'Calendars, CRMs, ERPs and payments behind the agent. A confirmation gate on every write, and two-way sync where people still work by hand.',
-    time: '2–6 weeks',
-  },
-  {
-    name: 'LLM ops & cost',
-    desc: 'Model evals against your own bar, fallbacks that alert instead of failing quietly, and cost per conversation as a number someone watches.',
-    time: '1–3 weeks',
-  },
-  {
-    name: 'Cloud platform on AWS',
-    desc: 'Terraform, tag-based releases with gates, canaries that check real output, and migrations with the rollback written first.',
-    time: '1–4 weeks',
-  },
-  {
-    name: 'Machine learning & data',
-    desc: 'Forecasting, classification and the pipelines that feed them, when the problem isn’t an agent.',
-    time: '2–6 weeks',
-  },
-];
+import { services } from '@/lib/site';
 
 export default function Services() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section id="services" ref={ref} aria-labelledby="services-heading" className="border-t border-[var(--border)] bg-black">
+    <section id="services" ref={ref} aria-labelledby="services-heading" className="border-t border-[var(--border)]">
       <div className="frame section-pad">
         <SectionHeader
-          index="04"
           label="Services"
           id="services-heading"
-          title="Six kinds of work. All of it ends in production."
-          aside="I own the path from the model to the load balancer. There is no handoff between an AI team and an infrastructure team, because they are the same person."
+          title="Four ways to work together."
+          intro="Pick the one that matches the problem in front of you. If none does, the free call will tell us that in fifteen minutes."
         />
 
-        <ul className="reveal mt-14 md:mt-16 m-0 p-0 list-none border-t border-[var(--border-light)]">
-          {services.map((s, i) => (
-            <li
-              key={s.name}
-              className="grid grid-cols-[40px_minmax(0,1fr)] md:grid-cols-[64px_minmax(0,0.85fr)_minmax(0,1.15fr)_120px] gap-x-4 md:gap-x-8 gap-y-2 py-6 md:py-7 border-b border-[var(--border)]"
-            >
-              <span className="label pt-[5px] tnum">{String(i + 1).padStart(2, '0')}</span>
+        <ul className="reveal cells md:grid-cols-2 mt-14 md:mt-16 mb-0 p-0 list-none">
+          {services.map((s) => (
+            <li key={s.id} id={s.id} className="p-7 md:p-10 flex flex-col">
               <h3
-                className="m-0 font-semibold text-[19px] md:text-[21px] tracking-[-0.02em] text-[var(--text)]"
-                style={{ lineHeight: 1.3 }}
+                className="m-0 font-semibold text-[24px] md:text-[26px] tracking-[-0.025em] text-[var(--text)]"
+                style={{ lineHeight: 1.2 }}
               >
                 {s.name}
               </h3>
-              <p className="col-start-2 md:col-start-3 md:row-start-1 m-0 text-[15px] md:text-base leading-relaxed text-[var(--muted)] [text-wrap:pretty]">
-                {s.desc}
+              <p className="mt-3 mb-0 max-w-[460px] text-base leading-[1.65] text-[var(--text-secondary)] [text-wrap:pretty]">
+                {s.summary}
               </p>
-              <span className="col-start-2 md:col-start-4 md:row-start-1 label pt-[5px] text-[var(--text-secondary)] md:text-right">
-                {s.time}
-              </span>
+
+              <dl className="mt-8 mb-0 grid gap-6">
+                <div>
+                  <dt className="label label-sm">For</dt>
+                  <dd className="m-0 mt-2 text-[15px] leading-[1.6] text-[var(--muted)] [text-wrap:pretty]">{s.forWho}</dd>
+                </div>
+                <div>
+                  <dt className="label label-sm">You get</dt>
+                  <dd className="m-0 mt-3">
+                    <ul className="m-0 p-0 list-none grid gap-2">
+                      {s.youGet.map((item) => (
+                        <li key={item} className="flex gap-3 text-[15px] leading-[1.5] text-[var(--muted)]">
+                          <span aria-hidden="true" className="mt-[0.6em] w-1.5 h-px flex-none bg-[var(--emerald)]" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+
+              <div className="mt-auto pt-8">
+                <p className="m-0 pt-5 border-t border-[var(--border)] flex items-baseline justify-between gap-4">
+                  <span className="label label-sm">Pricing</span>
+                  <span className="text-[15px] font-medium text-[var(--text)] text-right tnum">{s.pricing}</span>
+                </p>
+              </div>
             </li>
           ))}
         </ul>

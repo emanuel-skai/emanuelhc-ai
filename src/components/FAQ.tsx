@@ -5,36 +5,28 @@ import { useReveal } from '@/hooks/useReveal';
 
 const faqs = [
   {
-    q: 'What problems are a good fit?',
-    a: 'Agents that talk to your customers and touch real systems: quotes, bookings, payments, handoff to your team. Also the platform under them, and ML or data work when the problem isn’t an agent. Best fit: it has to hold up in production, not in a demo.',
+    q: 'What does a fractional CTO do, exactly?',
+    a: 'The job a full-time CTO would do, on part of the week: own the architecture and the roadmap, make build vs buy and vendor calls, hire and lead the engineers, and be the technical voice with investors and clients. You get the judgment without the full-time salary or the equity of a co-founder.',
   },
   {
-    q: 'Can you work with our in-house team?',
-    a: 'Yes. Often embedded: pairing on architecture, reviewing PRs, unblocking decisions. I can also take a feature end to end and hand it over.',
+    q: 'How much of your time do we get?',
+    a: 'A fixed cadence we agree on after discovery, sized to your stage: enough to make decisions and unblock the team, not so much that you pay for idle hours. We revisit it as the company grows or hires a full-time CTO.',
   },
   {
-    q: 'Advice only, or implementation?',
-    a: 'Both. I review and design, and I ship code. The 50-hour block is built for end-to-end delivery.',
+    q: 'Which roles can you interview for?',
+    a: 'Backend, AI and ML, and data engineers, from mid-level to lead. I design the loop with you, run the technical interviews, and send a written evaluation of each candidate with a clear recommendation.',
   },
   {
-    q: 'Who operates the agent after launch?',
-    a: 'Your team, me, or both. Every engagement hands over the runbook, the regression bench and a daily report, so whoever runs it can see when it fails.',
+    q: 'What does an architecture review or due diligence include?',
+    a: 'A look at the system, the code, the infrastructure and the team, then a written report: what holds up, what is at risk, what it would cost to fix, and an action plan in priority order. Founders use it to plan; investors use it to decide.',
   },
   {
-    q: 'What do I get after a paid hour?',
-    a: 'Written notes: what we looked at, what we decided, what to do next. Implementation sessions also hand over working code and docs.',
+    q: 'Do you write code or only advise?',
+    a: 'Both. Leadership and reviews are mostly decisions and documents. AI agent work is hands-on: I design, build, ship and operate them, and the 50-hour block exists for that.',
   },
   {
-    q: 'Which stacks?',
-    a: 'Python and FastAPI for agents and backends, AWS with Terraform for infrastructure, Next.js, React and React Native for product, PostgreSQL and Redis for state. Models are picked per task by measured cost and quality, not by brand.',
-  },
-  {
-    q: 'How is scope handled?',
-    a: 'Scope and acceptance criteria are written down first. Hourly work adjusts as we go. Blocks run from a shared backlog, reprioritized in weekly syncs.',
-  },
-  {
-    q: 'What if it’s not a good fit?',
-    a: 'I’ll say so and point you to someone better suited. That’s what the discovery call is for.',
+    q: 'Where are you, and which languages?',
+    a: 'Costa Rica (UTC−6): working hours overlap with the US and Latin America, and with the afternoon in Europe. I work in Spanish and English. Everything is remote; NDA on request.',
   },
 ];
 
@@ -58,19 +50,18 @@ export default function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="frame section-pad grid gap-[clamp(36px,6vw,88px)] lg:grid-cols-[minmax(240px,340px)_minmax(0,1fr)] items-start">
+      <div className="frame section-pad grid gap-12 lg:grid-cols-[minmax(240px,380px)_minmax(0,1fr)] lg:gap-[clamp(48px,7vw,112px)] items-start">
         <div className="reveal lg:sticky lg:top-[calc(var(--nav-h)+40px)]">
           <p className="eyebrow m-0">
-            <span className="eyebrow-index">08</span>
             <span aria-hidden="true" className="eyebrow-rule" />
             <span>FAQ</span>
           </p>
           <h2
             id="faq-heading"
-            className="mt-6 mb-0 font-bold text-[clamp(30px,3.4vw,44px)] tracking-[-0.038em] text-[var(--text)]"
+            className="mt-5 mb-0 font-semibold text-[clamp(32px,4vw,52px)] tracking-[-0.035em] text-[var(--text)]"
             style={{ lineHeight: 1.06 }}
           >
-            Before you book.
+            Before you book a call.
           </h2>
         </div>
 
@@ -79,7 +70,7 @@ export default function FAQ() {
             const open = openFaq === i;
             return (
               <div key={f.q} className="border-t border-[var(--border)]">
-                <h3 className="m-0 font-[family-name:var(--font-inter)]" style={{ letterSpacing: 0, lineHeight: 'inherit' }}>
+                <h3 className="m-0 font-[family-name:var(--font-geist-sans)]" style={{ letterSpacing: 0, lineHeight: 'inherit' }}>
                   <button
                     type="button"
                     id={`faq-q-${i}`}

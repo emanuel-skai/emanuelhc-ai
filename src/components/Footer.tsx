@@ -13,7 +13,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-5 mb-0 max-w-[380px] text-[15px] leading-relaxed text-[var(--muted)]">
-            AI agents in production, and the platform that keeps them answering. Built, operated and measured from Costa Rica.
+            Fractional CTO and AI systems architect. Technical leadership, hiring and AI in production, from Costa Rica, in Spanish and English.
           </p>
         </div>
 
@@ -21,17 +21,14 @@ export default function Footer() {
           <div className="label label-sm">
             Navigate
           </div>
-          <Link href="/#work" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
-            Work
-          </Link>
           <Link href="/#services" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Services
           </Link>
-          <Link href="/#practice" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
-            Practice
+          <Link href="/#pricing" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+            Pricing
           </Link>
-          <Link href="/#log" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
-            Operating log
+          <Link href="/#discovery" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+            Free discovery call
           </Link>
           <Link href="/writing" className="text-[15px] text-[var(--muted)] hover:text-[var(--text)] transition-colors">
             Writing
