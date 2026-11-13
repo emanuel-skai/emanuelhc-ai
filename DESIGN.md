@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: emanuelhc-design-system
-description: Design language for emanuelhc.ai — Emanuel Hernández Castillo, co-founder & CTO of Skillful AI and AI systems architect. A true-black canvas with a single emerald accent family, technical monospace detailing, and sacred-geometry linework used as a framing motif. The brand reads as quietly powerful engineering — cinematic atmosphere at the edges, surgical calm where the message lives. Emerald is an event, not a wash.
+description: Design language for emanuelhc.ai — Emanuel Hernández Castillo, fractional CTO and AI systems architect (ex-CTO, Skillful AI). A true-black canvas with a single emerald accent family, technical monospace detailing, and sacred-geometry linework used as a framing motif. The brand reads as quietly powerful engineering — cinematic atmosphere at the edges, surgical calm where the message lives. Emerald is an event, not a wash.
 colors:
   canvas: "#000000"
   canvas-soft: "#030303"
@@ -44,12 +44,12 @@ typography:
     lineHeight: 1.2
     letterSpacing: -0.015em
   body-lg:
-    fontFamily: "Inter, -apple-system, sans-serif"
+    fontFamily: "Geist, -apple-system, sans-serif"
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.65
   body-md:
-    fontFamily: "Inter, -apple-system, sans-serif"
+    fontFamily: "Geist, -apple-system, sans-serif"
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
@@ -66,7 +66,7 @@ typography:
     lineHeight: 1.4
     letterSpacing: 0.2em
   button:
-    fontFamily: "Inter, -apple-system, sans-serif"
+    fontFamily: "Geist, -apple-system, sans-serif"
     fontSize: 15px
     fontWeight: 600
     lineHeight: 1.0
@@ -104,7 +104,7 @@ components:
     background: "{colors.surface-1}"
     border: "1px solid {colors.hairline}"
     rounded: "{rounded.lg}"
-    note: "Flat console surface. Hover only brightens the hairline; no lift, no glow. The flagship panel takes an emerald hairline (rgba(16,185,129,0.32))."
+    note: "Flat surface. Hover only brightens the hairline; no lift, no glow. The flagship panel takes an emerald hairline (rgba(16,185,129,0.32))."
   cells:
     note: "Hairline grid: 1px gaps over the border color. Used for metrics, totals and offers."
   chip:
@@ -120,13 +120,13 @@ components:
   status-dot:
     size: 7px
     color: "{colors.primary}"
-    note: "Solid dot with a thin expanding ring. Reserved for genuine live/available status. Amber (#E5A13B) ring marks incidents in the operating log."
+    note: "Solid dot with a thin expanding ring. Reserved for genuine live/available status."
 
 ---
 
 ## Overview
 
-Personal brand site of an AI systems architect (agentic AI in production, enterprise clients, LATAM/EU/US). The system is **true black + one emerald family + monospace detailing**. Depth comes from a surface ladder (#000 → #080808 → #0f0f0f → #161616) and hairlines, never from colored washes. The voice is confident, technical, unhyped.
+Personal services site of a fractional CTO and AI systems architect (tech leadership, hiring, architecture reviews, AI agents in production; LATAM/EU/US). The system is **true black + one emerald family + monospace detailing**. Depth comes from a surface ladder (#000 → #080808 → #0f0f0f → #161616) and hairlines, never from colored washes. The voice is confident, technical, unhyped.
 
 ## The motif: sacred geometry, disciplined
 
@@ -142,16 +142,16 @@ Non-negotiable composition rules, learned the hard way:
 
 ## Typography
 
-Sora carries display (700, tight negative tracking, line-height ≈ 1.02). Inter carries body. **Geist Mono is a signature element**, not a fallback: eyebrows, micro-labels (PROBLEM / SOLUTION / OUTCOMES), timelines, metrics, and any real data render in mono uppercase with wide tracking. Type hierarchy does the heavy lifting on an otherwise dark, quiet canvas.
+Sora carries display (700, tight negative tracking, line-height ≈ 1.02). Geist carries body. **Geist Mono is a signature element**, not a fallback: eyebrows, micro-labels (PROBLEM / SOLUTION / OUTCOMES), timelines, metrics, and any real data render in mono uppercase with wide tracking. Type hierarchy does the heavy lifting on an otherwise dark, quiet canvas.
 
-## The console layer (v2, Nov 2026)
+## The editorial layer (v3, Nov 2026)
 
-The page reads as an operator's console: evidence first. Section openers carry a mono index ("01 / Work"). Numbers are the visual hero (hero readout bars, flagship metric cells with label on top and value at the bottom). Lists of rules, services and log entries are ledgers (hairline rows, mono numbers), not card grids. The operating log is a dated timeline: emerald dots for shipped work, amber rings for incidents, each incident followed by its fix.
+The v2 "operator console" was rejected: too much internal evidence (commits, logs, incidents). v3 is a premium personal-services page for a senior tech leader. Rules: few elements per section, generous whitespace, strong display type. Section openers are an emerald label + headline, never a numeric index. Services are a 2x2 hairline grid (who it's for, what you get, pricing). Proof is three short statements and one link to the flagship case. The portrait sits in the hero, framed by fine concentric rings on desktop and as a compact identity row on mobile.
 
 ## Motion
 
 - Scroll-reveal: fade + 14px rise, 600ms cubic-bezier(0.23, 1, 0.32, 1). One system sitewide.
-- Hero readout bars grow once on load (CSS keyframes, staggered 70–140ms). Accordions open via grid-template-rows.
+- The hero fades in once on load (CSS keyframes, 140ms stagger for the portrait). Accordions open via grid-template-rows.
 - One orchestrated moment per page maximum (e.g., a hero element drawing itself in on load). Everything else is hover micro-interaction scale.
 - Film grain overlay at 2–4% opacity is welcome; it warms the black.
 - `prefers-reduced-motion` always gets a complete, beautiful static state.

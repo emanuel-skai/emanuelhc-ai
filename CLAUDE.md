@@ -22,23 +22,26 @@ No test framework is configured.
 
 ## Architecture
 
-Personal site: positioning, proof, consulting and writing. The home page (`src/app/page.tsx`, a server component) composes these sections in order:
+Personal services site of a tech leader: fractional CTO, technical interviews & hiring, architecture review & due diligence, AI agents in production. A buyer should understand in 10 seconds who he is, what he offers and how to start. The home page (`src/app/page.tsx`, a server component) composes these sections in order:
 
 ```
-Navigation > Hero (+ HeroReadout) > CaseStudies (01 Work, flagship + other cases) > Practices (02) > OperatingLog (03) > Services (04) > About (05) > LatestWriting (06) > Pricing (07 Engage, includes "How it runs") > FAQ (08) > FinalCTA > DiscoveryForm > Footer
+Navigation > Hero (#top) > Services (#services) > WhyMe (#about) > Process (#process) > Pricing (#pricing) > LatestWriting (#writing) > FAQ (#faq) > DiscoveryForm (#discovery, final CTA + form) > Footer
 ```
 
-Section components live in `src/components/` and are client components (`'use client'`) since they use hooks and IntersectionObserver for scroll reveal. `page.tsx` reads articles with `getAllArticles()` and passes the latest English titles to `LatestWriting` as props (components cannot read the filesystem).
+Section components live in `src/components/` and are client components (`'use client'`) since they use hooks and IntersectionObserver for scroll reveal (`Hero` is a server component). `page.tsx` reads articles with `getAllArticles()` and passes the latest English titles to `LatestWriting` as props (components cannot read the filesystem).
+
+Service definitions (name, who it's for, deliverables, pricing), calendar links and the contact email live in `src/lib/site.ts`; the Services section, the form's "service" select and the JSON-LD offer catalog in `layout.tsx` all read from it.
 
 ### Content rules for the home page
 
-- Clients are anonymized in home-page copy ("a grooming spa chain in Bogotá", "a textile retailer", "a signage & print shop", "an online gaming platform"). No client names, staff names, prices, costs or vendor/model names in new copy.
-- Flagship numbers in `HeroReadout`/`CaseStudies` come from `src/content/writing/whatsapp-ai-agent-ten-months-production.md`; keep them in sync.
+- Less information, better chosen. No commit/release counts, operating logs, incident timelines or internal metrics.
+- Prices are fixed: consulting hour $200, 50-hour block $10,000, discovery free (15 min). Fractional CTO, interviews and due diligence are "custom, scoped in discovery". Don't invent prices.
+- Clients are anonymized. At most one number from the flagship case (`src/content/writing/whatsapp-ai-agent-ten-months-production.md`), currently ~50 s vs ~17 min first reply in `WhyMe`.
 - `LatestWriting` shows titles only, because older article descriptions name clients.
 
 ### API Route
 
-`POST /api/submit-form` — Validates discovery form data and appends a row to Google Sheets via service account auth.
+`POST /api/submit-form` — Validates discovery form data and appends a row to Google Sheets (`Sheet1!A:N`; column N = service of interest) via service account auth.
 
 **Required env vars** (in `.env.local`):
 - `GOOGLE_PRIVATE_KEY`
@@ -47,7 +50,7 @@ Section components live in `src/components/` and are client components (`'use cl
 
 ## Design System
 
-Colors and styles are defined as CSS variables in `src/app/globals.css` `:root`. The design uses a **true black background** (`#000`) with **emerald green accents** (`#10B981`). Shared classes live in `globals.css` inside `@layer components` (so Tailwind utilities can override them): `.label` (mono metadata), `.eyebrow`, `.panel`, `.cells` (hairline grid), `.btn-primary` (emerald fill, near-black text for AA contrast), `.btn-secondary`, `.link-arrow`, `.status-dot` (genuine live state only; `.is-incident`, `.is-static`), `.frame` and `.section-pad`. Section openers use `src/components/SectionHeader.tsx` (index + label + headline + aside). `.reveal`, `.bar` and `.prose` stay unlayered.
+Colors and styles are defined as CSS variables in `src/app/globals.css` `:root`. The design uses a **true black background** (`#000`) with **emerald green accents** (`#10B981`). Shared classes live in `globals.css` inside `@layer components` (so Tailwind utilities can override them): `.label` (mono metadata), `.eyebrow`, `.panel`, `.cells` (hairline grid), `.btn-primary` (emerald fill, near-black text for AA contrast), `.btn-secondary`, `.link-arrow`, `.status-dot` (`.is-static`), `.frame` and `.section-pad`. Section openers use `src/components/SectionHeader.tsx` (label + headline + intro, no numeric index). `.reveal`, `.hero-in` (one CSS load animation) and `.prose` stay unlayered.
 
 ### Scroll Reveal Pattern
 
@@ -58,7 +61,7 @@ Note: global `h1`–`h6` rules now live in `@layer base`, so Tailwind utilities 
 ## Key Conventions
 
 - **Path alias:** `@/*` maps to `./src/*`
-- **Fonts:** Sora (display), Inter (body) and Geist Mono (labels, data) loaded via `next/font/google` in `src/app/layout.tsx`
+- **Fonts:** Sora (display), Geist (body, `--font-geist-sans`) and Geist Mono (labels) loaded via `next/font/google` in `src/app/layout.tsx`
 - Colors must use CSS variables (e.g., `var(--emerald)`), never hardcoded values
 - Animations use CSS keyframes, not JavaScript
 - Design reference docs: `landing.md` (product spec/copy) and `palette.md` (color/design rules)
