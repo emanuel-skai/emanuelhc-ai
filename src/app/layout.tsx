@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Sora } from "next/font/google";
+import { Geist, Geist_Mono, Sora } from "next/font/google";
+import { services } from "@/lib/site";
 import "./globals.css";
 
 const sora = Sora({
@@ -8,10 +9,9 @@ const sora = Sora({
   weight: ["500", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 const SITE = 'https://emanuelhc.ai';
-const TITLE = 'Emanuel Hernández Castillo — AI agents in production';
+const TITLE = 'Emanuel Hernández Castillo — Fractional CTO & AI systems architect';
 const DESCRIPTION =
-  'AI systems architect building potenci. I build WhatsApp agents that answer, quote and book for real businesses, and I run the platform under them. Flagship: 234,000+ messages in ten months, ~50 s median first reply against ~17 min for the human team.';
+  'Tech leadership for companies building with AI: fractional CTO, technical interviews and hiring, architecture review and due diligence, and AI agents in production. Ex-Intel, Apple, co-founder and CTO of Skillful AI. Based in Costa Rica.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -37,12 +37,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Emanuel Hernández Castillo', url: SITE }],
   creator: 'Emanuel Hernández Castillo',
   keywords: [
+    'fractional CTO',
+    'technical interviews',
+    'technical due diligence',
+    'architecture review',
     'AI agents in production',
-    'WhatsApp AI agent',
     'AI systems architect',
-    'agent operations',
-    'LLM ops',
-    'potenci',
     'Costa Rica',
     'LATAM',
   ],
@@ -72,9 +72,9 @@ const jsonLd = {
       '@id': `${SITE}/#person`,
       name: 'Emanuel Hernández Castillo',
       alternateName: ['Emanuel Hernandez', 'Emanuel Hernandez Castillo'],
-      jobTitle: 'AI Systems Architect',
+      jobTitle: 'Fractional CTO & AI systems architect',
       description:
-        'Architects and operates production AI agents (WhatsApp booking, quoting and sales) and the multi-tenant platform under them. Building potenci.',
+        'Fractional CTO and AI systems architect. Former GPU software engineer at Intel, data scientist for Apple, and co-founder and CTO of Skillful AI. Builds potenci and runs AI agents in production for real businesses.',
       url: SITE,
       image: `${SITE}/images/PFP_EMANUEL.jpeg`,
       worksFor: { '@id': 'https://potenci.ai/#organization' },
@@ -86,14 +86,22 @@ const jsonLd = {
         'https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez',
       ],
       knowsAbout: [
+        'Technical leadership',
+        'Fractional CTO',
+        'Engineering hiring and technical interviews',
+        'Software architecture',
+        'Technical due diligence',
         'AI agents in production',
-        'WhatsApp AI agents',
         'Agentic AI',
-        'LLM operations and evaluation',
-        'Human-in-the-loop systems',
+        'Machine learning',
         'AWS cloud architecture',
-        'Machine Learning',
       ],
+      alumniOf: [
+        { '@type': 'Organization', name: 'Intel' },
+        { '@type': 'Organization', name: 'Apple' },
+        { '@type': 'Organization', name: 'Skillful AI' },
+      ],
+      hasOfferCatalog: { '@id': `${SITE}/#offers` },
       knowsLanguage: ['es', 'en'],
     },
     {
@@ -104,6 +112,37 @@ const jsonLd = {
       description:
         'A business OS with native AI agents that serve customers on WhatsApp and other channels: they sell from the catalog, send priced quotes, book into the calendar and hand off to the team.',
       founder: { '@id': `${SITE}/#person` },
+    },
+    {
+      '@type': 'OfferCatalog',
+      '@id': `${SITE}/#offers`,
+      name: 'Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          name: 'Consulting hour',
+          price: '200',
+          priceCurrency: 'USD',
+          url: SITE,
+          itemOffered: { '@type': 'Service', name: 'Consulting hour', provider: { '@id': `${SITE}/#person` } },
+        },
+        ...services.map((s) => ({
+          '@type': 'Offer',
+          url: `${SITE}/#${s.id}`,
+          description: s.pricing,
+          ...(s.id === 'ai-agents'
+            ? { price: '10000', priceCurrency: 'USD', eligibleQuantity: { '@type': 'QuantitativeValue', value: 50, unitText: 'hours' } }
+            : {}),
+          itemOffered: {
+            '@type': 'Service',
+            name: s.name,
+            description: s.summary,
+            serviceType: s.name,
+            areaServed: 'Worldwide',
+            provider: { '@id': `${SITE}/#person` },
+          },
+        })),
+      ],
     },
     {
       '@type': 'WebSite',
@@ -124,7 +163,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sora.variable} ${inter.variable} ${geistMono.variable} antialiased grain-overlay`}
+        className={`${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased grain-overlay`}
       >
         <script
           type="application/ld+json"

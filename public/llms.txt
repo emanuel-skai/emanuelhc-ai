@@ -1,8 +1,15 @@
 # Emanuel Hernández Castillo — emanuelhc.ai
 
-> Personal site of Emanuel Hernández Castillo, an AI systems architect based in Costa Rica who is building potenci (https://potenci.ai), a business OS with native AI agents. He architects and operates production AI agents that answer, quote and book on WhatsApp for real businesses, and owns the multi-tenant platform under them: agent runtime, AWS infrastructure, releases and incident response. The site publishes long-form, data-backed case studies on running AI agents in production, in English and Spanish, and offers a limited number of consulting engagements.
+> Personal site of Emanuel Hernández Castillo, a fractional CTO and AI systems architect based in Costa Rica. He offers tech leadership for startups and SMBs building with AI: fractional CTO, technical interviews and hiring, architecture review and technical due diligence, and AI agents in production. Background: GPU software at Intel, data science for Apple (TV+, App Store, Music), ML team lead roles, then co-founder and CTO of Skillful AI, an enterprise agentic AI platform. In 2026 he builds potenci (https://potenci.ai), a business OS with native AI agents, and runs AI agents in production for real businesses. Works in Spanish and English.
 
-Core thesis: an AI agent in production is an operation, not a launch. Almost none of the failures in a year of production came from the model; they came from the system around it. Rules that matter belong in tools, health checks must verify AI output rather than plumbing, and autonomy is earned with numbers the client can check.
+## Services
+
+- Fractional CTO: part-time technical leadership for startups and SMBs. Architecture and roadmap, build vs buy, hiring and running the engineering team, vendor and AI tooling decisions, technical voice with investors and clients. Pricing: custom, scoped in a free discovery call.
+- Technical interviews & hiring: hiring loop design, technical interviews for backend, AI and data engineers, written evaluations per candidate, help closing hires. Pricing: custom, scoped in discovery.
+- Architecture review & technical due diligence: for founders or investors. Audit of a system or startup, ranked risks, written report and action plan. Pricing: custom, scoped in discovery.
+- AI agents in production: design, build and operate agents (WhatsApp, booking, quoting). Pricing: 50-hour block, $10,000.
+- Consulting hour: $200 per hour, written notes after the call.
+- Discovery call: free, 15 minutes, via the form at https://emanuelhc.ai/#discovery.
 
 ## Flagship case study
 
@@ -15,32 +22,15 @@ Core thesis: an AI agent in production is an operation, not a launch. Almost non
 - [What 27,000 WhatsApp Conversations Taught Me About Production AI Agents](https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study): Production case study of an AI sales agent for a Colombian fabric retailer. Grounded tool calling vs. model knowledge, versioned agent configuration, human handoff design, multimodal search. Spanish: https://emanuelhc.ai/writing/whatsapp-ai-agent-production-case-study-es
 - [Human-in-the-loop for voice agents: why your architecture decides whether it's possible](https://emanuelhc.ai/writing/voice-agent-hitl-architecture): Cascaded vs. native speech-to-speech tradeoffs, and why the architecture choice decides whether human review before delivery is possible.
 
-## How he runs agents in production
-
-- The regression bench decides whether a change ships; it runs before publishing, not after.
-- Agent health means AI replies delivered in the last window, split from human replies. Inbound traffic and HTTP 200s prove nothing.
-- Rules that matter live in tools (pricing, calendar capacity), not only in the prompt.
-- Writes (book, move, cancel) need a summary and an explicit customer "yes".
-- One change per window, at night, with the rollback written first; every change gets a 48-hour readout.
-- The cheapest model that clears the quality and safety bar, measured per conversation.
-- Releases are tagged only from main; post-mortems name their own trigger.
-
-## 2026 work (Aug – Nov)
-
-- Production WhatsApp agents for four businesses: a grooming spa chain, a signage and print shop, a textile retailer (Colombia/Peru) and an online gaming platform.
-- Migrated an entire multi-tenant agent platform to a new AWS account in about four days with a full-dump restore; cut the run-rate within a week without long-term commitments.
-- 585 backend and 169 frontend commits; tag-based releases from v1.2.0 to v1.3.16 with manual migrate and deploy gates; canaries for auth, webhooks and AI output.
-- A scheduling product with two-way Google Calendar sync, billing on Paddle, an operator mobile app on Google Play, and daily client reporting.
-
 ## Pages
 
-- [Home](https://emanuelhc.ai): Positioning, flagship numbers, selected work, production practices, 2026 operating log, services, engagement options and discovery form.
+- [Home](https://emanuelhc.ai): Services (fractional CTO, technical interviews, architecture review and due diligence, AI agents in production), background, how engagements work, pricing, FAQ and discovery form.
 - [Writing index](https://emanuelhc.ai/writing): All published articles.
 - [RSS feed](https://emanuelhc.ai/feed.xml)
 
 ## About
 
-- Emanuel Hernández Castillo is building potenci (https://potenci.ai), a business OS with native AI agents. He co-founded Skillful AI and led its engineering as CTO. Earlier: GPU software at Intel and data science for App Store and Apple TV+ at Apple.
+- Emanuel Hernández Castillo is building potenci (https://potenci.ai), a business OS with native AI agents. He co-founded Skillful AI and led its engineering as CTO. Earlier: ML team lead roles, GPU software at Intel, and data science for Apple TV+, the App Store and Apple Music.
 - Based in Costa Rica; works in Spanish and English across Latin America, Europe and North America.
 - Profiles: https://www.linkedin.com/in/emanuelhc/ · https://www.effectivesoft.com/experts/emanuel-hernandez-castillo.html · https://www.crunchbase.com/person/emanuel-hern%C3%A1ndez
 - Contact: emanuel@skillfulai.io

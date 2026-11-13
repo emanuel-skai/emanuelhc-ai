@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Emanuel Hernández Castillo — AI agents in production';
+export const alt = 'Emanuel Hernández Castillo — Fractional CTO & AI systems architect';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -42,7 +42,7 @@ export default function OgImage() {
               fontSize: '20px',
             }}
           >
-            AI systems architect · Building potenci
+            Fractional CTO & AI systems architect
           </span>
         </div>
         <h1
@@ -63,11 +63,11 @@ export default function OgImage() {
             fontSize: '28px',
             lineHeight: 1.4,
             margin: 0,
-            maxWidth: '800px',
+            maxWidth: '900px',
           }}
         >
-          AI agents on the front desk, operated like infrastructure.
-          234,000+ messages in ten months, ~50 s median first reply.
+          Tech leadership for companies building with AI. Fractional CTO,
+          technical interviews, architecture reviews, AI agents in production.
         </p>
         <div
           style={{
